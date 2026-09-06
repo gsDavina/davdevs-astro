@@ -31,13 +31,19 @@ export const POST: APIRoute = async ({ request, redirect, url }) => {
         quantity: 1,
       };
 
-  const session = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    line_items: [lineItem],
-    success_url: `${url.origin}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${url.origin}/ebooks/${ebookSlug}`,
-    metadata: { ebookSlug, tierName },
-  });
+  let session;
+  try {
+    session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items: [lineItem],
+      success_url: `${url.origin}/order-confirmation?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${url.origin}/ebooks/${ebookSlug}`,
+      metadata: { ebookSlug, tierName },
+    });
+  } catch (err) {
+    console.error('Stripe checkout session creation failed', { ebookSlug, tierName, err });
+    return redirect(`/ebooks/${ebookSlug}?error=checkout-failed`);
+  }
 
   if (!session.url) {
     return redirect(`/ebooks/${ebookSlug}?error=checkout-failed`);
