@@ -9,7 +9,7 @@ pricingTiers:
   - name: "Ebook"
     priceCents: 299
     currency: "SGD"
-    stripePriceId: "price_1UChz7Gfu4ZIyhLbGiywoJIk"
+    stripePriceId: "price_1UCiTiKH93TdgTLBgCD6MxJf"
 ---
 
 A collection of original jokes and playful wordplay inspired by everyday moments — hawker food, MRT rides, and the occasional groan-worthy wordplay.
