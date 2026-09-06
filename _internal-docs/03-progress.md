@@ -1,5 +1,27 @@
 # Progress
 
+## 2026-09-07 — Wired up real production Lighthouse reports; cleaned up _internal-docs
+
+Two real Lighthouse HTML reports (mobile + desktop, run against the live
+`https://www.davdevs.dev/` homepage) were dropped into `_internal-docs/`.
+Moved them (not copied) to `public/lighthouse/mobile.html` and
+`public/lighthouse/desktop.html` so they build to real, servable URLs, and
+linked both from the footer's `perf · a11y · seo` badge (`Footer.astro`) —
+verified in-browser both routes serve the actual report content.
+
+**`_internal-docs/` cleanup**: removed the 11 `DL-ICN-*`/`DL-LGO-*`/
+`DL-OG-PNG.png` brand-asset source files — grepped all of `src/` and every
+doc and found zero references anywhere; `public/favicon.png`,
+`public/favicon.svg`, and `public/og-image.png` already exist as the
+actual derived site-facing assets. Confirmed with the user before
+deleting (all committed in git history regardless, so recoverable).
+Left `cloudinary-download-report.json`, `content-extraction-notes.md`,
+and `quips.md`/`quips-content-template.md` in place — each is explicitly
+cited by name elsewhere in this doc or the README as the historical
+record of a completed migration step; removing them would leave those
+references pointing at nothing, the same doc-rot this session has
+otherwise been fixing rather than introducing.
+
 ## 2026-09-07 — Removed the Template nav link/route too, and simplified the now-dead EMPTY_TYPES machinery
 
 Follow-up to removing Sermon earlier today: instructed to remove Template

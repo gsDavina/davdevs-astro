@@ -12,7 +12,10 @@ import { SITE } from '../lib/site-config';
     </ul>
     <div class="footer-lh">
       {SITE.lighthouse.show && (
-        <span>perf {SITE.lighthouse.performance} · a11y {SITE.lighthouse.accessibility} · seo {SITE.lighthouse.seo}</span>
+        <span>
+          perf {SITE.lighthouse.performance} · a11y {SITE.lighthouse.accessibility} · seo {SITE.lighthouse.seo}
+          {' '}(<a href="/lighthouse/mobile.html" target="_blank" rel="noopener noreferrer">mobile</a> · <a href="/lighthouse/desktop.html" target="_blank" rel="noopener noreferrer">desktop</a> report)
+        </span>
       )}
     </div>
   </div>
@@ -67,6 +70,10 @@ import { SITE } from '../lib/site-config';
     font-family: var(--font-mono);
     font-size: 9px;
     color: var(--footer-text);
+  }
+  .footer-lh a {
+    color: var(--footer-text);
+    text-decoration: underline;
   }
   .footer-bottom {
     text-align: center;
