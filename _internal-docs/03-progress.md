@@ -5,6 +5,20 @@
 > mockup templates) — not a pixel-diff against the live `davinaleong.com`. Where the
 > two would conflict, davdevs-laravel wins per instruction.
 
+## 2026-09-06 — Iteration 4: verified all 13 tool islands
+
+Opened every remaining tool (Timers, Memory Cards, Calculator, Card Miles
+Converter, Color Palettes, Color Value Converter, Duplicated Paragraph
+Scanner, Easy Password Generator, Natural Language Translator — the 4
+from iteration 2 were already verified) in-browser, in both light and
+dark theme. All 13/13 render their full UI with zero console errors.
+Updated `01-milestones.md` Phase 6 and checklist §6 accordingly.
+
+This closes out the last "not yet verified" item from Phase 6 that was
+realistically checkable without deeper per-control interaction testing
+(every keyboard shortcut, every game's win/lose path, mobile touch
+targets) — those remain genuinely untested, noted rather than assumed.
+
 ## 2026-09-06 — Iteration 3: JSON-LD + mobile/light-theme verification
 
 ### Done

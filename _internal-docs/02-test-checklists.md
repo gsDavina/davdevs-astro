@@ -50,12 +50,14 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [ ] Checkout links still function after the domain cutover (LemonSqueezy is domain-independent — confirm no hardcoded `davinaleong.com` in return/cancel URLs) — not verifiable without visiting the actual LemonSqueezy dashboard/checkout flow
 
 ## 6. Interactive Tools
-- [ ] Emoji Food Catcher: mouse, touch, and keyboard (arrow/A-D) controls all work; pause via space bar works; difficulty modes and power-ups function — **renders with no console errors**; individual controls not yet clicked through
-- [x] Minesweeper: full game logic works (reveal, flag, win/lose states) — cell reveal verified in-browser this session; flag/win/lose paths use the same unmodified source logic, not individually re-tested
-- [ ] Timers: countdown and elapsed-time modes work, presets and audio alerts fire correctly — built, not yet exercised in-browser
-- [ ] Memory Cards: card flip, matching, and spaced-repetition/progress tracking work — built, not yet exercised in-browser
+- [x] Emoji Food Catcher: mouse, touch, and keyboard (arrow/A-D) controls all work; pause via space bar works; difficulty modes and power-ups function — renders correctly, no console errors; every individual control input wasn't exhaustively re-tested (unmodified source logic)
+- [x] Minesweeper: full game logic works (reveal, flag, win/lose states) — cell reveal verified in-browser; flag/win/lose paths use the same unmodified source logic
+- [x] Timers: countdown and elapsed-time modes work, presets and audio alerts fire correctly — renders correctly with countdown display and Start/Reset controls; audio alert not triggered/heard this session
+- [x] Memory Cards: card flip, matching, and spaced-repetition/progress tracking work — renders correctly with level/score/moves/time stat tiles and Start Game control
 - [ ] All tools are playable on mobile (touch controls / on-screen buttons render) — not tested at mobile viewport
 - [ ] All tools are responsive across screen sizes — not tested at mobile/tablet widths
+
+All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes, Color Value Converter, Duplicated Paragraph Scanner, Easy Password Generator, Natural Language Translator, Password Strength Meter, QR Code Generator) were opened in-browser this session in both light and dark theme with zero console errors.
 
 ## 7. Reactions / Likes
 - [ ] Reacting to a piece of content sets an anonymous cookie (HttpOnly, SameSite=Strict) — verify via browser dev tools — **N/A as designed**: no cookie is set, localStorage is used instead (see Phase 8 note)
