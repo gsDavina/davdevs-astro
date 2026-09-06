@@ -7,7 +7,7 @@ tagline: "Corn-sider yourself warned."
 coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png"
 pricingTiers:
   - name: "Ebook"
-    priceCents: 299
+    priceCents: 300
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLBgCD6MxJf"
 ---
