@@ -65,8 +65,12 @@
   --text-primary: #f5f0e8;
   --text-body: #c8c3bc;
   --text-secondary: #a8a39c;
-  --text-muted: #6a6a72;
-  --text-faint: #3a3a42;
+  /* #6a6a72 measured ~3.7:1 against --bg-page (share-row links); #7c7c86
+     clears 4.5:1. */
+  --text-muted: #7c7c86;
+  /* #3a3a42 measured ~1.7:1 against --bg-page/--bg-surface-1 (Lighthouse
+     color-contrast); #86868f clears 4.5:1 against both. */
+  --text-faint: #86868f;
   --accent: #d4a757;
   --accent-hover: #e3b040;
   --accent-pressed: #b88a3a;
@@ -75,7 +79,12 @@
   --secondary: #4a9b7f;
   --secondary-tint: rgba(74, 155, 127, 0.1);
   --secondary-border: rgba(74, 155, 127, 0.2);
-  --tertiary: #c4553a;
+  /* Unlike --accent/--secondary, --tertiary used the same hex in both
+     themes, which left the "tag-coral" text at ~3.5:1 against its own
+     10%-tint background (Lighthouse's color-contrast audit) — brightened
+     for dark theme, see the light-theme override below for the matching
+     darkened variant. */
+  --tertiary: #d97a5c;
   --tertiary-tint: rgba(196, 85, 58, 0.1);
   --tertiary-border: rgba(196, 85, 58, 0.2);
 
@@ -125,7 +134,9 @@
 
   --footer-bg: #0e0e10;
   --footer-border: #2a2a30;
-  --footer-text: #3a3a42;
+  /* #3a3a42 measured ~1.7:1 against --footer-bg (Lighthouse color-contrast,
+     footer links/logo/copyright); #86868f clears 4.5:1. */
+  --footer-text: #86868f;
 
   --shadow-card: none;
   --shadow-modal: 0 24px 48px rgba(0, 0, 0, 0.6);
@@ -146,8 +157,12 @@
   --text-primary: #1a1916;
   --text-body: #2a2820;
   --text-secondary: #5a5850;
-  --text-muted: #88837c;
-  --text-faint: #c8c3bb;
+  /* #88837c measured ~3.5:1 against --bg-page (share-row links); #5f5a53
+     clears 4.5:1. */
+  --text-muted: #5f5a53;
+  /* #c8c3bb measured ~1.9:1 against --bg-page/--bg-surface-1; #6f6a63
+     clears 4.5:1 against both. */
+  --text-faint: #6f6a63;
   --accent: #8b6f47;
   --accent-hover: #7a5e38;
   --accent-pressed: #634a27;
@@ -156,7 +171,9 @@
   --secondary: #2b7a5e;
   --secondary-tint: rgba(43, 122, 94, 0.1);
   --secondary-border: rgba(43, 122, 94, 0.2);
-  --tertiary: #c4553a;
+  /* Darkened for light theme (mirrors --accent/--secondary already doing
+     this) — see the dark-theme comment above. */
+  --tertiary: #963f28;
   --tertiary-tint: rgba(196, 85, 58, 0.1);
   --tertiary-border: rgba(196, 85, 58, 0.2);
 
@@ -206,7 +223,9 @@
 
   --footer-bg: #f5f1eb;
   --footer-border: #d8d4cc;
-  --footer-text: #b0aca6;
+  /* #b0aca6 measured ~1.9:1 against --footer-bg; #6b6560 clears 4.5:1
+     (same fix already applied to --tab-label in light theme). */
+  --footer-text: #6b6560;
 
   --shadow-card: 0 1px 3px rgba(26, 25, 22, 0.08);
   --shadow-modal: 0 16px 40px rgba(26, 25, 22, 0.15);

@@ -26,8 +26,8 @@ export const SITE = {
    */
   lighthouse: {
     show: true,
-    performance: '68',
-    accessibility: '95',
+    performance: '70',
+    accessibility: '100',
     seo: '92',
     bestPractices: '100',
   },

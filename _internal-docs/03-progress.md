@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-09-07 — Site-wide color-contrast pass (a11y 95 → 100)
+
+Follow-up to the Lighthouse audit below: after the first round of fixes, a re-run still showed `color-contrast` failing on elements shared by *every* content page — not just the tool page originally sampled. Traced each to its design token and fixed all four, verifying with hand-computed contrast ratios before touching `tokens.css` and then confirming with another Lighthouse run (not just assuming the math was right):
+
+- **`--text-faint`** (the kicker line "Type · Date · N min read", used on every detail page): ~1.7:1 dark / ~1.9:1 light → `#86868f` dark / `#6f6a63` light, both ≥4.5:1 against `--bg-page`/`--bg-surface-1`.
+- **`--text-muted`** (share-row links — LinkedIn/Facebook/Threads/Copy link, every detail page): ~3.7:1 dark / ~3.5:1 light → `#7c7c86` dark / `#5f5a53` light.
+- **`--footer-text`** (footer links/logo/copyright, every page): ~1.7:1 dark / ~1.9:1 light → `#86868f` dark / `#6b6560` light.
+- **`--tertiary`** (`tag-coral` pills): this one was structurally different from the other two — `--accent` and `--secondary` already have separate, deliberately-darkened light-theme values, but `--tertiary` used the identical `#c4553a` in both themes, which is why it was the only tag color Lighthouse flagged. Composited its 10%-tint background by hand (dark theme's tint sits on `--bg-surface-1`, light theme's on a much lighter surface, so the *same* text color can't satisfy both — confirmed brightening it fixed dark but would have made light theme worse) and gave it a proper per-theme pair: `#d97a5c` dark (~5.2-5.8:1) / `#963f28` light (~5.4:1).
+
+Re-ran Lighthouse on all four previously-audited pages (home, article, ebook, tool): **accessibility is now 100 on all four, zero `color-contrast` failures anywhere.** `SITE.lighthouse` in `site-config.ts` updated to performance 70 / accessibility 100 / best-practices 100 / seo 92 (still the minimum across all four pages). Didn't attempt a live screenshot re-verification this round — the Browser pane was intermittently reporting itself hidden mid-session — but a rigorous automated contrast checker (Lighthouse/axe, which is what actually flagged and re-verified these) is stronger evidence than eyeballing a screenshot would have been anyway.
+
 ## 2026-09-07 — Real Lighthouse audit + 3 accessibility fixes found by it
 
 Phase 11 ("Run Lighthouse... confirm scores meet or beat the original") was blocked on a deployed `davdevs.dev` URL, but a **local** audit against the production build is fully achievable in this environment and is genuinely more useful than leaving the footer badge at `—` placeholders forever. Built the site (`npm run build`), served `dist/client` with a plain static file server (the Vercel-adapter output isn't `astro preview`-able directly — that needs `vercel dev`), and ran `npx lighthouse` (headless Chrome, both are already installed locally) against home, one article detail, one ebook detail, and one tool page.
