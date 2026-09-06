@@ -56,10 +56,14 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [x] `/ebook` and `/ebooks` index pages — `/ebooks` is the real index+detail; `/ebook` redirects to `/ebooks` (`astro.config.mjs` redirects map) since which path the live site actually uses couldn't be confirmed without site access
 
 ## Phase 6 — Interactive Tool Pages
-- [ ] Rebuild each tool as an Astro island (React/vanilla JS as appropriate): Emoji Food Catcher, Minesweeper, Timers, Memory Cards
-- [ ] Preserve controls parity: mouse/trackpad, touch, keyboard (arrow keys/A-D, space to pause) per game
-- [ ] Preserve game logic details called out on the pages themselves (scoring, difficulty modes, power-ups, first-click protection, etc.)
-- [ ] Confirm mobile on-screen controls render and function
+- [x] Rebuild each tool as an Astro island (React/vanilla JS as appropriate): all 13 tools (Emoji Food Catcher, Minesweeper, Timers, Memory Cards, Calculator, Card Miles Converter, Color Palettes, Color Value Converter, Duplicated Paragraph Scanner, Password Creator, Password Strength Meter, QR Code Generator, Translator) — ported directly from `davdevs-laravel/resources/js/components/*.jsx` as `@astrojs/react` islands (`client:load`), mounted via a `ToolMount` wrapper + `registry.ts` slug map (Astro's `client:*` directives can't hydrate a dynamically-selected component reference directly, so the dynamic lookup happens inside one statically-imported React wrapper instead)
+- [ ] Preserve controls parity: mouse/trackpad, touch, keyboard (arrow keys/A-D, space to pause) per game — the ported code is unmodified from source, so keyboard/touch handling is whatever davdevs-laravel already implemented; not independently re-tested per control scheme this session (mouse verified on Minesweeper only)
+- [x] Preserve game logic details called out on the pages themselves (scoring, difficulty modes, power-ups, first-click protection, etc.) — logic is the unmodified ported source, not reimplemented
+- [ ] Confirm mobile on-screen controls render and function — not tested at mobile viewport this session
+
+**New dependency incurred by this phase:** the ported components use Tailwind utility classes (`flex`, `grid`, `dark:bg-gray-700`, etc.), which davdevs-laravel provides via Tailwind v4 — this project didn't have Tailwind before. Added `tailwindcss` + `@tailwindcss/vite`, importing only `theme`+`utilities` layers (not `preflight`, to avoid fighting this project's own hand-built base reset in `tokens.css`), and added a `@custom-variant dark` keyed to this site's `[data-theme]` attribute instead of Tailwind's default `.dark` class/OS-preference, so ported `dark:` classes follow the same manual toggle as the rest of the site. Also added `lucide-react`, `colord`, `zxcvbn`, `react-qrcode-logo` (the same libraries davdevs-laravel uses for these tools).
+
+**Verified in-browser this session:** Minesweeper (cell reveal works), QR Code Generator (form renders), Password Strength Meter (zxcvbn scoring works live — typed a password, strength bar updated to "Good"), Emoji Food Catcher (renders, no console errors). The remaining 9 tools build without error but haven't been individually clicked through yet.
 
 ## Phase 7 — Search (⌘K)
 - [x] Decide indexing approach for a static site (build-time search index vs. client-side fuzzy search over content collections) — **decided: build-time JSON index** (`/search-index.json`) + client-side substring match, no external search service

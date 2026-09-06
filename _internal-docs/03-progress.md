@@ -5,6 +5,51 @@
 > mockup templates) — not a pixel-diff against the live `davinaleong.com`. Where the
 > two would conflict, davdevs-laravel wins per instruction.
 
+## 2026-09-06 — Iteration 2: interactive tool islands (Phase 6)
+
+### Done
+
+- **Ported all 13 tool components** from `davdevs-laravel/resources/js/components/*.jsx`
+  into `src/components/tools/` (plus their `shared/*` helpers — Button, Input,
+  Panel, ToolPanel, Table, DropdownMenu, etc. — and `shared/data/*.json`),
+  preserving the exact directory structure so every relative import
+  (`./shared/Button`) kept working with zero path edits.
+- **Added Tailwind v4** (`tailwindcss` + `@tailwindcss/vite`), which the
+  ported components need for their utility classes. Imported only the
+  `theme`+`utilities` layers (`src/styles/tailwind-utilities.css`), skipping
+  `preflight` so Tailwind's base reset doesn't fight this project's own
+  hand-built reset in `tokens.css`. Added a `@custom-variant dark` keyed to
+  this site's `[data-theme="dark"]` attribute so ported `dark:` utility
+  classes follow the same manual toggle as the rest of the site, instead of
+  Tailwind's default `.dark`-class/OS-preference behaviour.
+- **Added `lucide-react`, `colord`, `zxcvbn`, `react-qrcode-logo`** — same
+  libraries the source components already depend on.
+- **Wired tool entries to their island** via `src/components/tools/registry.ts`
+  (slug → component map, keyed off each entry's `reactComponent` frontmatter
+  field) and `ToolMount.tsx`. Needed a real fix here: Astro's `client:load`
+  requires statically resolving which component to hydrate, so
+  `TOOL_REGISTRY[slug]` can't be handed to a `client:load` directive directly
+  from `.astro` frontmatter (throws `NoMatchingImport`) — `ToolMount` is the
+  one statically-imported island Astro hydrates, and it does the dynamic
+  lookup internally in React, where that's fine.
+- Tool detail pages (`/tool/[slug]`) now render the live widget above the
+  existing written instructions.
+- **Verified in-browser**: Minesweeper (clicked a cell, board updated
+  correctly), QR Code Generator (form + icon render), Password Strength
+  Meter (typed a password, zxcvbn scored it "Good" live), Emoji Food Catcher
+  (renders its gradient hero + difficulty selector, no console errors).
+  Build stays clean (137 pages, no errors) with all islands wired in.
+
+### Not verified yet
+
+The remaining 9 tools (Timers, Memory Cards, Calculator, Card Miles
+Converter, Color Palettes, Color Value Converter, Duplicated Paragraph
+Scanner, Password Creator, Translator) build without error but haven't
+been individually clicked through. Keyboard controls, touch controls, and
+mobile-viewport rendering haven't been tested for any tool this session —
+the ported code is unmodified from source, so this is about verifying the
+port, not re-implementing anything.
+
 ## 2026-09-06 — Iteration 1: foundation, content, core pages
 
 ### Done

@@ -4,6 +4,7 @@ import Site from '../../layouts/Site.astro';
 import Tag from '../../components/Tag.astro';
 import LikeButton from '../../components/LikeButton.astro';
 import ShareRow from '../../components/ShareRow.astro';
+import ToolMount from '../../components/tools/ToolMount';
 import {
   BLOG_TYPES,
   BLOG_TYPE_LABELS,
@@ -28,6 +29,7 @@ const { entry } = Astro.props as { entry: Awaited<ReturnType<typeof getBlogEntri
 const { Content } = await render(entry);
 const label = BLOG_TYPE_LABELS[type];
 const href = `/${type}/${entry.data.slug}`;
+const toolComponentName = type === 'tool' ? entry.data.reactComponent : undefined;
 ---
 
 <Site
@@ -59,6 +61,12 @@ const href = `/${type}/${entry.data.slug}`;
           <LikeButton contentKey={href} />
         </div>
       </header>
+
+      {toolComponentName && (
+        <div class="tool-embed">
+          <ToolMount component={toolComponentName} client:load />
+        </div>
+      )}
 
       <div class="post-content">
         <Content />
@@ -151,6 +159,10 @@ const href = `/${type}/${entry.data.slug}`;
   }
   .post-wrapper :global(.like-btn-inline) {
     margin-left: auto;
+  }
+
+  .tool-embed {
+    margin-bottom: 40px;
   }
 
   .post-content {

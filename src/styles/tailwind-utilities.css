@@ -1,0 +1,13 @@
+/* Tailwind utilities only (no preflight/base reset) — the ported tool
+   islands (src/components/tools/*) use Tailwind utility classes exactly as
+   they do in davdevs-laravel, but this site already has its own hand-built
+   base reset in tokens.css, so importing Tailwind's base layer here would
+   fight it. Importing just theme+utilities avoids that. */
+@import 'tailwindcss/theme' layer(theme);
+@import 'tailwindcss/utilities' layer(utilities);
+
+/* The rest of the site toggles dark/light via a `data-theme` attribute on
+   <html>, not Tailwind's default `.dark` class / OS-preference variant.
+   Point `dark:` utilities at the same attribute so ported tool components
+   stay in sync with the site-wide theme toggle. */
+@custom-variant dark (&:is([data-theme='dark'] *, [data-theme='dark']));
