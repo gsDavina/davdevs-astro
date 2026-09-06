@@ -8,6 +8,8 @@ import type { CollectionEntry } from 'astro:content';
  * Sermon/VideoObject is skipped: Sermons are out of scope for this rebuild.
  */
 
+const AUTHOR = { '@type': 'Person', name: 'Davina Leong', email: 'leong.shi.yun@gmail.com' } as const;
+
 export function blogEntryJsonLd(type: BlogType, entry: BlogEntry, canonicalURL: string) {
   const base = {
     '@context': 'https://schema.org',
@@ -17,7 +19,7 @@ export function blogEntryJsonLd(type: BlogType, entry: BlogEntry, canonicalURL: 
     datePublished: entry.data.datePublished?.toISOString(),
     dateModified: (entry.data.dateModified ?? entry.data.datePublished)?.toISOString(),
     image: entry.data.images?.[0]?.src,
-    author: { '@type': 'Person', name: 'Davina Leong' },
+    author: AUTHOR,
   };
 
   if (type === 'tool') {
@@ -44,7 +46,7 @@ export function ebookJsonLd(entry: CollectionEntry<'ebook'>, canonicalURL: strin
     description: entry.data.tagline,
     url: canonicalURL,
     image: entry.data.coverImage ?? undefined,
-    author: { '@type': 'Person', name: 'Davina Leong' },
+    author: AUTHOR,
     offers: tier
       ? {
           '@type': 'Offer',
