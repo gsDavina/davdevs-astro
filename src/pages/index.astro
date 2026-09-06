@@ -2,17 +2,20 @@
 import Site from '../layouts/Site.astro';
 import EntryCard from '../components/EntryCard.astro';
 import { HOME_SECTION_ORDER, TYPE_LABELS, getBlogEntries } from '../lib/content';
+import { formatPriceCents } from '../lib/format';
 import { getCollection } from 'astro:content';
+
+const HOME_ENTRIES_PER_SECTION = 5;
 
 const sections = await Promise.all(
   HOME_SECTION_ORDER.map(async (type) => ({
     type,
     label: TYPE_LABELS[type],
-    entries: await getBlogEntries(type),
+    entries: (await getBlogEntries(type)).slice(0, HOME_ENTRIES_PER_SECTION),
   }))
 );
 
-const ebooks = await getCollection('ebook');
+const ebooks = (await getCollection('ebook')).slice(0, HOME_ENTRIES_PER_SECTION);
 ---
 
 <Site
@@ -38,7 +41,11 @@ const ebooks = await getCollection('ebook');
             {entry.data.coverImage && <img class="entry-card-cover" src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
             <div class="entry-card-title">{entry.data.title}</div>
             {entry.data.tagline && <div class="entry-card-tagline">{entry.data.tagline}</div>}
-            {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
+            {entry.data.pricingTiers[0] && (
+              <div class="entry-card-price">
+                {formatPriceCents(entry.data.pricingTiers[0].priceCents, entry.data.pricingTiers[0].currency)}
+              </div>
+            )}
           </a>
         ))}
       </div>
