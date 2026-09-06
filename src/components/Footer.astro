@@ -1,0 +1,125 @@
+---
+import { SITE } from '../lib/site-config';
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">dav<span>/</span>devs</div>
+    <ul class="footer-links">
+      {SITE.footerLinks.map((link) => (
+        <li><a href={link.url} target={link.target} rel="noopener noreferrer">{link.label}</a></li>
+      ))}
+    </ul>
+    {SITE.lighthouse.show && (
+      <div class="lh-badges">
+        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.performance}</span><span class="lh-label">Perf</span></div>
+        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.accessibility}</span><span class="lh-label">A11y</span></div>
+        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.seo}</span><span class="lh-label">SEO</span></div>
+        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.bestPractices}</span><span class="lh-label">BP</span></div>
+      </div>
+    )}
+  </div>
+  <div class="footer-bottom">
+    {SITE.copyrightText} · <a href="/privacy">Privacy</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: auto;
+    background: var(--footer-bg);
+    border-top: 0.5px solid var(--footer-border);
+    padding: 24px var(--page-padding-x);
+  }
+  .footer-inner {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-logo {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--footer-text);
+  }
+  .footer-logo span {
+    color: var(--accent);
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: var(--tracking-mono-sm);
+    transition: color var(--duration-fast);
+  }
+  .footer-links a:hover {
+    color: var(--text-secondary);
+  }
+  .lh-badges {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .lh-badge {
+    background: var(--lh-bg);
+    border: 0.5px solid var(--border-default);
+    border-radius: var(--radius-btn);
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 44px;
+  }
+  .lh-num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--lh-num);
+  }
+  .lh-label {
+    font-family: var(--font-mono);
+    font-size: 7px;
+    color: var(--lh-label);
+    letter-spacing: var(--tracking-mono-xs);
+    text-transform: uppercase;
+  }
+  .footer-bottom {
+    text-align: center;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--footer-text);
+  }
+  .footer-bottom a {
+    color: var(--footer-text);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .footer {
+      padding: 20px var(--page-padding-x-sm);
+    }
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      text-align: center;
+    }
+    .footer-links {
+      flex-wrap: wrap;
+    }
+    .lh-badges {
+      justify-content: center;
+    }
+  }
+</style>

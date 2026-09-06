@@ -1,0 +1,187 @@
+---
+import Site from '../layouts/Site.astro';
+---
+
+<Site title="Funny" description="A random joke or riddle, for fun only.">
+  <section class="funny-section">
+    <div class="joke-card" data-joke-card>
+      <p class="joke-loading" data-joke-loading>Loading a joke…</p>
+    </div>
+    <button class="btn-next" data-next-joke type="button">↻ Next joke</button>
+    <p class="disclaimer">Jokes are for fun only and not meant to offend. If one lands wrong, click next.</p>
+  </section>
+</Site>
+
+<style>
+  .funny-section {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 80px 36px;
+    text-align: center;
+  }
+  .joke-card {
+    background: var(--joke-card-bg);
+    border-radius: var(--radius-modal);
+    padding: 32px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .joke-loading {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  :global(.joke-question) {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  :global(.joke-statement) {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  :global(.joke-timer) {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--joke-timer-num);
+  }
+  :global(.joke-skip) {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-muted);
+    border: 1px solid var(--border-default);
+    background: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  :global(.joke-answer) {
+    margin-top: 16px;
+    background: var(--joke-answer-bg);
+    padding: 16px;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-body);
+    opacity: 0;
+    animation: joke-fade-in var(--duration-slow) var(--easing-default) forwards;
+  }
+  @keyframes joke-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .btn-next {
+    margin-top: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: none;
+    border: 1px solid var(--accent-border);
+    padding: 6px 16px;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    transition: background var(--duration-fast);
+  }
+  .btn-next:hover {
+    background: var(--accent-tint);
+  }
+  .disclaimer {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    color: var(--text-faint);
+    margin-top: 32px;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var REVEAL_SECONDS = 30; // matches davdevs-laravel's --duration-joke (30s)
+    var card = document.querySelector('[data-joke-card]');
+    var nextBtn = document.querySelector('[data-next-joke]');
+    var index = null;
+    var current = null;
+    var timerHandle = null;
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c];
+      });
+    }
+
+    function renderStatement(quip) {
+      card.innerHTML = '<p class="joke-statement">' + escapeHtml(quip.punchline) + '</p>';
+    }
+
+    function renderQA(quip) {
+      var timeLeft = REVEAL_SECONDS;
+      card.innerHTML =
+        '<p class="joke-question">' + escapeHtml(quip.question) + '</p>' +
+        '<div data-qa-pending>' +
+        '<div class="joke-timer" data-timer>' + timeLeft + 's</div>' +
+        '<button class="joke-skip" data-show-answer type="button">Show answer</button>' +
+        '</div>';
+
+      function reveal() {
+        clearInterval(timerHandle);
+        var pending = card.querySelector('[data-qa-pending]');
+        if (pending) pending.remove();
+        var answer = document.createElement('div');
+        answer.className = 'joke-answer';
+        answer.textContent = quip.punchline;
+        card.appendChild(answer);
+      }
+
+      card.querySelector('[data-show-answer]').addEventListener('click', reveal);
+      timerHandle = setInterval(function () {
+        timeLeft--;
+        var timerEl = card.querySelector('[data-timer]');
+        if (timerEl) timerEl.textContent = timeLeft + 's';
+        if (timeLeft <= 0) reveal();
+      }, 1000);
+    }
+
+    function load() {
+      clearInterval(timerHandle);
+      var pool = (index || []).filter(function (q) {
+        return !current || q.id !== current.id;
+      });
+      if (!pool.length) pool = index || [];
+      if (!pool.length) {
+        card.innerHTML = '<p class="joke-loading">No jokes yet.</p>';
+        return;
+      }
+      current = pool[Math.floor(Math.random() * pool.length)];
+      if (current.variant === 'qa') {
+        renderQA(current);
+      } else {
+        renderStatement(current);
+      }
+    }
+
+    fetch('/quips-index.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        index = data;
+        load();
+      });
+
+    nextBtn.addEventListener('click', load);
+  })();
+</script>

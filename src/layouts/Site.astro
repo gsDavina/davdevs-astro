@@ -1,0 +1,110 @@
+---
+import '../styles/tokens.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
+  showProgress?: boolean;
+}
+
+const { title, description, ogImage, jsonLd, showProgress = false } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = `${title} — Dav/Devs`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={pageTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={pageTitle} />
+    {description && <meta name="twitter:description" content={description} />}
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <script is:inline>
+      // Set theme before paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme') || 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    {showProgress && (
+      <div id="reading-progress" style="position:fixed;top:0;left:0;height:2px;background:var(--progress-fill);width:0%;z-index:60;transition:width 100ms;"></div>
+    )}
+
+    <Nav />
+    <SearchModal />
+
+    <main style="flex:1;">
+      <slot />
+    </main>
+
+    <Footer />
+    <CookieBanner />
+
+    {showProgress && (
+      <script is:inline>
+        (function () {
+          var bar = document.getElementById('reading-progress');
+          var article = document.querySelector('[data-prose]');
+          if (!bar || !article) return;
+          function onScroll() {
+            var rect = article.getBoundingClientRect();
+            var total = rect.height - window.innerHeight;
+            var scrolled = Math.min(Math.max(-rect.top, 0), total);
+            var pct = total > 0 ? (scrolled / total) * 100 : 0;
+            bar.style.width = pct + '%';
+          }
+          document.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        })();
+      </script>
+    )}
+
+    <script is:inline>
+      (function () {
+        document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var current = document.documentElement.getAttribute('data-theme') || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+              localStorage.setItem('theme', next);
+            } catch (e) {}
+            document.querySelectorAll('[data-theme-icon]').forEach(function (icon) {
+              icon.textContent = next === 'dark' ? '☾' : '☀';
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

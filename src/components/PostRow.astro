@@ -1,0 +1,110 @@
+---
+import Tag from './Tag.astro';
+import DateBox from './DateBox.astro';
+import LikeButton from './LikeButton.astro';
+import { readTimeLabel, type BlogType } from '../lib/content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  type: BlogType;
+  entry: CollectionEntry<BlogType>;
+}
+const { type, entry } = Astro.props;
+const href = `/${type}/${entry.data.slug}`;
+---
+
+<a class="post-row" href={href}>
+  <DateBox date={entry.data.datePublished} />
+  <div class="post-row-body">
+    {entry.data.tags.length > 0 && (
+      <div class="post-row-tags">
+        {entry.data.tags.map((tag) => <Tag tag={tag} />)}
+      </div>
+    )}
+    <h2 class="post-row-title">{entry.data.title}</h2>
+    {entry.data.excerpt && <p class="post-row-excerpt">{entry.data.excerpt}</p>}
+    <div class="post-row-meta">
+      <span class="post-row-meta-text">{readTimeLabel(entry.data.readTimeMinutes, entry.body)}</span>
+      <span class="post-row-meta-dot">·</span>
+      <span class="post-row-meta-text">{type}</span>
+      <LikeButton contentKey={href} />
+    </div>
+  </div>
+</a>
+
+<style>
+  .post-row {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 14px 8px;
+    border-bottom: 0.5px solid var(--border-default);
+    cursor: pointer;
+    transition: background var(--duration-base) var(--easing-default);
+    border-radius: 4px;
+    margin: 0 -8px;
+  }
+  .post-row:hover {
+    background: var(--bg-surface-1);
+  }
+  .post-row:last-child {
+    border-bottom: none;
+  }
+  .post-row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .post-row-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .post-row-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-display);
+    margin: 0;
+  }
+  .post-row-excerpt {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: var(--leading-body);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin: 0;
+  }
+  .post-row-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .post-row-meta-text {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--text-faint);
+    letter-spacing: var(--tracking-mono-xs);
+  }
+  .post-row-meta-dot {
+    color: var(--text-faint);
+    font-size: 6px;
+  }
+  .post-row :global(.like-btn) {
+    margin-left: auto;
+  }
+
+  @media (max-width: 767px) {
+    .post-row {
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+    }
+  }
+</style>

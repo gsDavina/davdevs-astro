@@ -1,0 +1,204 @@
+---
+import { NAV_ITEMS } from '../lib/content';
+
+const currentPath = Astro.url.pathname;
+function isActive(href: string) {
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+}
+---
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">dav<span>/</span>devs</a>
+    <ul class="nav-links">
+      {NAV_ITEMS.map((item) => (
+        <li>
+          <a href={item.href} class={isActive(item.href) ? 'active' : ''}>{item.label}</a>
+        </li>
+      ))}
+    </ul>
+    <div class="nav-right">
+      <button class="nav-search-btn" data-search-open type="button">⌘ search</button>
+      <button class="theme-toggle" data-theme-toggle type="button" title="Toggle theme" aria-label="Toggle theme">
+        <span data-theme-icon>☾</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<nav class="tab-bar" aria-label="Mobile navigation">
+  <div class="tab-bar-inner">
+    <a class={`tab-item ${currentPath === '/' ? 'active' : ''}`} href="/">
+      <span class="tab-icon">⌂</span>
+      <span class="tab-label">home</span>
+    </a>
+    <a class="tab-item" href="/article">
+      <span class="tab-icon">☰</span>
+      <span class="tab-label">browse</span>
+    </a>
+    <button class="tab-item" data-search-open type="button">
+      <span class="tab-icon">⌕</span>
+      <span class="tab-label">search</span>
+    </button>
+    <button class="tab-item" data-theme-toggle type="button">
+      <span class="tab-icon">◐</span>
+      <span class="tab-label">theme</span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background: var(--nav-bg);
+    border-bottom: 0.5px solid var(--nav-border);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+  }
+  .nav-inner {
+    max-width: var(--page-max);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--page-padding-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+  .nav-logo span {
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--nav-link);
+    letter-spacing: var(--tracking-mono-sm);
+    transition: color var(--duration-fast);
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--nav-link-active);
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-search-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    background: none;
+    border: 0.5px solid var(--border-default);
+    border-radius: var(--radius-btn);
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: var(--tracking-mono-sm);
+    transition: border-color var(--duration-fast), color var(--duration-fast);
+  }
+  .nav-search-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text-secondary);
+  }
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: color var(--duration-fast);
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+    }
+    .nav-search-btn {
+      display: none;
+    }
+  }
+
+  .tab-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--tab-bg);
+    border-top: 0.5px solid var(--border-default);
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  }
+  .tab-bar-inner {
+    display: flex;
+    justify-content: space-around;
+  }
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    flex: 1;
+    padding: 4px 0;
+    background: none;
+    border: none;
+  }
+  .tab-icon {
+    font-size: 18px;
+    color: var(--tab-icon);
+  }
+  .tab-label {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--tab-label);
+    letter-spacing: var(--tracking-mono-xs);
+  }
+  .tab-item.active .tab-icon {
+    color: var(--tab-icon-active);
+  }
+  .tab-item.active .tab-label {
+    color: var(--tab-label-active);
+  }
+
+  @media (max-width: 767px) {
+    .tab-bar {
+      display: block;
+    }
+    :global(body) {
+      padding-bottom: 60px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('[data-search-open]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      window.dispatchEvent(new CustomEvent('site-search:open'));
+    });
+  });
+</script>

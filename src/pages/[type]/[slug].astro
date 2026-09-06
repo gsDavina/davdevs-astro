@@ -1,0 +1,265 @@
+---
+import { render } from 'astro:content';
+import Site from '../../layouts/Site.astro';
+import Tag from '../../components/Tag.astro';
+import LikeButton from '../../components/LikeButton.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import {
+  BLOG_TYPES,
+  BLOG_TYPE_LABELS,
+  formatDate,
+  readTimeLabel,
+  getBlogEntries,
+} from '../../lib/content';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const type of BLOG_TYPES) {
+    const entries = await getBlogEntries(type);
+    for (const entry of entries) {
+      paths.push({ params: { type, slug: entry.data.slug }, props: { entry } });
+    }
+  }
+  return paths;
+}
+
+const { type } = Astro.params as { type: (typeof BLOG_TYPES)[number] };
+const { entry } = Astro.props as { entry: Awaited<ReturnType<typeof getBlogEntries>>[number] };
+const { Content } = await render(entry);
+const label = BLOG_TYPE_LABELS[type];
+const href = `/${type}/${entry.data.slug}`;
+---
+
+<Site
+  title={entry.data.title}
+  description={entry.data.excerpt}
+  ogImage={entry.data.images?.[0]?.src}
+  showProgress
+>
+  <div class="post-wrapper">
+    <div class="post-back-col">
+      <a class="back-link" href={`/${type}`}>← {label.toLowerCase()}</a>
+    </div>
+
+    <article data-prose>
+      <header class="post-header">
+        <p class="post-breadcrumb">dav<span>/</span>devs <span class="sep">›</span> {label.toLowerCase()}</p>
+        {entry.data.tags.length > 0 && (
+          <div class="post-tags">
+            {entry.data.tags.map((tag) => <Tag tag={tag} />)}
+          </div>
+        )}
+        <h1 class="post-title">{entry.data.title}</h1>
+        <div class="post-meta">
+          <span class="post-meta-text">{formatDate(entry.data.datePublished)}</span>
+          <span class="post-meta-dot">·</span>
+          <span class="post-meta-text">{readTimeLabel(entry.data.readTimeMinutes, entry.body)}</span>
+          <span class="post-meta-dot">·</span>
+          <span class="post-meta-text">{label}</span>
+          <LikeButton contentKey={href} />
+        </div>
+      </header>
+
+      <div class="post-content">
+        <Content />
+      </div>
+
+      <div class="post-footer-row">
+        <ShareRow title={entry.data.title}>
+          <LikeButton contentKey={href} size="lg" />
+        </ShareRow>
+      </div>
+    </article>
+  </div>
+</Site>
+
+<style>
+  .post-wrapper {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 40px var(--page-padding-x) 80px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 48px;
+  }
+  .post-back-col {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+  }
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-mono-sm);
+    white-space: nowrap;
+    transition: color var(--duration-fast);
+  }
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .post-header {
+    margin-bottom: 36px;
+  }
+  .post-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: var(--tracking-mono-sm);
+    margin-bottom: 16px;
+  }
+  .post-breadcrumb span {
+    color: var(--accent);
+  }
+  .post-breadcrumb .sep {
+    color: var(--text-faint);
+  }
+  .post-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .post-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--text-primary);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    margin: 0 0 16px;
+  }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid var(--border-default);
+  }
+  .post-meta-text {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-mono-xs);
+  }
+  .post-meta-dot {
+    color: var(--text-faint);
+    font-size: 6px;
+  }
+  .post-wrapper :global(.like-btn-inline) {
+    margin-left: auto;
+  }
+
+  .post-content {
+    font-family: var(--font-prose);
+    font-size: 14px;
+    line-height: var(--leading-prose);
+    color: var(--text-body);
+    max-width: var(--prose-max);
+  }
+  .post-content :global(p) {
+    margin-bottom: 1.4em;
+  }
+  .post-content :global(h2) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text-primary);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-display);
+    margin: 2em 0 0.6em;
+  }
+  .post-content :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-display);
+    margin: 1.6em 0 0.5em;
+  }
+  .post-content :global(a) {
+    color: var(--accent);
+    border-bottom: 0.5px solid var(--accent-border);
+  }
+  .post-content :global(a:hover) {
+    color: var(--accent-hover);
+  }
+  .post-content :global(strong) {
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+  .post-content :global(em) {
+    color: var(--text-secondary);
+  }
+  .post-content :global(code) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--bg-surface-2);
+    color: var(--accent);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .post-content :global(pre) {
+    background: var(--bg-surface-2);
+    border: 0.5px solid var(--border-default);
+    border-radius: var(--radius-code);
+    padding: 16px 18px;
+    margin: 1.4em 0;
+    overflow-x: auto;
+  }
+  .post-content :global(pre code) {
+    background: none;
+    color: var(--text-body);
+    font-size: 12px;
+    padding: 0;
+  }
+  .post-content :global(blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    margin: 1.4em 0;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    padding-left: 20px;
+    margin-bottom: 1.4em;
+  }
+  .post-content :global(li) {
+    margin-bottom: 0.4em;
+  }
+  .post-content :global(img) {
+    max-width: 100%;
+    border-radius: var(--radius-card);
+    margin: 1.4em 0;
+  }
+
+  .post-footer-row {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--border-default);
+    max-width: var(--prose-max);
+  }
+  .post-footer-row :global(.like-btn-lg) {
+    margin-left: auto;
+  }
+
+  @media (max-width: 900px) {
+    .post-wrapper {
+      grid-template-columns: 1fr;
+      padding: 24px var(--page-padding-x-md) 60px;
+    }
+    .post-back-col {
+      justify-content: flex-start;
+    }
+  }
+  @media (max-width: 767px) {
+    .post-wrapper {
+      padding: 20px var(--page-padding-x-sm) 80px;
+    }
+  }
+</style>

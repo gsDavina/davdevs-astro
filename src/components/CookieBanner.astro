@@ -1,0 +1,70 @@
+<div class="cookie-banner" data-cookie-banner hidden>
+  <span class="cookie-text">
+    We use only essential cookies (theme + like preferences, stored locally in your browser) — no tracking, no analytics.
+    <a href="/privacy">Learn more</a>
+  </span>
+  <button class="cookie-dismiss" data-cookie-dismiss type="button">Got it</button>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface-1);
+    border-top: 1px solid var(--border-default);
+    padding: 14px 20px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cookie-banner[hidden] {
+    display: none;
+  }
+  .cookie-text {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .cookie-text a {
+    color: var(--accent);
+  }
+  .cookie-dismiss {
+    background: var(--accent);
+    color: var(--bg-page);
+    border: none;
+    border-radius: 5px;
+    padding: 6px 16px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var banner = document.querySelector('[data-cookie-banner]');
+    if (!banner) return;
+    try {
+      if (!localStorage.getItem('cookie_consent')) {
+        banner.hidden = false;
+      }
+    } catch (e) {
+      banner.hidden = false;
+    }
+    var dismiss = document.querySelector('[data-cookie-dismiss]');
+    if (dismiss) {
+      dismiss.addEventListener('click', function () {
+        try {
+          localStorage.setItem('cookie_consent', '1');
+        } catch (e) {}
+        banner.hidden = true;
+      });
+    }
+  })();
+</script>

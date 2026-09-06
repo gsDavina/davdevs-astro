@@ -1,0 +1,128 @@
+---
+import Site from '../../layouts/Site.astro';
+import { getCollection } from 'astro:content';
+
+const ebooks = await getCollection('ebook');
+---
+
+<Site title="E-Books" description="E-books by Davina Leong.">
+  <div class="page-header">
+    <p class="breadcrumb">dav<span>/</span>devs <span class="sep">›</span> e-books</p>
+    <h1 class="page-title">E-Books</h1>
+    <p class="page-count">{ebooks.length} titles</p>
+  </div>
+
+  <div class="ebook-grid">
+    {ebooks.map((entry) => (
+      <a class="ebook-row" href={`/ebooks/${entry.data.slug}`}>
+        {entry.data.coverImage && (
+          <img class="ebook-thumb" src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />
+        )}
+        <div class="ebook-info">
+          {entry.data.isBundle && <span class="tag tag-coral">Bundle</span>}
+          <h2 class="ebook-row-title">{entry.data.title}</h2>
+          {entry.data.tagline && <p class="ebook-row-tagline">{entry.data.tagline}</p>}
+          {entry.data.pricingTiers[0] && (
+            <p class="ebook-row-price">from {entry.data.pricingTiers[0].price}</p>
+          )}
+        </div>
+      </a>
+    ))}
+  </div>
+</Site>
+
+<style>
+  .page-header {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 40px var(--page-padding-x) 28px;
+    width: 100%;
+  }
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: var(--tracking-mono-sm);
+    margin-bottom: 12px;
+  }
+  .breadcrumb span {
+    color: var(--accent);
+  }
+  .breadcrumb .sep {
+    color: var(--text-faint);
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .page-count {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .ebook-grid {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-padding-x) 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-default);
+    border: 0.5px solid var(--border-default);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .ebook-row {
+    background: var(--bg-page);
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 16px;
+    align-items: center;
+    transition: background var(--duration-base) var(--easing-default);
+  }
+  .ebook-row:hover {
+    background: var(--bg-surface-1);
+  }
+  .ebook-thumb {
+    width: 72px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 0.5px solid var(--border-default);
+  }
+  .ebook-row-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+    margin: 4px 0;
+  }
+  .ebook-row-tagline {
+    font-family: var(--font-prose);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0 0 6px;
+  }
+  .ebook-row-price {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--tertiary);
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .page-header {
+      padding: 28px var(--page-padding-x-sm) 20px;
+    }
+    .ebook-grid {
+      padding: 0 var(--page-padding-x-sm) 40px;
+    }
+  }
+</style>

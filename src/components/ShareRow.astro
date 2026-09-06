@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalURL)}`;
+const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonicalURL)}`;
+const threads = `https://www.threads.net/intent/post?text=${encodeURIComponent(`${title} ${canonicalURL}`)}`;
+---
+
+<div class="share-row">
+  <span class="share-label">share</span>
+  <a class="share-btn" href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a class="share-btn" href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+  <a class="share-btn" href={threads} target="_blank" rel="noopener noreferrer">Threads</a>
+  <button class="share-btn" data-copy-link={canonicalURL} type="button">copy link</button>
+  <slot />
+</div>
+
+<style>
+  .share-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .share-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-mono-xs);
+  }
+  .share-btn {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-secondary);
+    background: none;
+    border: 0.5px solid var(--border-default);
+    border-radius: var(--radius-btn);
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: var(--tracking-mono-sm);
+    transition: border-color var(--duration-fast), color var(--duration-fast);
+  }
+  .share-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('[data-copy-link]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-copy-link');
+      navigator.clipboard?.writeText(url).then(function () {
+        var original = btn.textContent;
+        btn.textContent = 'copied!';
+        setTimeout(function () {
+          btn.textContent = original;
+        }, 1500);
+      });
+    });
+  });
+</script>

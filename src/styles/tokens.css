@@ -1,0 +1,269 @@
+/* Design tokens ported from davdevs-laravel (_internal-docs/04-design-system.md,
+   06-frontend-design-language.md, resources/css/app.css). Keep this file in sync
+   with that project rather than inventing new values here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+  --font-prose: 'Lora', serif;
+
+  --page-max: 1280px;
+  --page-padding-x: 36px;
+  --page-padding-x-md: 20px;
+  --page-padding-x-sm: 16px;
+  --nav-height: 48px;
+  --sidebar-width: 200px;
+  --rail-width: 180px;
+  --prose-max: 680px;
+
+  --radius-page: 0px;
+  --radius-card: 8px;
+  --radius-datebox: 7px;
+  --radius-tag: 2px;
+  --radius-btn: 5px;
+  --radius-input: 5px;
+  --radius-modal: 10px;
+  --radius-code: 6px;
+
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 350ms;
+  --duration-joke: 30000ms;
+  --easing-default: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --leading-display: 1.05;
+  --leading-heading: 1.25;
+  --leading-prose: 1.8;
+  --leading-body: 1.65;
+  --leading-ui: 1.4;
+  --leading-mono: 1.5;
+
+  --tracking-display: -0.02em;
+  --tracking-mono-sm: 0.06em;
+  --tracking-mono-xs: 0.1em;
+}
+
+/* ── Dark mode (default) ── */
+:root,
+[data-theme='dark'] {
+  --bg-page: #0e0e10;
+  --bg-surface-1: #1a1a1e;
+  --bg-surface-2: #242428;
+  --bg-surface-3: #2a2a2f;
+  --border-default: #2a2a30;
+  --border-strong: #3a3a42;
+  --border-accent: rgba(212, 167, 87, 0.3);
+  --text-primary: #f5f0e8;
+  --text-body: #c8c3bc;
+  --text-secondary: #a8a39c;
+  --text-muted: #6a6a72;
+  --text-faint: #3a3a42;
+  --accent: #d4a757;
+  --accent-hover: #e3b040;
+  --accent-pressed: #b88a3a;
+  --accent-tint: rgba(212, 167, 87, 0.1);
+  --accent-border: rgba(212, 167, 87, 0.2);
+  --secondary: #4a9b7f;
+  --secondary-tint: rgba(74, 155, 127, 0.1);
+  --secondary-border: rgba(74, 155, 127, 0.2);
+  --tertiary: #c4553a;
+  --tertiary-tint: rgba(196, 85, 58, 0.1);
+  --tertiary-border: rgba(196, 85, 58, 0.2);
+
+  --nav-bg: rgba(14, 14, 16, 0.95);
+  --nav-border: #2a2a30;
+  --nav-link: #6a6a72;
+  --nav-link-active: #d4a757;
+
+  --tab-bg: #0a0a0c;
+  --tab-icon: #3a3a42;
+  --tab-icon-active: #d4a757;
+  --tab-label: #3a3a42;
+  --tab-label-active: #d4a757;
+
+  --progress-bg: #1a1a1e;
+  --progress-fill: #d4a757;
+
+  --datebox-bg: #1a1a1e;
+  --datebox-border: #2a2a30;
+  --datebox-day: #f5f0e8;
+  --datebox-month: #d4a757;
+
+  --divider-line: #2a2a30;
+  --divider-label: #3a3a42;
+
+  --like-bg: #1a1a1e;
+  --like-icon: #6a6a72;
+  --like-icon-liked: #c4553a;
+  --like-count: #3a3a42;
+
+  --search-overlay: rgba(0, 0, 0, 0.75);
+  --search-bg: #1a1a1e;
+  --search-match: #d4a757;
+  --search-border: #2a2a30;
+
+  --joke-card-bg: #1a1a1e;
+  --joke-ring-track: #242428;
+  --joke-ring-fill: #d4a757;
+  --joke-timer-num: #d4a757;
+  --joke-answer-bg: #242428;
+
+  --lh-bg: #1a1a1e;
+  --lh-num: #d4a757;
+  --lh-label: #3a3a42;
+
+  --footer-bg: #0e0e10;
+  --footer-border: #2a2a30;
+  --footer-text: #3a3a42;
+
+  --shadow-card: none;
+  --shadow-modal: 0 24px 48px rgba(0, 0, 0, 0.6);
+  --shadow-search: 0 16px 32px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+/* ── Light mode ── */
+[data-theme='light'] {
+  --bg-page: #faf7f2;
+  --bg-surface-1: #f5f1eb;
+  --bg-surface-2: #ede9e2;
+  --bg-surface-3: #e4e0d9;
+  --border-default: #d8d4cc;
+  --border-strong: #c8c3bb;
+  --border-accent: rgba(139, 111, 71, 0.3);
+  --text-primary: #1a1916;
+  --text-body: #2a2820;
+  --text-secondary: #5a5850;
+  --text-muted: #88837c;
+  --text-faint: #c8c3bb;
+  --accent: #8b6f47;
+  --accent-hover: #7a5e38;
+  --accent-pressed: #634a27;
+  --accent-tint: rgba(139, 111, 71, 0.1);
+  --accent-border: rgba(139, 111, 71, 0.2);
+  --secondary: #2b7a5e;
+  --secondary-tint: rgba(43, 122, 94, 0.1);
+  --secondary-border: rgba(43, 122, 94, 0.2);
+  --tertiary: #c4553a;
+  --tertiary-tint: rgba(196, 85, 58, 0.1);
+  --tertiary-border: rgba(196, 85, 58, 0.2);
+
+  --nav-bg: rgba(250, 247, 242, 0.95);
+  --nav-border: #d8d4cc;
+  --nav-link: #88837c;
+  --nav-link-active: #8b6f47;
+
+  --tab-bg: #ede9e2;
+  --tab-icon: #b0aca6;
+  --tab-icon-active: #8b6f47;
+  --tab-label: #b0aca6;
+  --tab-label-active: #8b6f47;
+
+  --progress-bg: #e4e0d9;
+  --progress-fill: #8b6f47;
+
+  --datebox-bg: #ede9e2;
+  --datebox-border: #d8d4cc;
+  --datebox-day: #1a1916;
+  --datebox-month: #8b6f47;
+
+  --divider-line: #d8d4cc;
+  --divider-label: #c8c3bb;
+
+  --like-bg: #ede9e2;
+  --like-icon: #88837c;
+  --like-icon-liked: #c4553a;
+  --like-count: #88837c;
+
+  --search-overlay: rgba(26, 25, 22, 0.6);
+  --search-bg: #faf7f2;
+  --search-match: #8b6f47;
+  --search-border: #d8d4cc;
+
+  --joke-card-bg: #f5f1eb;
+  --joke-ring-track: #e4e0d9;
+  --joke-ring-fill: #8b6f47;
+  --joke-timer-num: #8b6f47;
+  --joke-answer-bg: #ede9e2;
+
+  --lh-bg: #ede9e2;
+  --lh-num: #8b6f47;
+  --lh-label: #b0aca6;
+
+  --footer-bg: #f5f1eb;
+  --footer-border: #d8d4cc;
+  --footer-text: #b0aca6;
+
+  --shadow-card: 0 1px 3px rgba(26, 25, 22, 0.08);
+  --shadow-modal: 0 16px 40px rgba(26, 25, 22, 0.15);
+  --shadow-search: 0 16px 40px rgba(26, 25, 22, 0.15);
+
+  color-scheme: light;
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: var(--leading-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Shared tag component (used across cards, listings, post headers) ── */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  padding: 1px 5px;
+  border-radius: var(--radius-tag);
+  letter-spacing: var(--tracking-mono-xs);
+  border: 0.5px solid;
+  display: inline-block;
+}
+.tag-amber {
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-color: var(--accent-border);
+}
+.tag-teal {
+  color: var(--secondary);
+  background: var(--secondary-tint);
+  border-color: var(--secondary-border);
+}
+.tag-coral {
+  color: var(--tertiary);
+  background: var(--tertiary-tint);
+  border-color: var(--tertiary-border);
+}

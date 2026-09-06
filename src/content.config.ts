@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 // Shared shape for the six "blog-style" content types crawled from the
 // live davinaleong.com Laravel site (article, fem, knowledge-sharing,
@@ -27,12 +28,17 @@ const entrySchema = z.object({
   reactComponent: z.string().optional(),
 });
 
-const article = defineCollection({ type: "content", schema: entrySchema });
-const fem = defineCollection({ type: "content", schema: entrySchema });
-const knowledgeSharing = defineCollection({ type: "content", schema: entrySchema });
-const notebook = defineCollection({ type: "content", schema: entrySchema });
-const project = defineCollection({ type: "content", schema: entrySchema });
-const tool = defineCollection({ type: "content", schema: entrySchema });
+const blogLoader = (dir: string) => glob({ pattern: "**/*.md", base: `./src/content/${dir}` });
+
+const article = defineCollection({ loader: blogLoader("article"), schema: entrySchema });
+const fem = defineCollection({ loader: blogLoader("fem"), schema: entrySchema });
+const knowledgeSharing = defineCollection({
+  loader: blogLoader("knowledge-sharing"),
+  schema: entrySchema,
+});
+const notebook = defineCollection({ loader: blogLoader("notebook"), schema: entrySchema });
+const project = defineCollection({ loader: blogLoader("project"), schema: entrySchema });
+const tool = defineCollection({ loader: blogLoader("tool"), schema: entrySchema });
 
 // eBooks are bespoke marketing landing pages, not blog posts, so they get
 // their own shape. Only non-Christian titles were migrated here; the
@@ -40,7 +46,7 @@ const tool = defineCollection({ type: "content", schema: entrySchema });
 // AI, Daddy God is for You, Carried by Grace, Carried Guided Held) were
 // intentionally excluded per the content migration scope.
 const ebook = defineCollection({
-  type: "content",
+  loader: blogLoader("ebook"),
   schema: z.object({
     title: z.string(),
     slug: z.string(),
@@ -61,12 +67,10 @@ const ebook = defineCollection({
 });
 
 // The "Funny" page's random-quip feature (davinaleong.com/funny). Two
-// variants observed live via the Alpine.js component's fetch to
-// /api/quips/random: a plain "statement" joke, or a "qa" joke that reveals
-// its punchline after a delay. Real quip content has not been migrated yet
-// — see src/content/quips/_template.md.
+// variants: a plain "statement" joke, or a "qa" joke that reveals its
+// punchline after a delay (see src/pages/funny.astro).
 const quips = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "*.md", base: "./src/content/quips" }),
   schema: z.discriminatedUnion("variant", [
     z.object({
       variant: z.literal("statement"),

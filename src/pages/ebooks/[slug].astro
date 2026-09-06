@@ -1,0 +1,194 @@
+---
+import { render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import Site from '../../layouts/Site.astro';
+import LikeButton from '../../components/LikeButton.astro';
+import ShareRow from '../../components/ShareRow.astro';
+
+export async function getStaticPaths() {
+  const ebooks = await getCollection('ebook');
+  return ebooks.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: Awaited<ReturnType<typeof getCollection<'ebook'>>>[number] };
+const { Content } = await render(entry);
+const href = `/ebooks/${entry.data.slug}`;
+---
+
+<Site title={entry.data.title} description={entry.data.tagline} ogImage={entry.data.coverImage ?? undefined}>
+  <div class="ebook-wrapper">
+    <div class="ebook-hero">
+      {entry.data.coverImage && (
+        <img class="ebook-cover" src={entry.data.coverImage} alt={entry.data.title} />
+      )}
+      <div class="ebook-meta-col">
+        <p class="ebook-breadcrumb">dav<span>/</span>devs <span class="sep">›</span> e-books</p>
+        <div>
+          <h1 class="ebook-title">{entry.data.title}</h1>
+          {entry.data.tagline && <p class="ebook-subtitle">{entry.data.tagline}</p>}
+        </div>
+        {entry.data.isBundle && <span class="tag tag-coral">Bundle</span>}
+
+        <div class="ebook-cta-row">
+          {entry.data.pricingTiers.map((tier) => (
+            tier.checkoutUrl && (
+              <a class="btn-download" href={tier.checkoutUrl} target="_blank" rel="noopener noreferrer">
+                {tier.name} — {tier.price} →
+              </a>
+            )
+          ))}
+          <LikeButton contentKey={href} />
+        </div>
+      </div>
+    </div>
+
+    <div class="ebook-body">
+      <Content />
+    </div>
+
+    <div class="post-footer-row">
+      <ShareRow title={entry.data.title}>
+        <LikeButton contentKey={href} size="lg" />
+      </ShareRow>
+    </div>
+  </div>
+</Site>
+
+<style>
+  .ebook-wrapper {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 0 var(--page-padding-x) 80px;
+  }
+  .ebook-hero {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 48px 0 40px;
+    border-bottom: 0.5px solid var(--border-default);
+  }
+  .ebook-cover {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 0.5px solid var(--border-default);
+    box-shadow: 4px 6px 24px rgba(0, 0, 0, 0.35);
+  }
+  .ebook-meta-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 4px;
+  }
+  .ebook-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-faint);
+    letter-spacing: var(--tracking-mono-sm);
+  }
+  .ebook-breadcrumb span {
+    color: var(--accent);
+  }
+  .ebook-breadcrumb .sep {
+    color: var(--text-faint);
+  }
+  .ebook-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(22px, 3.5vw, 32px);
+    color: var(--text-primary);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-display);
+    margin: 0;
+  }
+  .ebook-subtitle {
+    font-family: var(--font-prose);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  .ebook-cta-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-download {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--tertiary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-btn);
+    padding: 10px 20px;
+    letter-spacing: var(--tracking-mono-sm);
+    transition: opacity var(--duration-fast);
+  }
+  .btn-download:hover {
+    opacity: 0.88;
+  }
+  .ebook-cta-row :global(.like-btn) {
+    margin-left: auto;
+  }
+
+  .ebook-body {
+    font-family: var(--font-prose);
+    font-size: 14px;
+    line-height: var(--leading-prose);
+    color: var(--text-body);
+    max-width: var(--prose-max);
+    padding-top: 40px;
+  }
+  .ebook-body :global(h2) {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-mono-xs);
+    text-transform: uppercase;
+    margin: 2em 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ebook-body :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-primary);
+    margin: 1.4em 0 0.4em;
+  }
+  .ebook-body :global(p) {
+    margin-bottom: 1.2em;
+  }
+  .ebook-body :global(strong) {
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+  .ebook-body :global(a) {
+    color: var(--tertiary);
+  }
+
+  .post-footer-row {
+    max-width: var(--prose-max);
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 0.5px solid var(--border-default);
+  }
+  .post-footer-row :global(.like-btn-lg:hover) {
+    color: var(--tertiary);
+  }
+
+  @media (max-width: 767px) {
+    .ebook-hero {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 28px 0 28px;
+    }
+    .ebook-cover {
+      max-width: 200px;
+    }
+  }
+</style>
