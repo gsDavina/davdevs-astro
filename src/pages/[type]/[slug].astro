@@ -5,6 +5,7 @@ import Tag from '../../components/Tag.astro';
 import LikeButton from '../../components/LikeButton.astro';
 import ShareRow from '../../components/ShareRow.astro';
 import ToolMount from '../../components/tools/ToolMount';
+import { blogEntryJsonLd } from '../../lib/jsonld';
 import {
   BLOG_TYPES,
   BLOG_TYPE_LABELS,
@@ -30,12 +31,15 @@ const { Content } = await render(entry);
 const label = BLOG_TYPE_LABELS[type];
 const href = `/${type}/${entry.data.slug}`;
 const toolComponentName = type === 'tool' ? entry.data.reactComponent : undefined;
+const canonicalURL = new URL(href, Astro.site).toString();
+const jsonLd = blogEntryJsonLd(type, entry, canonicalURL);
 ---
 
 <Site
   title={entry.data.title}
   description={entry.data.excerpt}
   ogImage={entry.data.images?.[0]?.src}
+  jsonLd={jsonLd}
   showProgress
 >
   <div class="post-wrapper">

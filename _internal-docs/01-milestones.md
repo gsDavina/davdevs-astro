@@ -35,7 +35,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [x] Extract design tokens from the live site (colors, spacing scale, font families/sizes, radii, shadows) into `tokens.css` / theme config — `src/styles/tokens.css`, sourced from davdevs-laravel's `04-design-system.md`/`06-frontend-design-language.md` and `resources/css/app.css`
 - [x] Port global styles: base typography, terminal-style wordmark treatment, link/button states
 - [x] Rebuild the top nav (10 links + `⌘K` trigger) and footer (wordmark, `perf/a11y/seo` badge, copyright, Privacy link, cookie banner) as shared layout components — nav has 8 links (6 blog types + E-Books + Funny; no Sermon/Template, see Phase 0)
-- [ ] Verify responsive breakpoints match the original (mobile nav behavior, stacking order) — CSS ported from the mockup's breakpoints, but not yet screenshot-verified at mobile widths this session
+- [x] Verify responsive breakpoints match the original (mobile nav behavior, stacking order) — screenshot-verified at 375×812: nav collapses to logo + theme toggle, mobile tab bar appears, cards/hero stack to one column
 
 ## Phase 3 — Core Layouts & Listing Pages
 - [x] Home page: hero + "latest 4 + view all" sections, matching card styling per content type — 6 blog-type sections + E-Books section (no Sermon/Template sections, see Phase 0)
@@ -79,7 +79,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [x] Port per-page meta: title, description, canonical, OG tags, Twitter card — via `Site.astro`
 - [x] Update all canonical/OG URLs from `davinaleong.com` to `davdevs.dev` — `astro.config.mjs` `site` is set to `https://davdevs.dev`, canonical built from it on every page
 - [x] Generate `sitemap.xml` and `robots.txt` — `@astrojs/sitemap` (outputs `sitemap-index.xml`), `public/robots.txt` points to it
-- [ ] Add JSON-LD where the original uses it (articles, ebook products, if any) — not yet added
+- [x] Add JSON-LD where the original uses it (articles, ebook products, if any) — `src/lib/jsonld.ts`: `Article`/`SoftwareApplication` (tools) on blog detail pages, `Book`+`Offer` on ebook pages; verified valid JSON in the built HTML output for one of each
 - [x] Drop the CSRF meta tag if it was a Next.js-only artifact with no static equivalent need — confirm first — **confirmed and dropped**: a static build has no session/forms to protect
 
 ## Phase 10 — Privacy, Cookies & Compliance

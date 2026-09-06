@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Site from '../../layouts/Site.astro';
 import LikeButton from '../../components/LikeButton.astro';
 import ShareRow from '../../components/ShareRow.astro';
+import { ebookJsonLd } from '../../lib/jsonld';
 
 export async function getStaticPaths() {
   const ebooks = await getCollection('ebook');
@@ -13,9 +14,11 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: Awaited<ReturnType<typeof getCollection<'ebook'>>>[number] };
 const { Content } = await render(entry);
 const href = `/ebooks/${entry.data.slug}`;
+const canonicalURL = new URL(href, Astro.site).toString();
+const jsonLd = ebookJsonLd(entry, canonicalURL);
 ---
 
-<Site title={entry.data.title} description={entry.data.tagline} ogImage={entry.data.coverImage ?? undefined}>
+<Site title={entry.data.title} description={entry.data.tagline} ogImage={entry.data.coverImage ?? undefined} jsonLd={jsonLd}>
   <div class="ebook-wrapper">
     <div class="ebook-hero">
       {entry.data.coverImage && (

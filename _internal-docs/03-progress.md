@@ -5,6 +5,31 @@
 > mockup templates) — not a pixel-diff against the live `davinaleong.com`. Where the
 > two would conflict, davdevs-laravel wins per instruction.
 
+## 2026-09-06 — Iteration 3: JSON-LD + mobile/light-theme verification
+
+### Done
+
+- **JSON-LD** (`src/lib/jsonld.ts`): `Article` for standard blog entries,
+  `SoftwareApplication` for Tool entries, `Book` + `Offer` for ebooks —
+  wired into both detail-page templates via `Site.astro`'s existing
+  `jsonLd` prop. Spot-checked the raw `<script type="application/ld+json">`
+  output in the built HTML for one article and one ebook; both are
+  well-formed and carry the right fields (price/currency/checkout URL on
+  the ebook's `Offer`).
+- **Mobile viewport verified in-browser** (375×812): nav collapses to
+  logo + theme toggle with the mobile tab bar taking over navigation
+  (home/browse/search/theme), hero and card grids stack to a single
+  column, cookie banner remains usable alongside the tab bar.
+- **Light theme verified in-browser**: toggling switched the whole page
+  to the cream/dark-text palette correctly (backgrounds, tags, hero
+  wordmark, cards) — confirms the `[data-theme="light"]` token block is
+  wired correctly, not just present in the CSS.
+
+### Not done this iteration
+
+Tablet breakpoint, cross-browser matrix, and the remaining 9 unverified
+tools are still open — see Phase 6 notes in `01-milestones.md`.
+
 ## 2026-09-06 — Iteration 2: interactive tool islands (Phase 6)
 
 ### Done

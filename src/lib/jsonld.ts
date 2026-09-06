@@ -1,0 +1,58 @@
+import type { BlogEntry, BlogType } from './content';
+import type { CollectionEntry } from 'astro:content';
+
+/**
+ * JSON-LD builders matching what davdevs-laravel's SiteLayout component
+ * renders per content type (Article default, SoftwareApplication for
+ * Tool, Book with Offer for E-Book — see davdevs-laravel Phase 13).
+ * Sermon/VideoObject is skipped: Sermons are out of scope for this rebuild.
+ */
+
+export function blogEntryJsonLd(type: BlogType, entry: BlogEntry, canonicalURL: string) {
+  const base = {
+    '@context': 'https://schema.org',
+    headline: entry.data.title,
+    description: entry.data.excerpt,
+    url: canonicalURL,
+    datePublished: entry.data.datePublished?.toISOString(),
+    dateModified: (entry.data.dateModified ?? entry.data.datePublished)?.toISOString(),
+    image: entry.data.images?.[0]?.src,
+    author: { '@type': 'Person', name: 'Davina Leong' },
+  };
+
+  if (type === 'tool') {
+    return {
+      ...base,
+      '@type': 'SoftwareApplication',
+      name: entry.data.title,
+      applicationCategory: 'BrowserApplication',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SGD' },
+    };
+  }
+
+  return { ...base, '@type': 'Article' };
+}
+
+export function ebookJsonLd(entry: CollectionEntry<'ebook'>, canonicalURL: string) {
+  const tier = entry.data.pricingTiers[0];
+  const priceMatch = tier?.price?.match(/[\d.]+/);
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name: entry.data.title,
+    description: entry.data.tagline,
+    url: canonicalURL,
+    image: entry.data.coverImage ?? undefined,
+    author: { '@type': 'Person', name: 'Davina Leong' },
+    offers: tier
+      ? {
+          '@type': 'Offer',
+          price: priceMatch?.[0],
+          priceCurrency: 'SGD',
+          url: tier.checkoutUrl ?? undefined,
+          availability: 'https://schema.org/InStock',
+        }
+      : undefined,
+  };
+}

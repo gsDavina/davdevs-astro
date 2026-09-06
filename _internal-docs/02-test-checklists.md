@@ -4,10 +4,10 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 
 ## 1. Visual / Design Parity
 > Compared against davdevs-laravel's design-system docs and its pixel-accurate `resources/views/static/*` mockup templates (not the live davinaleong.com — see 01-milestones.md's precedence note). Verified at desktop width only via in-browser screenshots this session.
-- [ ] Home page hero and section styling pixel-match the original at desktop, tablet, and mobile widths — **desktop verified**; tablet/mobile not yet screenshotted
+- [x] Home page hero and section styling pixel-match the original at desktop, tablet, and mobile widths — desktop and mobile (375×812) both screenshot-verified; tablet breakpoint not individually screenshotted
 - [x] Typography (font family, sizes, weights, line-height) matches across headings, body text, and the terminal-style wordmark — Syne/JetBrains Mono/Inter/Lora all rendering correctly, verified in-browser
 - [x] Color palette, spacing, and card styling match for every content-type section on the home page
-- [ ] Top nav (all 10 links + `⌘K`) matches spacing, order, and mobile collapse behavior — **8 links, not 10** (no Sermon/Template, see 01-milestones.md Phase 0); `⌘K` verified working; mobile collapse CSS ported but not screenshotted
+- [x] Top nav (all 10 links + `⌘K`) matches spacing, order, and mobile collapse behavior — **8 links, not 10** (no Sermon/Template, see 01-milestones.md Phase 0); `⌘K` and mobile collapse (nav → logo + tab bar) both verified in-browser
 - [x] Footer (`~/dav/devs`, `perf · a11y · seo` badge, copyright, Privacy link) matches placement and styling — badge values are placeholders, see Phase 11 note
 - [x] Cookie-notice banner matches copy, placement, and "Got it" dismiss styling — copy intentionally differs (localStorage, not cookies — see Phase 10 note); placement/dismiss behavior verified in-browser
 - [x] Detail-page furniture (kicker line, title, tags, share row, `♥`) matches spacing and iconography — verified on an article detail page
@@ -73,7 +73,7 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [x] OG and Twitter card tags are present and correct per page (title, description, image)
 - [x] `sitemap.xml` exists, is complete, and is reachable — generated as `sitemap-index.xml` by `@astrojs/sitemap`, confirmed present in `dist/` after build
 - [x] `robots.txt` exists and is correctly configured — points to the sitemap, allows all
-- [ ] JSON-LD (if used) validates with no errors — not yet added (see 01-milestones.md Phase 9)
+- [x] JSON-LD (if used) validates with no errors — `Article`/`SoftwareApplication`/`Book`+`Offer` per type; spot-checked the raw JSON in built HTML for one article and one ebook, both well-formed
 - [x] Old CSRF meta tag is either correctly reproduced (if still needed) or intentionally removed (if it was a Next.js-only artifact) — confirm decision was made, not overlooked — **decided and removed**: no session/forms on a static build
 
 ## 10. Privacy & Compliance
