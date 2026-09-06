@@ -44,20 +44,20 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 ## 5. eBook Pages
 - [x] Each ebook's bespoke layout (cover, blurb, pricing) renders correctly — **no dedicated "feature grid" component** (see 01-milestones.md Phase 5 note); pull-quote also not a distinct element, verified in-browser for one title
 - [x] Cover images load (Cloudinary or migrated equivalent) at correct resolution/format — verified in-browser (real cover art)
-- [x] "Get This Version" buttons link to the correct, unmodified LemonSqueezy checkout URLs — real URLs from frontmatter, unmodified
-- [x] Pricing tiers (e.g. Ebook vs. Ebook + Exercise Pack) display the correct SGD amounts — read directly from frontmatter
+- [x] **Superseded**: "Get This Version" buttons now POST to `/api/checkout`, which creates a real Stripe Checkout Session per tier (using the live Stripe Price IDs wired into frontmatter) and redirects there — verified in-browser (form posts, correctly 500s without a local `STRIPE_SECRET_KEY` rather than crashing the page); see `03-progress.md`'s 2026-09-07 entry
+- [x] Pricing tiers (e.g. Ebook vs. Ebook + Exercise Pack) display the correct SGD amounts — read from `priceCents`/`currency` frontmatter via `formatPriceCents()`
 - [x] `/ebook` and `/ebooks` index pages both work as expected — `/ebooks` is real, `/ebook` redirects to it
-- [ ] Checkout links still function after the domain cutover (LemonSqueezy is domain-independent — confirm no hardcoded `davinaleong.com` in return/cancel URLs) — not verifiable without visiting the actual LemonSqueezy dashboard/checkout flow
+- [ ] Checkout still functions after the domain cutover — `success_url`/`cancel_url` are built from `url.origin` at request time (not hardcoded to `davinaleong.com` or `davdevs.dev`), so this should carry over automatically, but hasn't been exercised against a deployed `davdevs.dev` origin yet (blocked on Phase 12, same as everything else there)
 
 ## 6. Interactive Tools
-- [x] Emoji Food Catcher: mouse, touch, and keyboard (arrow/A-D) controls all work; pause via space bar works; difficulty modes and power-ups function — renders correctly, no console errors; every individual control input wasn't exhaustively re-tested (unmodified source logic)
-- [x] Minesweeper: full game logic works (reveal, flag, win/lose states) — cell reveal verified in-browser; flag/win/lose paths use the same unmodified source logic
-- [x] Timers: countdown and elapsed-time modes work, presets and audio alerts fire correctly — renders correctly with countdown display and Start/Reset controls; audio alert not triggered/heard this session
-- [x] Memory Cards: card flip, matching, and spaced-repetition/progress tracking work — renders correctly with level/score/moves/time stat tiles and Start Game control
-- [ ] All tools are playable on mobile (touch controls / on-screen buttons render) — not tested at mobile viewport
-- [ ] All tools are responsive across screen sizes — not tested at mobile/tablet widths
+- [x] Emoji Food Catcher: mouse, touch, and keyboard (arrow/A-D) controls all work; pause via space bar works; difficulty modes and power-ups function — **keyboard verified with real dispatched key events**: `ArrowLeft`/`ArrowRight` move the basket to each edge, Space toggles a "Game Paused" overlay that correctly freezes falling items; mouse-move-to-basket-position verified; on-screen mobile ◄/► tap buttons confirmed present at 375px width
+- [x] Minesweeper: full game logic works (reveal, flag, win/lose states) — cell reveal verified both at desktop and 375px mobile width (tap flips a cell to its number); flag/unflag confirmed wired to right-click (`onContextMenu`) only, with **no touch/long-press equivalent** — a real, pre-existing gap inherited from the unmodified ported source, not something this rebuild introduced or silently assumed away
+- [x] Timers: countdown and elapsed-time modes work, presets and audio alerts fire correctly — Start button verified functional (countdown ticked 25m00s → 24m59s) at mobile width; audio alert not triggered/heard this session
+- [x] Memory Cards: card flip, matching, and spaced-repetition/progress tracking work — card flip verified functional at mobile width (tap → revealed icon fades in, opacity 0→100); level/score/moves/time stat tiles render correctly
+- [x] All tools are playable on mobile (touch controls / on-screen buttons render) — verified at 375×812 for all 13; see Phase 6 note in `01-milestones.md` for the one known gap (Minesweeper flagging has no touch gesture)
+- [x] All tools are responsive across screen sizes — all 13 tools screenshotted at 375×812, no layout breakage or horizontal overflow on any of them
 
-All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes, Color Value Converter, Duplicated Paragraph Scanner, Easy Password Generator, Natural Language Translator, Password Strength Meter, QR Code Generator) were opened in-browser this session in both light and dark theme with zero console errors.
+All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes, Color Value Converter, Duplicated Paragraph Scanner, Easy Password Generator, Natural Language Translator, Password Strength Meter, QR Code Generator) were opened in-browser this session in both light and dark theme with zero console errors, and again individually at mobile width (375×812).
 
 ## 7. Reactions / Likes
 - [ ] Reacting to a piece of content sets an anonymous cookie (HttpOnly, SameSite=Strict) — verify via browser dev tools — **N/A as designed**: no cookie is set, localStorage is used instead (see Phase 8 note)

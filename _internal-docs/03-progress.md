@@ -1,5 +1,23 @@
 # Progress
 
+## 2026-09-07 — Closing out milestone/checklist gaps: tool controls, mobile, embedded scripts
+
+Working through the remaining open items in `01-milestones.md` / `02-test-checklists.md`, starting with everything actually testable in this environment (real device/DNS/hosting-gated items are out of reach here and stay documented as blocked, not faked).
+
+**Phase 0 — embedded scripts on Tool pages**: grepped all 13 `src/components/tools/*.jsx` for `<script`/`iframe`/`embed` — zero matches. Every tool is a self-contained React island, nothing external to catalogue. Item closed.
+
+**Phase 6 / checklist §6 — tool controls and mobile, actually exercised this round** (previously "not independently re-tested"/"not tested at mobile viewport"):
+- **Emoji Food Catcher**: real dispatched `ArrowLeft`/`ArrowRight` key events moved the basket to each edge (confirmed via screenshot); Space toggled a "Game Paused" overlay that correctly froze all falling items (confirmed by comparing two screenshots 2s apart — item positions identical while paused). One test artifact worth noting for future sessions: this browser tool's `key` action needs the literal key name (`"ArrowLeft"`, `"Space"`) — `"Left"` and lowercase `"space"` are silently no-ops, which initially looked like a site bug until traced to the test tool, not the code.
+- **Minesweeper**: cell reveal confirmed functional both desktop and at 375px mobile width. Flag/unflag is wired to `onContextMenu` (right-click) only — grepped the component and found no `onTouchStart`/long-press handler, so **there is no way to flag a mine on a touchscreen**. This is the unmodified source's own limitation (carried over from davdevs-laravel, not introduced here), documented rather than silently left untested.
+- **Timers**: Start button confirmed functional at mobile width (countdown ticked 25m00s → 24m59s).
+- **Memory Cards**: card flip confirmed functional at mobile width (tap → revealed icon fades in).
+- **All 13 tools screenshotted individually at 375×812**: every one renders without layout breakage or horizontal overflow. Emoji Food Catcher additionally shows dedicated on-screen ◄/► tap buttons next to the basket for touch play.
+- Not re-litigated: exhaustive per-control testing (every keyboard shortcut, every difficulty mode, every power-up, actual finger-touch drag gestures on a real touchscreen) remains genuinely untested — this round closes the "was any of this tested at all" gap, not "is every input path exhaustively verified."
+
+**Ebook checklist wording**: updated §5 and Phase 5 references from "LemonSqueezy checkout URLs" to the new Stripe flow (see the entry below), and reworded the domain-cutover checkout item since `success_url`/`cancel_url` are now built from request `url.origin` rather than being static external links.
+
+Updated `01-milestones.md` and `02-test-checklists.md` inline; no code changes this round.
+
 ## 2026-09-07 — Stripe purchase pipeline for e-books (replacing LemonSqueezy)
 
 Replicated the Stripe purchase pipeline from the sibling project
