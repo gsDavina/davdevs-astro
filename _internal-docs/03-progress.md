@@ -1,5 +1,28 @@
 # Progress
 
+## 2026-09-06 — Re-downloaded Cloudinary images to refresh the local mirror
+
+Matched every Cloudinary URL referenced in content frontmatter (`images[].src`,
+ebook `coverImage`) against the existing local files in `public/images/` by
+basename (stripping Cloudinary transform segments to fetch the original-
+quality asset, not the web-optimized thumbnail variant used inline), then
+re-downloaded and overwrote each match. 102 files matched; only 2 actually
+changed (`ebooks/its-not-magic-code.png`, `ebooks/its-not-scary-debug.png` —
+their local copies were stale/incorrect covers, now fixed to match the real
+current Cloudinary asset). Everything else was already byte-equivalent to
+its Cloudinary source, so this mostly confirmed the existing mirror rather
+than replacing it wholesale.
+
+**58 local files have no Cloudinary equivalent in the migrated content** and
+were left untouched — legacy assets from before the Cloudinary migration
+(plain-slug names like `b4-admin-template.png`, `color-palettes.png`,
+`the-beloveds-blog.png` in `public/images/projects/`), a few extra
+screenshot variants not referenced in the final published frontmatter (some
+`getting-started-with-canva` and `how-to-bold-italicize...whatsapp` numbered
+images), and one literal `fem/placeholder.png`. Full match/skip list in
+`_internal-docs/cloudinary-download-report.json`.
+
+
 > Reference for design/colour: **davdevs-laravel** — but specifically its
 > **real dynamic templates** (`resources/views/layouts/site.blade.php`,
 > `site/home.blade.php`, `site/listing.blade.php`, `site/entry-detail.blade.php`,

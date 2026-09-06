@@ -1,0 +1,474 @@
+{
+  "downloaded": [
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0001-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396732/davdevs/entries/article/20231215-0001-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0002-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396738/davdevs/entries/article/20231215-0002-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0003-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396745/davdevs/entries/article/20231215-0003-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0004-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396750/davdevs/entries/article/20231215-0004-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0005-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396756/davdevs/entries/article/20231215-0005-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0006-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396761/davdevs/entries/article/20231215-0006-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0007-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396767/davdevs/entries/article/20231215-0007-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231215-0008-web-terms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396773/davdevs/entries/article/20231215-0008-web-terms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231220-0001-portfolio-released.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396775/davdevs/entries/article/20231220-0001-portfolio-released.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231220-0002-portfolio-released.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396778/davdevs/entries/article/20231220-0002-portfolio-released.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231223-0001-document-your-layers.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396780/davdevs/entries/article/20231223-0001-document-your-layers.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231229-0001-getting-creative-with-passwords.jpg",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396788/davdevs/entries/article/20231229-0001-getting-creative-with-passwords.jpg"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20231229-0001-delving-into-ai.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396784/davdevs/entries/article/20231229-0001-delving-into-ai.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240102-0001-tinkering-w-ai.jpg",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396793/davdevs/entries/article/20240102-0001-tinkering-w-ai.jpg"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240105-0001-unleashing-chatgpt-practical-applications.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396798/davdevs/entries/article/20240105-0001-unleashing-chatgpt-practical-applications.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240109-0001-chatgpt-refinement-tips.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396804/davdevs/entries/article/20240109-0001-chatgpt-refinement-tips.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240618-0001-an-app-vs-a-website.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396808/davdevs/entries/article/20240618-0001-an-app-vs-a-website.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240620-0001-composing-long-messages.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396813/davdevs/entries/article/20240620-0001-composing-long-messages.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240621-0001-identity-theft.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396816/davdevs/entries/article/20240621-0001-identity-theft.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240622-0001-secure-online-purchases.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396819/davdevs/entries/article/20240622-0001-secure-online-purchases.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0001-getting-started-with-canva.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396826/davdevs/entries/article/20240624-0001-getting-started-with-canva.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240629-0001-how-a-website-works.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396886/davdevs/entries/article/20240629-0001-how-a-website-works.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240629-0002-how-a-website-works.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396890/davdevs/entries/article/20240629-0002-how-a-website-works.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240629-0003-how-a-website-works.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396892/davdevs/entries/article/20240629-0003-how-a-website-works.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240707-0001-programming-languages-in-software-development.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396895/davdevs/entries/article/20240707-0001-programming-languages-in-software-development.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240727-0001-big-things-in-tech-today.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396901/davdevs/entries/article/20240727-0001-big-things-in-tech-today.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240731-0001-three-essential-mobile-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396906/davdevs/entries/article/20240731-0001-three-essential-mobile-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240731-0002-three-essential-mobile-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396911/davdevs/entries/article/20240731-0002-three-essential-mobile-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240731-0003-three-essential-mobile-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396916/davdevs/entries/article/20240731-0003-three-essential-mobile-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240731-0004-three-essential-mobile-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396922/davdevs/entries/article/20240731-0004-three-essential-mobile-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240805-0001-three-essential-pc-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396927/davdevs/entries/article/20240805-0001-three-essential-pc-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240805-0002-three-essential-pc-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396932/davdevs/entries/article/20240805-0002-three-essential-pc-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240805-0003-three-essential-pc-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396938/davdevs/entries/article/20240805-0003-three-essential-pc-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240805-0004-three-essential-pc-software.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396944/davdevs/entries/article/20240805-0004-three-essential-pc-software.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240913-0001-html-basics.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396947/davdevs/entries/article/20240913-0001-html-basics.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0001-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396951/davdevs/entries/article/20240917-0001-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240918-0001-safely-dispose-of-your-receipts.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396970/davdevs/entries/article/20240918-0001-safely-dispose-of-your-receipts.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240918-0003-safely-dispose-of-your-receipts.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783404236/davdevs/entries/article/20240918-0003-safely-dispose-of-your-receipts.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240918-0004-safely-dispose-of-your-receipts.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783404243/davdevs/entries/article/20240918-0004-safely-dispose-of-your-receipts.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20250604-0001-staying-safe-online.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403298/davdevs/entries/article/20250604-0001-staying-safe-online.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20251213-0001-davdevs-content-migration.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403303/davdevs/entries/article/20251213-0001-davdevs-content-migration.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\articles\\20251224-0001-ai-chatbot-integration.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403309/davdevs/entries/article/20251224-0001-ai-chatbot-integration.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-manage.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403559/davdevs/entries/fem/fem-manage.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-snap.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403583/davdevs/entries/fem/fem-snap.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-qr-code-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403579/davdevs/entries/fem/fem-qr-code-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-advice-generator-app.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403532/davdevs/entries/fem/fem-advice-generator-app.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-interactive-rating-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403551/davdevs/entries/fem/fem-interactive-rating-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-tip-calculator.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403596/davdevs/entries/fem/fem-tip-calculator.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-time-tracking-dashboard.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403594/davdevs/entries/fem/fem-time-tracking-dashboard.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-interactive-comments.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403549/davdevs/entries/fem/fem-interactive-comments.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-sunnyside-agency-landing-page.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403589/davdevs/entries/fem/fem-sunnyside-agency-landing-page.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-3-column-preview-card-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403530/davdevs/entries/fem/fem-3-column-preview-card-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-stats-preview-card-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403586/davdevs/entries/fem/fem-stats-preview-card-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-expenses-chart-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403541/davdevs/entries/fem/fem-expenses-chart-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-crowdfunding-product-page.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403539/davdevs/entries/fem/fem-crowdfunding-product-page.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-nft-preview-card-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403566/davdevs/entries/fem/fem-nft-preview-card-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-loopstudios-landing-page.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403556/davdevs/entries/fem/fem-loopstudios-landing-page.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-testimonials-grid.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403592/davdevs/entries/fem/fem-testimonials-grid.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-faq-accordion-card.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403543/davdevs/entries/fem/fem-faq-accordion-card.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-order-summary-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403571/davdevs/entries/fem/fem-order-summary-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-product-preview-card-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403573/davdevs/entries/fem/fem-product-preview-card-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-article-preview-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403534/davdevs/entries/fem/fem-article-preview-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-profile-card-component.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403575/davdevs/entries/fem/fem-profile-card-component.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-news-homepage.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403563/davdevs/entries/fem/fem-news-homepage.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-multi-step-form.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403561/davdevs/entries/fem/fem-multi-step-form.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-notifications-page.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403569/davdevs/entries/fem/fem-notifications-page.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\knowledge-sharing\\talks.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403520/davdevs/entries/knowledge-sharing/talks.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\knowledge-sharing\\dev-to.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403514/davdevs/entries/knowledge-sharing/dev-to.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\knowledge-sharing\\youtube.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403526/davdevs/entries/knowledge-sharing/youtube.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\knowledge-sharing\\social-media.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403516/davdevs/entries/knowledge-sharing/social-media.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200115-001-color-palettes.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403312/davdevs/entries/project/20200115-001-color-palettes.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200115-001-proverbs-everyday.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403315/davdevs/entries/project/20200115-001-proverbs-everyday.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200116-001-comphanny-template.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403316/davdevs/entries/project/20200116-001-comphanny-template.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200116-001-dav-devs.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403319/davdevs/entries/project/20200116-001-dav-devs.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200116-001-pokemon-teams-template.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403321/davdevs/entries/project/20200116-001-pokemon-teams-template.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20200802-001-todo-laravel.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403323/davdevs/entries/project/20200802-001-todo-laravel.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20210227-001-bible-api.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403325/davdevs/entries/project/20210227-001-bible-api.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20210227-001-customer-dashboard.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403328/davdevs/entries/project/20210227-001-customer-dashboard.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20211120-001-randomise-names.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403333/davdevs/entries/project/20211120-001-randomise-names.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220124-001-css-button-hover-animations.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403335/davdevs/entries/project/20220124-001-css-button-hover-animations.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220418-001-davinas-cms.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403337/davdevs/entries/project/20220418-001-davinas-cms.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220420-001-the-beloveds-blog.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403341/davdevs/entries/project/20220420-001-the-beloveds-blog.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220727-001-glass-website.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403344/davdevs/entries/project/20220727-001-glass-website.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220811-001-5-html-css-js-projects.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403358/davdevs/entries/project/20220811-001-5-html-css-js-projects.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220819-001-b4-admin-template.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403360/davdevs/entries/project/20220819-001-b4-admin-template.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220819-001-cut-corners.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403362/davdevs/entries/project/20220819-001-cut-corners.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220819-001-qr-code-generator.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403364/davdevs/entries/project/20220819-001-qr-code-generator.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220920-001-exploring-new-pseudo-classes.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403372/davdevs/entries/project/20220920-001-exploring-new-pseudo-classes.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220920-001-fem-projects.jpg",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403374/davdevs/entries/project/20220920-001-fem-projects.jpg"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220920-001-dialog-example.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403369/davdevs/entries/project/20220920-001-dialog-example.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20221007-001-password-visibility.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403375/davdevs/entries/project/20221007-001-password-visibility.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20221110-001-joke-generator.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403378/davdevs/entries/project/20221110-001-joke-generator.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20221111-001-line-clamp.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403380/davdevs/entries/project/20221111-001-line-clamp.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20221208-001-image-sliders.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403386/davdevs/entries/project/20221208-001-image-sliders.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20231227-001-laugh-and-be-blessed-next.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403398/davdevs/entries/project/20231227-001-laugh-and-be-blessed-next.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20231228-001-mass-rapid-riddles.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403401/davdevs/entries/project/20231228-001-mass-rapid-riddles.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20250525-001-praise-story.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403406/davdevs/entries/project/20250525-001-praise-story.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20251223-001-davdevs-2025-update.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403413/davdevs/entries/project/20251223-001-davdevs-2025-update.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\projects\\20260104-davdevs-bible-proverbs.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783403416/davdevs/entries/project/20260104-davdevs-bible-proverbs.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\ebooks\\its-not-magic-code.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\ebooks\\its-not-scary-debug.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783430727/davdevs/mrh4laqb6hg5hhc1r432.png"
+    },
+    {
+      "path": "C:\\Development\\davdevs-astro\\public\\images\\ebooks\\the-punny-side-of-things.png",
+      "url": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png"
+    }
+  ],
+  "failed": [],
+  "unmatchedContentUrls": [],
+  "orphanedLocalFiles": [
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240622-0002-secure-online-purchases.jpg",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0002-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0003-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0004-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0005-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0006-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0007-getting-started-with-canva.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0008-getting-started-with-canva.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0009-getting-started-with-canva.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0010-getting-started-with-canva.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0011-getting-started-with-canva.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240624-0012-getting-started-with-canva.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0002-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0003-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0004-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0005-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0006-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.PNG",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0007-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240917-0008-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\articles\\20240918-0002-safely-dispose-of-your-receipts.jpg",
+    "C:\\Development\\davdevs-astro\\public\\images\\fem\\fem-projects-mockup.jpg",
+    "C:\\Development\\davdevs-astro\\public\\images\\fem\\placeholder.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\20220811-001-5-html-css-js-projects (2).png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\20230408-001-time-ninja.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\20230510-001-script-trivia.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\20250205-001-dav-minesweeper.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\animated-hamburger-menu.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\b4-admin-template.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\bible-api.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\color-palettes.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\comphanny-template.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\css-button-hover-animations.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\customer-dashboard.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\cut-corners.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\dav-devs.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\dav-minesweeper.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\davinas-cms.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\dialog-example.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\exploring-new-pseudo-classes.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\fem-projects.jpg",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\firstcom-sites-html-template.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\glass-website.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\image-sliders.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\joke-generator.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\laugh-and-be-blessed-next.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\line-clamp.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\mass-rapid-riddles.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\password-visibility.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\pokemon-teams-template.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\praise-story.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\proverbs-everyday.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\qr-code-generator.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\randomise-names.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\resume-html-template.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\script-trivia.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\the-beloveds-blog.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\time-ninja.png",
+    "C:\\Development\\davdevs-astro\\public\\images\\projects\\todo-laravel.png"
+  ]
+}
