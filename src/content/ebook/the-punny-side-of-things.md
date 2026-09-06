@@ -7,8 +7,9 @@ tagline: "Corn-sider yourself warned."
 coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png"
 pricingTiers:
   - name: "Ebook"
-    price: "SGD 2.99"
-    checkoutUrl: "https://davinaleong.lemonsqueezy.com/checkout/buy/b5c631ca-833e-450e-83e9-237e838d669d"
+    priceCents: 299
+    currency: "SGD"
+    stripePriceId: "price_1UChz7Gfu4ZIyhLbGiywoJIk"
 ---
 
 A collection of original jokes and playful wordplay inspired by everyday moments — hawker food, MRT rides, and the occasional groan-worthy wordplay.

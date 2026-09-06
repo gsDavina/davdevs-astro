@@ -7,11 +7,13 @@ tagline: "A friendly little guide to fixing bugs without losing your mind"
 coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783430727/davdevs/mrh4laqb6hg5hhc1r432.png"
 pricingTiers:
   - name: "Ebook"
-    price: "SGD 9"
-    checkoutUrl: "https://davinaleong.lemonsqueezy.com/checkout/buy/806ab8ae-9298-47b1-b0f8-79b7739a3a13"
+    priceCents: 900
+    currency: "SGD"
+    stripePriceId: "price_1UCiTiKH93TdgTLBZiZ2G0XT"
   - name: "Ebook + Exercise Pack"
-    price: "SGD 13"
-    checkoutUrl: "https://davinaleong.lemonsqueezy.com/checkout/buy/806ab8ae-9298-47b1-b0f8-79b7739a3a13"
+    priceCents: 1300
+    currency: "SGD"
+    stripePriceId: "price_1UCinPKH93TdgTLB14pwjH3y"
 ---
 
 A friendly little guide to fixing bugs without losing your mind — for anyone who's ever stared at a red error message and panicked.

@@ -7,11 +7,13 @@ tagline: "Code, Bugs, and Tiny Victories"
 coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png"
 pricingTiers:
   - name: "Ebook Only"
-    price: "SGD 9"
-    checkoutUrl: "https://davinaleong.lemonsqueezy.com/checkout/buy/9f1ee826-bd9c-4eb0-b536-4d755c9b7e9f"
+    priceCents: 900
+    currency: "SGD"
+    stripePriceId: "price_1UCiTiKH93TdgTLB5gJLl5lV"
   - name: "Ebook + Exercise Pack"
-    price: "SGD 13"
-    checkoutUrl: "https://davinaleong.lemonsqueezy.com/checkout/buy/9f1ee826-bd9c-4eb0-b536-4d755c9b7e9f"
+    priceCents: 1300
+    currency: "SGD"
+    stripePriceId: "price_1UCioFKH93TdgTLBU79NmZxK"
 ---
 
 A beginner-friendly guide to code, bugs, and tiny victories — in plain English, with zero assumed knowledge.

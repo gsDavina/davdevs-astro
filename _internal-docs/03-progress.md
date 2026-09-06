@@ -1,5 +1,76 @@
 # Progress
 
+## 2026-09-07 — Stripe purchase pipeline for e-books (replacing LemonSqueezy)
+
+Replicated the Stripe purchase pipeline from the sibling project
+`davinas-ministries-astro` (redirect-to-Checkout, signature-verified
+webhook, Postgres orders table, Resend email, token-gated download) for
+davdevs' 3 e-books, replacing their external LemonSqueezy checkout links
+entirely. This moves the site from fully static to hybrid rendering: the
+new checkout/webhook/confirmation/download routes are `prerender = false`
+on `@astrojs/vercel`, everything else still prerenders as static output.
+
+**New infrastructure** (Railway Postgres via Drizzle, Vercel Blob, Resend —
+chosen with the user over the reference's Neon/S3-R2 defaults):
+- `src/db/schema.ts` (`orders` table) + `src/db/client.ts`
+- `src/lib/stripe.ts`, `download-token.ts`, `email.ts`, `format.ts`
+- `drizzle.config.ts`, `.env.example`, `src/env.d.ts`
+- `package.json`: `stripe`, `@astrojs/vercel`, `drizzle-orm`, `postgres`,
+  `@vercel/blob`, `resend`, `drizzle-kit` (dev); `db:generate`/`db:migrate`
+  scripts
+
+**Routes**: `POST /api/checkout` (validates the ebook+tier server-side,
+builds a Stripe Checkout line item, redirects to `session.url`),
+`POST /api/webhooks/stripe` (idempotent on `checkout.session.completed`,
+handles `charge.refunded`), `GET /api/download/[token]` (streams the file
+from Vercel Blob, gated by the order's download token), and
+`/order-confirmation` (queries our own DB by `session_id`, never assumes
+the webhook has already landed).
+
+**Content schema** (`src/content.config.ts`, `ebook` collection): each
+pricing tier now carries `priceCents`/`currency`/`stripePriceId`/
+`manuscriptFileKey` instead of the old `price` string + LemonSqueezy
+`checkoutUrl`. `stripePriceId` is set when a real Stripe Price exists;
+otherwise checkout falls back to an ad-hoc `price_data`. All three e-books
+now have real, live Stripe Price IDs for every tier (product/price IDs
+supplied by the user directly, not created by this session):
+- *It's Not Magic (Code)* — `prod_VD8EyJE555GTSF`: Ebook Only
+  `price_1UCiTiKH93TdgTLB5gJLl5lV`, Ebook + Exercise Pack
+  `price_1UCioFKH93TdgTLBU79NmZxK`
+- *It's Not Scary (Debug)* — `prod_VD8GtlDL4n1V28`: Ebook
+  `price_1UCiTiKH93TdgTLBZiZ2G0XT`, Ebook + Exercise Pack
+  `price_1UCinPKH93TdgTLB14pwjH3y`
+- *The Punny Side of Life/Things* — `prod_VD8FOPsxrZnTvQ`: Ebook
+  `price_1UChz7Gfu4ZIyhLbGiywoJIk`
+
+**Deliberate deviations from the reference pattern** (flagged to the user,
+not silent):
+- Multi-tier pricing preserved (reference has one price per ebook; davdevs
+  keeps "Ebook Only" vs "Ebook + Exercise Pack" as separately-priced,
+  separately-tracked purchases — checkout metadata carries
+  `{ ebookSlug, tierName }`, not just `ebookSlug`).
+- No "+ GST" copy on the Buy button (reference's copy assumes GST
+  registration davdevs doesn't have an established context for).
+- Vercel Blob has no S3-style signed URLs, so the download token itself is
+  the real access gate — `/api/download/[token]` streams the file
+  server-side rather than redirecting to the Blob URL.
+
+**Not done yet — genuinely blocked on user-supplied credentials/files**:
+no manuscript files exist anywhere in this repo (the e-book content is
+just Markdown web pages), so `manuscriptFileKey` is blank on every tier
+and `/api/download/[token]` will 404 until real files are uploaded to
+Vercel Blob. Nothing in `.env` has been set — `STRIPE_SECRET_KEY`/
+`STRIPE_WEBHOOK_SECRET`, `DATABASE_URL` (Railway), `BLOB_READ_WRITE_TOKEN`,
+`RESEND_API_KEY`/`RESEND_FROM_EMAIL` are all still empty in the local
+environment, and the Drizzle migration (`npm run db:generate && npm run
+db:migrate`) hasn't been run against a real database. End-to-end purchase
+flow (a real `stripe listen` + test-mode card + webhook + email +
+download) has not been exercised — only `npm run build` (confirms the
+schema/route changes compile and the rest of the site still prerenders)
+and an in-browser smoke test (ebook page renders both tier buttons with
+correct prices, form posts to `/api/checkout`, which correctly 500s given
+no `STRIPE_SECRET_KEY` locally rather than crashing the page).
+
 ## 2026-09-06 — Re-downloaded Cloudinary images to refresh the local mirror
 
 Matched every Cloudinary URL referenced in content frontmatter (`images[].src`,

@@ -1,6 +1,7 @@
 ---
 import Site from '../../layouts/Site.astro';
 import { getCollection } from 'astro:content';
+import { formatPriceCents } from '../../lib/format';
 
 const allEbooks = await getCollection('ebook');
 const bundles = allEbooks.filter((e) => e.data.isBundle);
@@ -20,7 +21,11 @@ const individual = allEbooks.filter((e) => !e.data.isBundle);
               {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
               <div class="entry-card-title">{entry.data.title}</div>
               <div class="entry-card-tagline">{entry.data.tagline}</div>
-              {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
+              {entry.data.pricingTiers[0] && (
+                <div class="entry-card-price">
+                  {formatPriceCents(entry.data.pricingTiers[0].priceCents, entry.data.pricingTiers[0].currency)}
+                </div>
+              )}
             </a>
           ))}
         </div>
@@ -37,7 +42,11 @@ const individual = allEbooks.filter((e) => !e.data.isBundle);
             {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
             <div class="entry-card-title">{entry.data.title}</div>
             <div class="entry-card-tagline">{entry.data.tagline}</div>
-            {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
+            {entry.data.pricingTiers[0] && (
+              <div class="entry-card-price">
+                {formatPriceCents(entry.data.pricingTiers[0].priceCents, entry.data.pricingTiers[0].currency)}
+              </div>
+            )}
           </a>
         ))
       )}

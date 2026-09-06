@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import { getCollection } from 'astro:content';
 import Site from '../../layouts/Site.astro';
 import { ebookJsonLd } from '../../lib/jsonld';
+import { formatPriceCents } from '../../lib/format';
 
 export async function getStaticPaths() {
   const ebooks = await getCollection('ebook');
@@ -28,14 +29,29 @@ const jsonLd = ebookJsonLd(entry, canonicalURL);
 
     {entry.data.pricingTiers.length > 0 && (
       <div class="ebook-cta-row">
-        {entry.data.pricingTiers.map((tier) => tier.checkoutUrl && (
-          <a class="btn-get" href={tier.checkoutUrl} target="_blank" rel="noopener noreferrer">
-            Get it — {tier.name} {tier.price} →
-          </a>
+        {entry.data.pricingTiers.map((tier) => (
+          <form method="POST" action="/api/checkout">
+            <input type="hidden" name="ebookSlug" value={entry.data.slug} />
+            <input type="hidden" name="tierName" value={tier.name} />
+            <button class="btn-get" type="submit">
+              Buy {tier.name} — {formatPriceCents(tier.priceCents, tier.currency)} →
+            </button>
+          </form>
         ))}
       </div>
     )}
+
+    <p id="checkout-error" class="checkout-error" hidden>
+      Sorry, that didn't go through. Please try again.
+    </p>
   </article>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('error')) {
+      document.getElementById('checkout-error')?.removeAttribute('hidden');
+    }
+  </script>
 </Site>
 
 <style>
@@ -101,8 +117,16 @@ const jsonLd = ebookJsonLd(entry, canonicalURL);
     color: var(--bg-page);
     padding: 12px 24px;
     border-radius: 5px;
+    border: none;
+    cursor: pointer;
     font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 600;
+  }
+  .checkout-error {
+    margin-top: 14px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-secondary);
   }
 </style>

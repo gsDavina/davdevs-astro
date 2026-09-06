@@ -1,0 +1,65 @@
+---
+import { eq } from 'drizzle-orm';
+import Site from '../layouts/Site.astro';
+import { db } from '../db/client';
+import { orders } from '../db/schema';
+
+export const prerender = false;
+
+const sessionId = Astro.url.searchParams.get('session_id');
+const [order] = sessionId
+  ? await db.select().from(orders).where(eq(orders.stripeCheckoutSessionId, sessionId)).limit(1)
+  : [];
+---
+
+<Site title="Order Confirmation" description="Thanks for your purchase.">
+  <section class="confirmation">
+    {order ? (
+      <>
+        <h1 class="confirmation-title">Thank you!</h1>
+        <p class="confirmation-body">Your order is confirmed. We've emailed your download link to {order.buyerEmail}.</p>
+        <a class="btn-download" href={`/api/download/${order.downloadToken}`}>Download now</a>
+      </>
+    ) : (
+      <>
+        <h1 class="confirmation-title">Processing your order</h1>
+        <p class="confirmation-body">
+          Payment received — we're finishing up your order. This page updates automatically
+          once it's ready; you'll also get an email with your download link shortly.
+        </p>
+      </>
+    )}
+  </section>
+</Site>
+
+<style>
+  .confirmation {
+    max-width: var(--prose-max);
+    margin: 0 auto;
+    padding: 64px var(--page-padding-x);
+    text-align: center;
+  }
+  .confirmation-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+  }
+  .confirmation-body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+  }
+  .btn-download {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg-page);
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+  }
+</style>

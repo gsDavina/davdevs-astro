@@ -37,7 +37,6 @@ export function blogEntryJsonLd(type: BlogType, entry: BlogEntry, canonicalURL: 
 
 export function ebookJsonLd(entry: CollectionEntry<'ebook'>, canonicalURL: string) {
   const tier = entry.data.pricingTiers[0];
-  const priceMatch = tier?.price?.match(/[\d.]+/);
 
   return {
     '@context': 'https://schema.org',
@@ -50,9 +49,9 @@ export function ebookJsonLd(entry: CollectionEntry<'ebook'>, canonicalURL: strin
     offers: tier
       ? {
           '@type': 'Offer',
-          price: priceMatch?.[0],
-          priceCurrency: 'SGD',
-          url: tier.checkoutUrl ?? undefined,
+          price: (tier.priceCents / 100).toFixed(2),
+          priceCurrency: tier.currency,
+          url: canonicalURL,
           availability: 'https://schema.org/InStock',
         }
       : undefined,
