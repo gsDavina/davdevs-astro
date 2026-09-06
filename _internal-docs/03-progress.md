@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-07 — Keyboard focus, alt text, and 2 broken internal links
+
+Three more checklist items from §12 (Accessibility) and §15 (Content Completeness) that are actually checkable in this environment, done with real verification rather than assumption:
+
+- **Alt text**: every `<img>` in `src/` (5 usages — all ebook/entry cover images) has an `alt` attribute; `EntryCard.astro` (the shared home/listing card) renders no images at all, so there was nothing to check there.
+- **Visible focus states**: grepped all of `src/` for `outline: none`/`outline: 0` and found exactly one unreplaced instance — `SearchModal.astro`'s search input, which auto-focuses when the `⌘K` modal opens. Added a `:focus-visible` rule (bottom-border color change, matching the input's existing borderless style) and confirmed the compiled CSS rule actually exists in the rebuilt page's stylesheet. Spot-checked a couple of nav links with real `Tab` key presses — both show the browser's native outline, confirming nothing else is silently suppressing focus indicators.
+- **Broken internal links**: wrote a one-off Node script (crawls every built page's `href`s against `dist/client`'s actual file list) rather than trusting the markdown by eye. Found 2 real broken cross-links: an article and a project link to each other, but both used the wrong path shape (`/projects/...` and `/articles/...` — plural, this site's routes are singular `/project/...`/`/article/...`) and one also had a stale slug. Fixed both in the source markdown; re-ran the script after rebuilding — 138 pages, 140 internal hrefs, zero broken.
+
 ## 2026-09-07 — Site-wide color-contrast pass (a11y 95 → 100)
 
 Follow-up to the Lighthouse audit below: after the first round of fixes, a re-run still showed `color-contrast` failing on elements shared by *every* content page — not just the tool page originally sampled. Traced each to its design token and fixed all four, verifying with hand-computed contrast ratios before touching `tokens.css` and then confirming with another Lighthouse run (not just assuming the math was right):

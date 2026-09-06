@@ -14,7 +14,7 @@ images:
     caption: "Dav/Devs Content Migration"
 ---
 
-I've been working on the latest version of my website — **[Dav/Devs 2025](/projects/20251223-davdevs-2025-update)** — where I consolidated all my projects, articles, and microsites into a single platform. The goal was simple: make it less confusing for visitors and much easier for me to maintain and update.
+I've been working on the latest version of my website — **[Dav/Devs 2025](/project/20251223-davdevs-2025-complete-website-rebuild)** — where I consolidated all my projects, articles, and microsites into a single platform. The goal was simple: make it less confusing for visitors and much easier for me to maintain and update.
 
 One seemingly insignificant but _very_ tedious part of this revamp was **content migration**.
 

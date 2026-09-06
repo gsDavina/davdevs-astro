@@ -33,7 +33,7 @@ There are also a number of new additions. The site now includes an **omni-search
 
 Two new content types I especially want to highlight are **Sermons** and **Notebooks**. I chose to merge my Christian blog into Dav/Devs as a deliberate and open declaration that **Jesus is real** — and that He _is_ the reason I’m able to build, create, and sustain the projects and content shared on this website.
 
-While building the site itself was relatively straightforward (especially with the help of ChatGPT), the most time-consuming and tedious part was **content migration**. I’ve written a separate article detailing that process, which you can read here: **[Content Migration Made Easy: Migrating to Dav/Devs 2025 with GenAI](/articles/20251213-davdevs-content-migration)**
+While building the site itself was relatively straightforward (especially with the help of ChatGPT), the most time-consuming and tedious part was **content migration**. I’ve written a separate article detailing that process, which you can read here: **[Content Migration Made Easy: Migrating to Dav/Devs 2025 with GenAI](/article/20251213-content-migration-made-easy-migrating-to-davdevs-2025-with-genai)**
 
 ### 24 Dec 2025 update:
 

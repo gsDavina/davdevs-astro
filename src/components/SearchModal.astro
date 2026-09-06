@@ -51,6 +51,13 @@
     color: var(--text-primary);
     outline: none;
   }
+  /* Focus-visible indicator: the input is auto-focused when this modal
+     opens, so its own `outline: none` above needs a replacement — a
+     bottom-border color change fits the borderless input better than a
+     full outline box. */
+  .search-input:focus-visible {
+    border-bottom-color: var(--accent);
+  }
   .search-results {
     max-height: 400px;
     overflow-y: auto;
