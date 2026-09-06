@@ -1,0 +1,156 @@
+{
+  "20260102-minesweeper": {
+    "title": "Minesweeper",
+    "url": "https://davinaleong.com/tool/20260102-minesweeper",
+    "reactComponent": "minesweeper",
+    "tags": [
+      "games",
+      "puzzle",
+      "minesweeper",
+      "logic",
+      "classic games"
+    ]
+  },
+  "20260102-emoji-food-catcher": {
+    "title": "Emoji Food Catcher",
+    "url": "https://davinaleong.com/tool/20260102-emoji-food-catcher",
+    "reactComponent": "emoji-food-catcher",
+    "tags": [
+      "games",
+      "arcade",
+      "food catcher",
+      "reflexes",
+      "emoji",
+      "power-ups"
+    ]
+  },
+  "20251218-timers": {
+    "title": "Timers",
+    "url": "https://davinaleong.com/tool/20251218-timers",
+    "reactComponent": "timers",
+    "tags": [
+      "tools",
+      "time management",
+      "productivity",
+      "timers",
+      "pomodoro"
+    ]
+  },
+  "20251116-memory-cards": {
+    "title": "Memory Cards",
+    "url": "https://davinaleong.com/tool/20251116-memory-cards",
+    "reactComponent": "memory-cards",
+    "tags": [
+      "tools",
+      "learning",
+      "flashcards",
+      "memory",
+      "education"
+    ]
+  },
+  "20251010-natural-language-translator": {
+    "title": "Natural Language Translator",
+    "url": "https://davinaleong.com/tool/20251010-natural-language-translator",
+    "reactComponent": "translator",
+    "tags": [
+      "tools",
+      "writing",
+      "translator",
+      "language",
+      "natural"
+    ]
+  },
+  "20251010-color-value-converter": {
+    "title": "Color Value Converter",
+    "url": "https://davinaleong.com/tool/20251010-color-value-converter",
+    "reactComponent": "color-value-converter",
+    "tags": [
+      "colors",
+      "tools",
+      "converter",
+      "hex",
+      "rgb"
+    ]
+  },
+  "20251010-card-miles-converter": {
+    "title": "Card Miles Converter",
+    "url": "https://davinaleong.com/tool/20251010-card-miles-converter",
+    "reactComponent": "card-miles-converter",
+    "tags": [
+      "tools",
+      "travel",
+      "miles",
+      "converter",
+      "rewards"
+    ]
+  },
+  "20251010-calculator": {
+    "title": "Calculator",
+    "url": "https://davinaleong.com/tool/20251010-calculator",
+    "reactComponent": "calculator",
+    "tags": [
+      "tools",
+      "calculator",
+      "math",
+      "utility"
+    ]
+  },
+  "20250529-duplicated-paragraph-scanner": {
+    "title": "Duplicated Paragraph Scanner",
+    "url": "https://davinaleong.com/tool/20250529-duplicated-paragraph-scanner",
+    "reactComponent": "duplicated-paragraph-scanner",
+    "tags": [
+      "tools",
+      "writing",
+      "editing",
+      "scanner",
+      "text"
+    ]
+  },
+  "20250528-easy-password-generator": {
+    "title": "Easy Password Generator",
+    "url": "https://davinaleong.com/tool/20250528-easy-password-generator",
+    "reactComponent": "password-creator",
+    "tags": [
+      "tools",
+      "security",
+      "passwords",
+      "generator"
+    ]
+  },
+  "20250511-qr-code-generator": {
+    "title": "QR Code Generator",
+    "url": "https://davinaleong.com/tool/20250511-qr-code-generator",
+    "reactComponent": "qr-code-generator",
+    "tags": [
+      "tools",
+      "qr-code",
+      "generator",
+      "sharing"
+    ]
+  },
+  "20250511-password-strength-meter": {
+    "title": "Password Strength Meter",
+    "url": "https://davinaleong.com/tool/20250511-password-strength-meter",
+    "reactComponent": "password-strength-meter",
+    "tags": [
+      "tools",
+      "security",
+      "passwords",
+      "strength",
+      "meter"
+    ]
+  },
+  "20250511-color-palettes": {
+    "title": "Color Palettes",
+    "url": "https://davinaleong.com/tool/20250511-color-palettes",
+    "reactComponent": "color-palettes",
+    "tags": [
+      "colors",
+      "design",
+      "palettes",
+      "ui",
+      "tools"
+    ]
+  }
+}

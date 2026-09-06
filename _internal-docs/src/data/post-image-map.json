@@ -1,0 +1,926 @@
+{
+  "article/20251224-ai-chatbot-integration-building-an-intelligent-website-assistant-with-azure-and-openai": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403309/davdevs/entries/article/20251224-0001-ai-chatbot-integration.png",
+      "alt": "",
+      "caption": "AI Chatbot Integration on Dav/Devs",
+      "context": "gallery"
+    }
+  ],
+  "article/20251213-content-migration-made-easy-migrating-to-davdevs-2025-with-genai": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403303/davdevs/entries/article/20251213-0001-davdevs-content-migration.png",
+      "alt": "",
+      "caption": "Dav/Devs Content Migration",
+      "context": "gallery"
+    }
+  ],
+  "article/20250604-faith-driven-online-safety-navigating-the-digital-world-with-godly-wisdom": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403298/davdevs/entries/article/20250604-0001-staying-safe-online.png",
+      "alt": "",
+      "caption": "Godly Wisdom for Online Safety in the Age of AI",
+      "context": "gallery"
+    }
+  ],
+  "article/20240918-receipt-security-101-protect-your-identity-with-this-simple-trick": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396970/davdevs/entries/article/20240918-0001-safely-dispose-of-your-receipts.png",
+      "alt": "",
+      "caption": "Safely Dispose of Your Receipts",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783404236/davdevs/entries/article/20240918-0003-safely-dispose-of-your-receipts.png",
+      "alt": "",
+      "caption": "Receipt with Sensitive Information Highlighted",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783404243/davdevs/entries/article/20240918-0004-safely-dispose-of-your-receipts.png",
+      "alt": "",
+      "caption": "Receipt with Sensitive Information Blacked-out",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783404236/davdevs/entries/article/20240918-0003-safely-dispose-of-your-receipts.png",
+      "alt": "Receipt with Sensitive Information Highlighted",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783404243/davdevs/entries/article/20240918-0004-safely-dispose-of-your-receipts.png",
+      "alt": "Receipt with Sensitive Information Blacked-out",
+      "context": "inline"
+    }
+  ],
+  "article/20240917-how-to-bold-italicize-and-strikethrough-text-in-whatsapp": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396951/davdevs/entries/article/20240917-0001-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "",
+      "caption": "How to Bold, Italicize, and Strikethrough Text in WhatsApp",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396953/davdevs/entries/article/20240917-0002-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of WhatsApp Message Styles",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396955/davdevs/entries/article/20240917-0003-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of Default iPhone Keyboard",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396958/davdevs/entries/article/20240917-0004-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of Special Characters iPhone Keyboard",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396960/davdevs/entries/article/20240917-0005-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of More Special Characters iPhone Keyboard",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396962/davdevs/entries/article/20240917-0006-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of Bold WhatsApp Text",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396965/davdevs/entries/article/20240917-0007-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of Italicized WhatsApp Text",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396967/davdevs/entries/article/20240917-0008-how-to-bold-italicize-and-strikethrough-text-in-whatsapp.png",
+      "alt": "Screenshot of Strikethrough WhatsApp Text",
+      "context": "inline"
+    }
+  ],
+  "article/20240913-html-fundamentals-your-gateway-to-web-development": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396947/davdevs/entries/article/20240913-0001-html-basics.png",
+      "alt": "",
+      "caption": "HTML Basics",
+      "context": "gallery"
+    }
+  ],
+  "article/20240805-3-essential-pc-security-tools-your-computers-digital-bodyguards": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396927/davdevs/entries/article/20240805-0001-three-essential-pc-software.png",
+      "alt": "",
+      "caption": "3 Essential PC Software",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396932/davdevs/entries/article/20240805-0002-three-essential-pc-software.png",
+      "alt": "",
+      "caption": "Antivirus Protection",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396938/davdevs/entries/article/20240805-0003-three-essential-pc-software.png",
+      "alt": "",
+      "caption": "Virtual Private Network",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396944/davdevs/entries/article/20240805-0004-three-essential-pc-software.png",
+      "alt": "",
+      "caption": "Password Manager",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396932/davdevs/entries/article/20240805-0002-three-essential-pc-software.png",
+      "alt": "Antivirus Protection",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396938/davdevs/entries/article/20240805-0003-three-essential-pc-software.png",
+      "alt": "Virtual Private Network",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396944/davdevs/entries/article/20240805-0004-three-essential-pc-software.png",
+      "alt": "Password Manager",
+      "context": "inline"
+    }
+  ],
+  "article/20240731-3-essential-mobile-software": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396906/davdevs/entries/article/20240731-0001-three-essential-mobile-software.png",
+      "alt": "",
+      "caption": "3 Essential Mobile Software",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396911/davdevs/entries/article/20240731-0002-three-essential-mobile-software.png",
+      "alt": "",
+      "caption": "1. Authenticator App",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396916/davdevs/entries/article/20240731-0003-three-essential-mobile-software.png",
+      "alt": "",
+      "caption": "2. Virtual Private Network",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396922/davdevs/entries/article/20240731-0004-three-essential-mobile-software.png",
+      "alt": "",
+      "caption": "3. Password Manager",
+      "context": "gallery"
+    }
+  ],
+  "article/20240727-big-things-in-tech-today-ai-cybersecurity-take-center-stage": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396901/davdevs/entries/article/20240727-0001-big-things-in-tech-today.png",
+      "alt": "",
+      "caption": "Big Things in Tech Today",
+      "context": "gallery"
+    }
+  ],
+  "article/20240707-decoding-programming-languages-the-invisible-forces-behind-every-app": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396895/davdevs/entries/article/20240707-0001-programming-languages-in-software-development.png",
+      "alt": "",
+      "caption": "Programming Languages in Software Development",
+      "context": "gallery"
+    }
+  ],
+  "article/20240629-how-a-website-works": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396886/davdevs/entries/article/20240629-0001-how-a-website-works.png",
+      "alt": "",
+      "caption": "01 Client",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396890/davdevs/entries/article/20240629-0002-how-a-website-works.png",
+      "alt": "",
+      "caption": "02 Web Server",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396892/davdevs/entries/article/20240629-0003-how-a-website-works.png",
+      "alt": "",
+      "caption": "03 Database",
+      "context": "gallery"
+    }
+  ],
+  "article/20240624-getting-started-with-canva": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396826/davdevs/entries/article/20240624-0001-getting-started-with-canva.png",
+      "alt": "",
+      "caption": "Getting Started with Canva",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396832/davdevs/entries/article/20240624-0002-getting-started-with-canva.png",
+      "alt": "Canva Mobile, Home Screen",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396839/davdevs/entries/article/20240624-0004-getting-started-with-canva.png",
+      "alt": "Canva Mobile, Choosing a Project to Work On",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396850/davdevs/entries/article/20240624-0006-getting-started-with-canva.png",
+      "alt": "Canva Mobile, Edit an Element",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396859/davdevs/entries/article/20240624-0008-getting-started-with-canva.png",
+      "alt": "Canva, Home Screen",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396866/davdevs/entries/article/20240624-0009-getting-started-with-canva.png",
+      "alt": "Canva, Choosing a Project to Work On",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396872/davdevs/entries/article/20240624-0010-getting-started-with-canva.png",
+      "alt": "Canva, Edit an Element",
+      "context": "inline"
+    }
+  ],
+  "article/20240622-https-your-shield-against-online-shopping-dangers": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396819/davdevs/entries/article/20240622-0001-secure-online-purchases.png",
+      "alt": "",
+      "caption": "Secure Online Purchases",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396821/davdevs/entries/article/20240622-0002-secure-online-purchases.jpg",
+      "alt": "Screenshot of HTTPS in URL",
+      "context": "inline"
+    }
+  ],
+  "article/20240621-identity-theft-alert-my-close-call-and-how-to-stay-safe": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396816/davdevs/entries/article/20240621-0001-identity-theft.png",
+      "alt": "",
+      "caption": "Identity Theft",
+      "context": "gallery"
+    }
+  ],
+  "article/20240620-the-long-message-hack-your-mobile-typing-game-changer": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396813/davdevs/entries/article/20240620-0001-composing-long-messages.png",
+      "alt": "",
+      "caption": "Composing Long Messages on the Phone",
+      "context": "gallery"
+    }
+  ],
+  "article/20240618-an-app-vs-a-website": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396808/davdevs/entries/article/20240618-0001-an-app-vs-a-website.png",
+      "alt": "",
+      "caption": "An App vs A Website",
+      "context": "gallery"
+    }
+  ],
+  "article/20240109-mastering-chatgpt-your-guide-to-getting-better-results": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396804/davdevs/entries/article/20240109-0001-chatgpt-refinement-tips.png",
+      "alt": "",
+      "caption": "Mastering ChatGPT for Better Results",
+      "context": "gallery"
+    }
+  ],
+  "article/20240105-unleashing-chatgpt-practical-applications": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396798/davdevs/entries/article/20240105-0001-unleashing-chatgpt-practical-applications.png",
+      "alt": "",
+      "caption": "Unleashing ChatGPT: Practical Applications",
+      "context": "gallery"
+    }
+  ],
+  "article/20240102-my-openai-api-adventure-a-developers-journey-from-frustration-to-success": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396793/davdevs/entries/article/20240102-0001-tinkering-w-ai.jpg",
+      "alt": "",
+      "caption": "Tinkering with OpenAI API",
+      "context": "gallery"
+    }
+  ],
+  "article/20231229-getting-creative-with-passwords": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396788/davdevs/entries/article/20231229-0001-getting-creative-with-passwords.jpg",
+      "alt": "",
+      "caption": "Getting Creative with Passwords",
+      "context": "gallery"
+    }
+  ],
+  "article/20231229-my-ai-adventure-tools-insights-and-honest-observations": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396784/davdevs/entries/article/20231229-0001-delving-into-ai.png",
+      "alt": "",
+      "caption": "Delving into AI",
+      "context": "gallery"
+    }
+  ],
+  "article/20231223-css-z-index-mastery-the-layer-documentation-secret": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396780/davdevs/entries/article/20231223-0001-document-your-layers.png",
+      "alt": "",
+      "caption": "Document Your Layers",
+      "context": "gallery"
+    }
+  ],
+  "article/20231220-davdevs-2024-my-portfolio-evolution-story": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396775/davdevs/entries/article/20231220-0001-portfolio-released.png",
+      "alt": "",
+      "caption": "Dav/Devs 2024 released!",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396778/davdevs/entries/article/20231220-0002-portfolio-released.png",
+      "alt": "",
+      "caption": "Dav/Devs 2024 technologies",
+      "context": "gallery"
+    }
+  ],
+  "article/20231215-web-development-decoded-human-body-analogies-that-actually-make-sense": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396732/davdevs/entries/article/20231215-0001-web-terms.png",
+      "alt": "",
+      "caption": "Web Terms Akin to the Human Body",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396738/davdevs/entries/article/20231215-0002-web-terms.png",
+      "alt": "",
+      "caption": "Hardware akin to the body",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396745/davdevs/entries/article/20231215-0003-web-terms.png",
+      "alt": "",
+      "caption": "Software akin to the soul",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396750/davdevs/entries/article/20231215-0004-web-terms.png",
+      "alt": "",
+      "caption": "HTML is the skeleton of the web page",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396756/davdevs/entries/article/20231215-0005-web-terms.png",
+      "alt": "",
+      "caption": "CSS is like makeup",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396761/davdevs/entries/article/20231215-0006-web-terms.png",
+      "alt": "",
+      "caption": "JS is like the muscles",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396767/davdevs/entries/article/20231215-0007-web-terms.png",
+      "alt": "",
+      "caption": "Server-side code is like the soul",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783396773/davdevs/entries/article/20231215-0008-web-terms.png",
+      "alt": "",
+      "caption": "Database is akin to memory",
+      "context": "gallery"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396738/davdevs/entries/article/20231215-0002-web-terms.png",
+      "alt": "Hardware akin to the body",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396745/davdevs/entries/article/20231215-0003-web-terms.png",
+      "alt": "Software akin to the soul",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396750/davdevs/entries/article/20231215-0004-web-terms.png",
+      "alt": "HTML is the skeleton of the web page",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396756/davdevs/entries/article/20231215-0005-web-terms.png",
+      "alt": "CSS is like makeup",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396761/davdevs/entries/article/20231215-0006-web-terms.png",
+      "alt": "JS is like the muscles",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396767/davdevs/entries/article/20231215-0007-web-terms.png",
+      "alt": "Server-side code is like the soul",
+      "context": "inline"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/v1783396773/davdevs/entries/article/20231215-0008-web-terms.png",
+      "alt": "Database is akin to memory",
+      "context": "inline"
+    }
+  ],
+  "fem/20230106-notifications-page": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403569/davdevs/entries/fem/fem-notifications-page.png",
+      "alt": "",
+      "caption": "Notifications Page",
+      "context": "gallery"
+    }
+  ],
+  "fem/20221223-multi-step-form": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403561/davdevs/entries/fem/fem-multi-step-form.png",
+      "alt": "",
+      "caption": "Multi-step Form",
+      "context": "gallery"
+    }
+  ],
+  "fem/20221214-news-homepage": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403563/davdevs/entries/fem/fem-news-homepage.png",
+      "alt": "",
+      "caption": "News Homepage",
+      "context": "gallery"
+    }
+  ],
+  "fem/20221207-profile-card-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403575/davdevs/entries/fem/fem-profile-card-component.png",
+      "alt": "",
+      "caption": "Profile Card Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20221123-article-preview-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403534/davdevs/entries/fem/fem-article-preview-component.png",
+      "alt": "",
+      "caption": "Article Preview Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220919-product-preview-card-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403573/davdevs/entries/fem/fem-product-preview-card-component.png",
+      "alt": "",
+      "caption": "Product Preview Card Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220919-order-summary-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403571/davdevs/entries/fem/fem-order-summary-component.png",
+      "alt": "",
+      "caption": "Order Summary Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220907-faq-accordion-card": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403543/davdevs/entries/fem/fem-faq-accordion-card.png",
+      "alt": "",
+      "caption": "FAQ Accordion Card",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220826-testimonials-grid": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403592/davdevs/entries/fem/fem-testimonials-grid.png",
+      "alt": "",
+      "caption": "Testimonials Grid",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220825-loopstudios-landing-page": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403556/davdevs/entries/fem/fem-loopstudios-landing-page.png",
+      "alt": "",
+      "caption": "Loopstudios Landing Page",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220822-nft-preview-card-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403566/davdevs/entries/fem/fem-nft-preview-card-component.png",
+      "alt": "",
+      "caption": "NFT Preview Card Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220822-crowdfunding-product-page": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403539/davdevs/entries/fem/fem-crowdfunding-product-page.png",
+      "alt": "",
+      "caption": "Crowdfunding Product Page",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220817-expenses-chart-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403541/davdevs/entries/fem/fem-expenses-chart-component.png",
+      "alt": "",
+      "caption": "Expenses Chart Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220816-3-column-preview-card-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403530/davdevs/entries/fem/fem-3-column-preview-card-component.png",
+      "alt": "",
+      "caption": "3-Column Preview Card Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220816-stats-preview-card-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403586/davdevs/entries/fem/fem-stats-preview-card-component.png",
+      "alt": "",
+      "caption": "Stats Preview Card Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220812-sunnyside-agency-landing-page": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403589/davdevs/entries/fem/fem-sunnyside-agency-landing-page.png",
+      "alt": "",
+      "caption": "Sunnyside Agency Landing Page",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220802-interactive-comments-section": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403549/davdevs/entries/fem/fem-interactive-comments.png",
+      "alt": "",
+      "caption": "Interactive Comments Section",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220801-time-tracking-dashboard": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403594/davdevs/entries/fem/fem-time-tracking-dashboard.png",
+      "alt": "",
+      "caption": "Time Tracking Dashboard",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220729-tip-calculator-app": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403596/davdevs/entries/fem/fem-tip-calculator.png",
+      "alt": "",
+      "caption": "Tip Calculator App",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220729-interactive-rating-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403551/davdevs/entries/fem/fem-interactive-rating-component.png",
+      "alt": "",
+      "caption": "Interactive Rating Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220729-advice-generator-app": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403532/davdevs/entries/fem/fem-advice-generator-app.png",
+      "alt": "",
+      "caption": "Advice Generator App",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220728-qr-code-component": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403579/davdevs/entries/fem/fem-qr-code-component.png",
+      "alt": "",
+      "caption": "QR Code Component",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220727-intro-section-with-dropdown-navigation": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403583/davdevs/entries/fem/fem-snap.png",
+      "alt": "",
+      "caption": "Intro section with dropdown navigation",
+      "context": "gallery"
+    }
+  ],
+  "fem/20220719-manage-landing-page": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403559/davdevs/entries/fem/fem-manage.png",
+      "alt": "",
+      "caption": "Manage Landing Page",
+      "context": "gallery"
+    }
+  ],
+  "knowledge-sharing/20251229-davdevs-media-my-youtube-channel": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403526/davdevs/entries/knowledge-sharing/youtube.png",
+      "alt": "",
+      "caption": "Dav/Devs Media - My YouTube Channel",
+      "context": "gallery"
+    }
+  ],
+  "knowledge-sharing/20251229-my-social-media-strategy-connecting-across-platforms": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403516/davdevs/entries/knowledge-sharing/social-media.png",
+      "alt": "",
+      "caption": "My Social Media Strategy - Connecting Across Platforms",
+      "context": "gallery"
+    }
+  ],
+  "knowledge-sharing/20241201-7-useful-js-fiddles": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403514/davdevs/entries/knowledge-sharing/dev-to.png",
+      "alt": "",
+      "caption": "7 Useful JS Fiddles on DEV.to",
+      "context": "gallery"
+    }
+  ],
+  "knowledge-sharing/20241101-engineering-talks": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403520/davdevs/entries/knowledge-sharing/talks.png",
+      "alt": "",
+      "caption": "Engineering Talks and Presentations",
+      "context": "gallery"
+    }
+  ],
+  "project/20260104-davdevs-bible-proverbs": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403416/davdevs/entries/project/20260104-davdevs-bible-proverbs.png",
+      "alt": "",
+      "caption": "Theme selection screen in Dav/Devs Bible Proverbs",
+      "context": "gallery"
+    }
+  ],
+  "project/20251223-davdevs-2025-complete-website-rebuild": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403413/davdevs/entries/project/20251223-001-davdevs-2025-update.png",
+      "alt": "",
+      "caption": "Dav/Devs 2025 Website Screenshot",
+      "context": "gallery"
+    }
+  ],
+  "project/20250525-praise-story": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403406/davdevs/entries/project/20250525-001-praise-story.png",
+      "alt": "",
+      "caption": "Praise Story",
+      "context": "gallery"
+    }
+  ],
+  "project/20231228-mass-rapid-riddles": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403401/davdevs/entries/project/20231228-001-mass-rapid-riddles.png",
+      "alt": "",
+      "caption": "Mass Rapid Riddles",
+      "context": "gallery"
+    }
+  ],
+  "project/20231227-laugh-and-be-blessed": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403398/davdevs/entries/project/20231227-001-laugh-and-be-blessed-next.png",
+      "alt": "",
+      "caption": "Laugh and be Blessed",
+      "context": "gallery"
+    }
+  ],
+  "project/20221208-image-sliders": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403386/davdevs/entries/project/20221208-001-image-sliders.png",
+      "alt": "",
+      "caption": "Image Sliders",
+      "context": "gallery"
+    }
+  ],
+  "project/20221111-line-clamp": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403380/davdevs/entries/project/20221111-001-line-clamp.png",
+      "alt": "",
+      "caption": "Line Clamp",
+      "context": "gallery"
+    }
+  ],
+  "project/20221110-joke-of-the-day": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403378/davdevs/entries/project/20221110-001-joke-generator.png",
+      "alt": "",
+      "caption": "Joke of the Day",
+      "context": "gallery"
+    }
+  ],
+  "project/20221007-password-visibility": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403375/davdevs/entries/project/20221007-001-password-visibility.png",
+      "alt": "",
+      "caption": "Password Visibility",
+      "context": "gallery"
+    }
+  ],
+  "project/20220920-new-dialog-element-example": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403369/davdevs/entries/project/20220920-001-dialog-example.png",
+      "alt": "",
+      "caption": "New Dialog Element Example",
+      "context": "gallery"
+    }
+  ],
+  "project/20220920-frontend-mentor-demo-collection": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403374/davdevs/entries/project/20220920-001-fem-projects.jpg",
+      "alt": "",
+      "caption": "Frontend Mentor Demo Collection",
+      "context": "gallery"
+    }
+  ],
+  "project/20220920-exploring-new-pseudo-classes": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403372/davdevs/entries/project/20220920-001-exploring-new-pseudo-classes.png",
+      "alt": "",
+      "caption": "Exploring New Pseudo Classes",
+      "context": "gallery"
+    }
+  ],
+  "project/20220819-qr-code-generator": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403364/davdevs/entries/project/20220819-001-qr-code-generator.png",
+      "alt": "",
+      "caption": "QR Code Generator",
+      "context": "gallery"
+    }
+  ],
+  "project/20220819-cut-corners-button": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403362/davdevs/entries/project/20220819-001-cut-corners.png",
+      "alt": "",
+      "caption": "Cut Corners Button",
+      "context": "gallery"
+    }
+  ],
+  "project/20220819-bootstrap-4-admin-dashboard-template": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403360/davdevs/entries/project/20220819-001-b4-admin-template.png",
+      "alt": "",
+      "caption": "Bootstrap 4 Admin Dashboard Template",
+      "context": "gallery"
+    }
+  ],
+  "project/20220811-5-coding-projects": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403358/davdevs/entries/project/20220811-001-5-html-css-js-projects.png",
+      "alt": "",
+      "caption": "5 Coding Projects",
+      "context": "gallery"
+    }
+  ],
+  "project/20220727-glass-website": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403344/davdevs/entries/project/20220727-001-glass-website.png",
+      "alt": "",
+      "caption": "Glass Website",
+      "context": "gallery"
+    }
+  ],
+  "project/20220420-the-beloveds-blog": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403341/davdevs/entries/project/20220420-001-the-beloveds-blog.png",
+      "alt": "",
+      "caption": "The Beloved's Blog",
+      "context": "gallery"
+    }
+  ],
+  "project/20220418-davinas-cms": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403337/davdevs/entries/project/20220418-001-davinas-cms.png",
+      "alt": "",
+      "caption": "Davina's CMS",
+      "context": "gallery"
+    }
+  ],
+  "project/20220124-css-button-animations": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403335/davdevs/entries/project/20220124-001-css-button-hover-animations.png",
+      "alt": "",
+      "caption": "CSS Button Animations",
+      "context": "gallery"
+    }
+  ],
+  "project/20211120-name-processor": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403333/davdevs/entries/project/20211120-001-randomise-names.png",
+      "alt": "",
+      "caption": "Name Processor",
+      "context": "gallery"
+    }
+  ],
+  "project/20210227-customer-dashboard-template": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403328/davdevs/entries/project/20210227-001-customer-dashboard.png",
+      "alt": "",
+      "caption": "Customer Dashboard Template",
+      "context": "gallery"
+    }
+  ],
+  "project/20210227-bible-api": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403325/davdevs/entries/project/20210227-001-bible-api.png",
+      "alt": "",
+      "caption": "Bible API",
+      "context": "gallery"
+    }
+  ],
+  "project/20200802-todo-laravel": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403323/davdevs/entries/project/20200802-001-todo-laravel.png",
+      "alt": "",
+      "caption": "TODO Laravel",
+      "context": "gallery"
+    }
+  ],
+  "project/20200116-pokemon-teams-template": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403321/davdevs/entries/project/20200116-001-pokemon-teams-template.png",
+      "alt": "",
+      "caption": "Pokemon Teams Template",
+      "context": "gallery"
+    }
+  ],
+  "project/20200116-davdevs": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403319/davdevs/entries/project/20200116-001-dav-devs.png",
+      "alt": "",
+      "caption": "Dav/Devs",
+      "context": "gallery"
+    }
+  ],
+  "project/20200116-comphanny-template": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403316/davdevs/entries/project/20200116-001-comphanny-template.png",
+      "alt": "",
+      "caption": "Comphanny Template",
+      "context": "gallery"
+    }
+  ],
+  "project/20200115-proverbs-everyday": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403315/davdevs/entries/project/20200115-001-proverbs-everyday.png",
+      "alt": "",
+      "caption": "Proverbs Everyday",
+      "context": "gallery"
+    }
+  ],
+  "project/20200115-color-palettes": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_680,q_auto,f_auto/v1783403312/davdevs/entries/project/20200115-001-color-palettes.png",
+      "alt": "",
+      "caption": "Color Palettes",
+      "context": "gallery"
+    }
+  ],
+  "ebook/its-not-scary-debug": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783430727/davdevs/mrh4laqb6hg5hhc1r432.png",
+      "alt": "It's Not Scary (Debug) — Cover",
+      "context": "cover"
+    }
+  ],
+  "ebook/the-punny-side-of-things": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png",
+      "alt": "The Punny Side of Things — Cover",
+      "context": "cover"
+    }
+  ],
+  "ebook/code-n-corny": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783418928/davdevs/publications/ebook/code-n-corny/cover.png",
+      "alt": "Code & Corny — Cover",
+      "context": "cover"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_320,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png",
+      "alt": "It's Not Magic (Code)",
+      "context": "inside-item"
+    },
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_320,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png",
+      "alt": "The Punny Side of Things",
+      "context": "inside-item"
+    }
+  ],
+  "ebook/its-not-magic-code": [
+    {
+      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png",
+      "alt": "It's Not Magic (Code) — Cover",
+      "context": "cover"
+    }
+  ]
+}
