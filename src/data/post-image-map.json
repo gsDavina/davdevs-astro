@@ -899,23 +899,6 @@
       "context": "cover"
     }
   ],
-  "ebook/code-n-corny": [
-    {
-      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783418928/davdevs/publications/ebook/code-n-corny/cover.png",
-      "alt": "Code & Corny — Cover",
-      "context": "cover"
-    },
-    {
-      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_320,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png",
-      "alt": "It's Not Magic (Code)",
-      "context": "inside-item"
-    },
-    {
-      "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_320,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png",
-      "alt": "The Punny Side of Things",
-      "context": "inside-item"
-    }
-  ],
   "ebook/its-not-magic-code": [
     {
       "src": "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png",

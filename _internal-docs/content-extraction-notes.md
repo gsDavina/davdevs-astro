@@ -15,18 +15,21 @@ the live HTML `.prose` bodies, converted to Markdown.
 | `notebook/` | 27 | `/notebook/*` | |
 | `project/` | 29 | `/project/*` | |
 | `tool/` | 13 | `/tool/*` | Each has a `reactComponent` frontmatter field |
-| `ebook/` | 4 | `/ebooks/*` | Non-Christian titles only, see below |
+| `ebook/` | 3 | `/ebooks/*` | Non-Christian titles only, see below |
 
-**122 standard entries + 4 ebooks = 126 markdown files.**
+**122 standard entries + 3 ebooks = 125 markdown files.**
 
 ## What was intentionally excluded
 
 - **Sermons** (`/sermon/*`) — excluded entirely, per scope.
 - **Christian eBooks** — excluded from `ebook/`: the *Scrolls for the Screen
   Generation* bundle and its 6 volumes, *Jesus & AI*, *Daddy God is for You*,
-  *Carried by Grace*, and the *Carried, Guided, Held* bundle. Only the 4
-  non-Christian titles (*It's Not Scary (Debug)*, *The Punny Side of Things*,
-  *Code & Corny* bundle, *It's Not Magic (Code)*) were migrated.
+  *Carried by Grace*, and the *Carried, Guided, Held* bundle. Of the
+  non-Christian titles, only *It's Not Scary (Debug)* and *The Punny Side of
+  Things* were migrated as standalone titles; *It's Not Magic (Code)* was
+  migrated on its own, and the *Code & Corny* bundle pairing it with *The
+  Punny Side of Things* was removed entirely per instruction (2026-09-06) —
+  the two component books remain available individually.
 - **Template** (`/template`) — checked; the live page has zero published
   entries ("No e-books yet."), so there was nothing to extract.
 - **Funny** (`/funny`) — left for a later pass, per instructions. Its data
