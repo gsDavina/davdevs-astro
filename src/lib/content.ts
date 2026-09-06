@@ -16,37 +16,24 @@ export const BLOG_TYPES = [
 export type BlogType = (typeof BLOG_TYPES)[number];
 
 /**
- * Template is a real content type on the live site (it appears in its nav
- * and has a listing page) but has zero live entries to extract (see
- * _internal-docs/content-extraction-notes.md). Its listing page renders
- * the same "No entries found" empty state the live site shows.
- *
- * Sermon used to be handled the same way, but there's no Sermon content
- * or nav link at all in this rebuild now — removed entirely rather than
- * kept as an empty placeholder.
+ * Sermon and Template used to exist here as nav links with an empty
+ * "No entries found" listing page (real content types on the live site,
+ * but with no migrated content). Both have since been removed entirely
+ * per instruction — no link, no route, for either — so every listing
+ * type now has real content and there's no separate "empty type" concept
+ * left to model.
  */
-export const EMPTY_TYPES = ['template'] as const;
-export type EmptyType = (typeof EMPTY_TYPES)[number];
-
-export const LISTING_TYPES = [...BLOG_TYPES, ...EMPTY_TYPES] as const;
-export type ListingType = BlogType | EmptyType;
-
-export const TYPE_LABELS: Record<ListingType, string> = {
+export const TYPE_LABELS: Record<BlogType, string> = {
   article: 'Article',
   fem: 'Frontend Mentor',
   'knowledge-sharing': 'Knowledge Sharing',
   notebook: 'Notebooks',
   project: 'Project',
   tool: 'Tool',
-  template: 'Template',
 };
 
 export function isBlogType(slug: string): slug is BlogType {
   return (BLOG_TYPES as readonly string[]).includes(slug);
-}
-
-export function isListingType(slug: string): slug is ListingType {
-  return (LISTING_TYPES as readonly string[]).includes(slug);
 }
 
 export async function getBlogEntries(type: BlogType) {
@@ -62,9 +49,6 @@ export async function getBlogEntries(type: BlogType) {
  * Home page section order: davdevs-laravel's home.blade.php pins E-Books
  * first (handled separately in index.astro), then loops content_types
  * ordered alphabetically by name, skipping any section with zero entries.
- * Template always has zero, so it never renders a home section, matching
- * the source behaviour. Sermon has no nav link or route at all here (see
- * the EMPTY_TYPES comment above), so it's not part of this list either.
  */
 export const HOME_SECTION_ORDER: BlogType[] = [
   'article',
@@ -78,8 +62,8 @@ export const HOME_SECTION_ORDER: BlogType[] = [
 /**
  * Nav order matches the live site: content types alphabetically by name
  * (Article, eBooks, Frontend Mentor, Knowledge Sharing, Notebooks,
- * Project, Template, Tool), then Funny appended last. Sermon removed
- * entirely — no link, no route.
+ * Project, Tool), then Funny appended last. Sermon and Template were both
+ * removed entirely per instruction — no link, no route for either.
  */
 export const NAV_ITEMS = [
   { label: 'Article', href: '/article' },
@@ -88,7 +72,6 @@ export const NAV_ITEMS = [
   { label: 'Knowledge Sharing', href: '/knowledge-sharing' },
   { label: 'Notebooks', href: '/notebook' },
   { label: 'Project', href: '/project' },
-  { label: 'Template', href: '/template' },
   { label: 'Tool', href: '/tool' },
   { label: 'Funny', href: '/funny' },
 ] as const;

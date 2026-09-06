@@ -1,5 +1,34 @@
 # Progress
 
+## 2026-09-07 — Removed the Template nav link/route too, and simplified the now-dead EMPTY_TYPES machinery
+
+Follow-up to removing Sermon earlier today: instructed to remove Template
+the same way. With both empty-placeholder nav items gone, `EMPTY_TYPES`/
+`ListingType`/`isListingType` in `src/lib/content.ts` had zero remaining
+members to support, so rather than leave that scaffolding in place for a
+concept that no longer exists, simplified it away:
+
+- `TYPE_LABELS` is now `Record<BlogType, string>` (was `Record<ListingType,
+  string>`), `NAV_ITEMS` drops Template, `HOME_SECTION_ORDER` was already
+  `BlogType[]`-only.
+- Removed `EMPTY_TYPES`, `EmptyType`, `LISTING_TYPES`, `ListingType`, and
+  `isListingType` (the last of these was already dead code — grepped and
+  confirmed it had no call sites even before this change).
+- `EntryCard.astro`'s prop types simplified from
+  `Exclude<ListingType, 'template'>` to plain `BlogType`.
+- `[type]/index.astro` now generates static paths from `BLOG_TYPES`
+  directly instead of `LISTING_TYPES`, and always calls `getBlogEntries`
+  (no more `isEmptyType` branch). Kept the "No entries found" empty-state
+  JSX as a defensive fallback for any real content type that happens to
+  have zero current entries — that's a general case, not specific to
+  Sermon/Template.
+
+Verified in-browser: nav renders exactly 8 links (was 10 this morning,
+9 after the Sermon removal), and both `/sermon` and `/template` 404.
+Build stays clean (135 pages, down from 137 — the two empty listing
+routes are gone). Updated the milestones/checklist docs' remaining
+"9/10 links including Template" assertions to match.
+
 ## 2026-09-07 — Removed the Sermon nav link/route entirely (per instruction)
 
 Sermon previously worked like Template: a nav link + empty listing page,

@@ -168,12 +168,11 @@ summary:
   against the production build (not the live `davdevs.dev` domain, which
   doesn't exist yet) — see `src/lib/site-config.ts` and
   `_internal-docs/lighthouse/` for the full per-page reports.
-- **Template has no content but keeps its empty listing page** (zero live
-  entries to extract, matching the live site's own empty state).
-  **Sermon has no nav link, route, or content at all** — Sermons were out
-  of scope for content extraction from the start, and the nav link/route
-  were removed entirely per instruction rather than kept as an empty
-  placeholder like Template.
+- **Neither Sermon nor Template exist here at all** — no nav link, no
+  route, for either (`/sermon` and `/template` both 404). Both were
+  originally kept as empty-listing placeholders (real content types on
+  the live site with zero migrated entries), matching its own empty
+  state; both were later removed entirely per instruction.
 
 ## Project docs
 

@@ -1,5 +1,5 @@
 ---
-import { formatDate, readTimeShort, type ListingType } from '../lib/content';
+import { formatDate, readTimeShort, type BlogType } from '../lib/content';
 import type { CollectionEntry } from 'astro:content';
 
 /**
@@ -10,8 +10,8 @@ import type { CollectionEntry } from 'astro:content';
  * line. No tags, no like count — the source cards don't show either.
  */
 interface Props {
-  type: Exclude<ListingType, 'template'>;
-  entry: CollectionEntry<Exclude<ListingType, 'template'>>;
+  type: BlogType;
+  entry: CollectionEntry<BlogType>;
 }
 const { type, entry } = Astro.props;
 const href = `/${type}/${entry.data.slug}`;

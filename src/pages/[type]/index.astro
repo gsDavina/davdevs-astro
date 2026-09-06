@@ -3,20 +3,17 @@ import Site from '../../layouts/Site.astro';
 import EntryCard from '../../components/EntryCard.astro';
 import {
   BLOG_TYPES,
-  EMPTY_TYPES,
-  LISTING_TYPES,
   TYPE_LABELS,
   getBlogEntries,
   type BlogType,
 } from '../../lib/content';
 
 export async function getStaticPaths() {
-  return LISTING_TYPES.map((type) => ({ params: { type } }));
+  return BLOG_TYPES.map((type) => ({ params: { type } }));
 }
 
-const { type } = Astro.params as { type: (typeof LISTING_TYPES)[number] };
-const isEmptyType = (EMPTY_TYPES as readonly string[]).includes(type);
-const entries = isEmptyType ? [] : await getBlogEntries(type as BlogType);
+const { type } = Astro.params as { type: BlogType };
+const entries = await getBlogEntries(type);
 const label = TYPE_LABELS[type];
 ---
 
@@ -28,7 +25,7 @@ const label = TYPE_LABELS[type];
       {entries.length === 0 ? (
         <p class="empty">No entries found.</p>
       ) : (
-        entries.map((entry) => <EntryCard type={type as BlogType} entry={entry} />)
+        entries.map((entry) => <EntryCard type={type} entry={entry} />)
       )}
     </div>
   </section>
