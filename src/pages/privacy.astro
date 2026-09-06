@@ -14,14 +14,22 @@ import Site from '../layouts/Site.astro';
       <h2>What we collect</h2>
       <ul>
         <li>
-          <strong>Nothing on our servers.</strong> This is a static site with no database and
-          no server-side session — there is nothing to collect, because there is nowhere to
-          store it.
+          <strong>Browsing the site: nothing on our servers.</strong> Every page except the
+          e-book checkout flow below is static, with no database and no server-side session —
+          there is nothing to collect, because there is nowhere to store it.
         </li>
         <li>
           <strong>Theme and like preferences</strong> — stored only in your browser's local
           storage (dark/light mode, which posts you've liked). This never leaves your device
           and is never sent to us.
+        </li>
+        <li>
+          <strong>Buying an e-book.</strong> Payment is handled entirely by Stripe — we never
+          see or store your card details. To fulfil your order and email you the download link,
+          we store your email address, which e-book/tier you bought, the amount charged, and
+          Stripe's own transaction reference. This is used only to deliver your purchase and
+          handle refunds; it's never used for marketing and never shared beyond Stripe and our
+          email-delivery provider (Resend), both acting only on our instructions.
         </li>
         <li>
           <strong>Standard hosting logs</strong> — your hosting provider may keep basic access
@@ -34,8 +42,9 @@ import Site from '../layouts/Site.astro';
       <ul>
         <li>No third-party analytics or tracking scripts (no Google Analytics, no Facebook Pixel).</li>
         <li>No advertising cookies.</li>
-        <li>No selling or sharing of any data with third parties.</li>
+        <li>No selling of any data to third parties, and no sharing beyond what's needed to process a purchase (Stripe for payment, Resend for the receipt email).</li>
         <li>No account system, so there is no personal profile to breach.</li>
+        <li>No marketing use of your email address — it's stored only to fulfil the order you placed.</li>
       </ul>
 
       <h2>Essential cookies</h2>

@@ -1,5 +1,16 @@
 # Progress
 
+## 2026-09-07 — Privacy policy no longer contradicts the Stripe pipeline (+ 5 smaller checklist closures)
+
+**The important one first**: `/privacy` still said *"Nothing on our servers. This is a static site with no database... there is nothing to collect, because there is nowhere to store it."* That was true when it was written, but is now genuinely false — the Stripe/Postgres ebook pipeline shipped earlier today and really does store a buyer's email address, which ebook/tier they bought, the amount charged, and Stripe's transaction reference, server-side. Left as-is, this would have been a compliance document making a factually false claim about what the site does with personal data, not just a stale doc. Added a "Buying an e-book" disclosure: Stripe handles payment directly (we never see card details), we store email + order data only to fulfil the purchase and handle refunds, Resend sends the receipt email, none of it is used for marketing or shared beyond those two processors. Rebuilt and confirmed the page renders correctly.
+
+**Five smaller items, each verified rather than assumed:**
+- **Notebooks content rendering**: checked the actual source — it's prose *about* notebooks, not a real exported `.ipynb` with output cells, so "renders as standard Markdown" was already the complete answer. Confirmed in-browser that an inline code line renders as a proper `<pre><code>` block.
+- **Tool listing checklist line was stale**: it still said "embedded widget not yet built" for a phase that was actually completed in an earlier iteration (all 13 tools). Corrected.
+- **Search coverage and mobile fallback**: confirmed the "10 content types" question resolves cleanly (7 have content and are indexed; Sermon/Template have zero entries to index; quips are a deliberate exclusion) and verified in-browser at 375×812 that the mobile tab bar's search button actually opens the palette and focuses the input.
+- **Reaction counter**: clicked the like button twice in-browser and confirmed the count actually goes 0→1→0, not just that the code looks right.
+- **Consistency cleanup**: several "N/A by design" items (the anonymous-cookie requirement, rate-limiting, `/privacy` verbatim) were left as unchecked `[ ]` even though they're resolved decisions, not open gaps — recheck as `[x]` with the reasoning inline, so what's *actually* still open (real device/DNS/live-site-access items) isn't buried under decided-and-closed ones.
+
 ## 2026-09-07 — Keyboard focus, alt text, and 2 broken internal links
 
 Three more checklist items from §12 (Accessibility) and §15 (Content Completeness) that are actually checkable in this environment, done with real verification rather than assumption:

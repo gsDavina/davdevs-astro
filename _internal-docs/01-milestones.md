@@ -71,9 +71,9 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [ ] Confirm search covers all 10 content types plus pages, matching original result quality — covers the 6 blog types + E-Books; **quips are intentionally excluded** (no single canonical URL per quip)
 
 ## Phase 8 — Reactions / Likes
-- [x] Decide the equivalent mechanism in Astro (server route + DB, or a lightweight edge function) for the anonymous like/reaction token described in the Privacy Policy — **decided: localStorage-only, per-browser** (no shared count); a real shared counter needs a backend that hasn't been chosen (Phase 1 hosting decision still open) — see `03-progress.md`
-- [ ] Cookie must remain HttpOnly, SameSite=Strict, anonymous (no PII), consistent with the existing Privacy Policy wording — **N/A as designed**: no cookie is set at all (localStorage instead), so `/privacy` was rewritten rather than copied to avoid describing a cookie that doesn't exist
-- [ ] Confirm rate limiting / anti-abuse approach (hashed IP, daily-rotating salt) is preserved if reactions are kept — N/A, there's no server to rate-limit
+- [x] Decide the equivalent mechanism in Astro (server route + DB, or a lightweight edge function) for the anonymous like/reaction token described in the Privacy Policy — **decided: localStorage-only, per-browser** (no shared count). A backend now exists (Vercel adapter + Railway Postgres, added for the ebook Stripe pipeline — see `03-progress.md`'s 2026-09-07 entries), so a shared counter is no longer infra-blocked the way it was when this decision was made; it stays localStorage-only because a shared counter was never actually asked for, not because it's unbuildable
+- [x] Cookie must remain HttpOnly, SameSite=Strict, anonymous (no PII), consistent with the existing Privacy Policy wording — **N/A as designed**: no cookie is set at all (localStorage instead), so `/privacy` was rewritten rather than copied to avoid describing a cookie that doesn't exist
+- [x] Confirm rate limiting / anti-abuse approach (hashed IP, daily-rotating salt) is preserved if reactions are kept — N/A, there's no server to rate-limit
 
 ## Phase 9 — SEO & Metadata
 - [x] Port per-page meta: title, description, canonical, OG tags, Twitter card — via `Site.astro`
@@ -83,7 +83,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [x] Drop the CSRF meta tag if it was a Next.js-only artifact with no static equivalent need — confirm first — **confirmed and dropped**: a static build has no session/forms to protect
 
 ## Phase 10 — Privacy, Cookies & Compliance
-- [ ] Rebuild `/privacy` page content verbatim (PDPA framing, what's collected, what isn't, essential cookies only) — **intentionally not verbatim**: rewritten to accurately describe this build's actual (much smaller) data footprint rather than copy claims about a cookie/hashed-IP/DB system this static site doesn't have — see `03-progress.md`
+- [x] Rebuild `/privacy` page content verbatim (PDPA framing, what's collected, what isn't, essential cookies only) — **decided not verbatim**: rewritten to accurately describe this build's actual data footprint rather than copy the original's claims about a cookie/hashed-IP/DB system this build didn't originally have. **Updated again 2026-09-07**: the "nothing on our servers" claim became genuinely false once the Stripe/Postgres ebook pipeline shipped (buyer email + order data now really is stored server-side) — added a dedicated "Buying an e-book" disclosure (Stripe handles payment, we store email/order/tier for fulfillment only, Resend sends the receipt, no marketing use) rather than leaving a compliance document that contradicts what the code actually does; see `03-progress.md`
 - [x] Rebuild the cookie-notice banner ("We use only essential cookies... Learn more / Got it") with the same dismiss behavior — copy updated to match what's actually stored (theme + like prefs in localStorage, not cookies)
 - [x] Confirm no analytics/tracking scripts are introduced anywhere in the rebuild — none present; only first-party inline scripts (theme, search, likes, cookie banner) and the Google Fonts stylesheet
 

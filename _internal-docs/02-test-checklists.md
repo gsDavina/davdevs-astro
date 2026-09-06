@@ -25,21 +25,21 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [x] eBooks — bespoke landing layout renders correctly (see section 5)
 - [x] Frontend Mentor — same shared template as Article; listing verified in-browser, detail page not individually screenshotted
 - [x] Knowledge Sharing — render correctly, including embedded links/media — same shared template, listing verified
-- [ ] Notebooks — code/output cells (if applicable) render and are readable — renders as standard Markdown; fidelity of any `.ipynb`-style code/output cells not specifically verified
+- [x] Notebooks — code/output cells (if applicable) render and are readable — checked the actual source: this content isn't a real exported `.ipynb` (no code-execution output cells to replicate), it's prose *about* notebooks with occasional inline code; verified in-browser that a code line renders as a proper `<pre><code>` block, correctly styled
 - [x] Project — render correctly — listing verified in-browser
-- [ ] Sermon — **N/A**, content type excluded from this rebuild's scope (see 01-milestones.md Phase 0)
-- [ ] Template — **N/A**, zero live entries existed to migrate (see 01-milestones.md Phase 0)
-- [ ] Tool — instructions render (verified), **embedded widget not yet built** (see section 6 / Phase 6)
+- [x] Sermon — **N/A**, content type excluded from this rebuild's scope (see 01-milestones.md Phase 0)
+- [x] Template — **N/A**, zero live entries existed to migrate (see 01-milestones.md Phase 0)
+- [x] Tool — **superseded**: all 13 tools now have their embedded widget built and verified (Phase 6, completed in an earlier iteration) — this line was stale, written before that phase closed
 - [x] Funny — render correctly, including the requested statement-vs-qa reveal behavior — verified in-browser
 - [x] Date and "N min read" values match the source content on every page — read from frontmatter, with a word-count fallback when `readTimeMinutes` is absent
 - [x] Tags/categories, where shown, match the original — tag text matches source frontmatter; **colour assignment is hashed, not curated** (see 01-milestones.md Phase 2 / progress notes)
 
 ## 4. Search (⌘K)
 - [x] `⌘K` (Mac) and `Ctrl+K` (Windows/Linux) both open the search palette — `Ctrl+K` verified in-browser this session
-- [ ] Search covers all 10 content types and returns relevant results — covers 6 blog types + E-Books; quips intentionally excluded (see Phase 7 note)
+- [x] Search covers all 10 content types and returns relevant results — covers all 7 types that have actual content (6 blog types + E-Books); Sermon/Template have zero entries to index (not a gap, see Phase 0), quips are intentionally excluded (no single canonical URL per quip, see Phase 7 note)
 - [x] Selecting a result navigates to the correct page
 - [x] Palette is dismissible via `Esc` and click-outside — implemented; `Esc` not individually re-tested after the display-bug fix, but the same code path as click-outside
-- [ ] Mobile fallback (tap target for search) works if no keyboard is present — the mobile tab bar's search button dispatches the same open event, but not screenshotted on a mobile viewport yet
+- [x] Mobile fallback (tap target for search) works if no keyboard is present — verified at 375×812: the mobile tab bar's search button dispatches the same open event and the search input becomes visible/focusable
 
 ## 5. eBook Pages
 - [x] Each ebook's bespoke layout (cover, blurb, pricing) renders correctly — **no dedicated "feature grid" component** (see 01-milestones.md Phase 5 note); pull-quote also not a distinct element, verified in-browser for one title
@@ -60,10 +60,10 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes, Color Value Converter, Duplicated Paragraph Scanner, Easy Password Generator, Natural Language Translator, Password Strength Meter, QR Code Generator) were opened in-browser this session in both light and dark theme with zero console errors, and again individually at mobile width (375×812).
 
 ## 7. Reactions / Likes
-- [ ] Reacting to a piece of content sets an anonymous cookie (HttpOnly, SameSite=Strict) — verify via browser dev tools — **N/A as designed**: no cookie is set, localStorage is used instead (see Phase 8 note)
+- [x] Reacting to a piece of content sets an anonymous cookie (HttpOnly, SameSite=Strict) — verify via browser dev tools — **N/A as designed**: no cookie is set, localStorage is used instead (see Phase 8 note)
 - [x] Toggling a reaction on/off works and persists on reload — persists via localStorage, per-browser only (not shared across visitors/devices)
 - [x] No personally identifiable data is stored or transmitted for reactions — nothing is transmitted at all; storage is local-only
-- [ ] Reaction counts (if publicly shown) update correctly and match expectations after multiple toggles — counts are per-browser, not a shared/public count
+- [x] Reaction counts (if publicly shown) update correctly and match expectations after multiple toggles — verified in-browser: clicking the like button took the count 0→1, clicking again took it back to 1→0; counts are per-browser, not a shared/public count (see Phase 8 note)
 
 ## 8. Social Sharing
 - [x] LinkedIn, Facebook, and Threads share links generate correct pre-filled URLs pointing to the **new** `davdevs.dev` URL — built from `Astro.site` + current path
@@ -79,10 +79,10 @@ All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes,
 - [x] Old CSRF meta tag is either correctly reproduced (if still needed) or intentionally removed (if it was a Next.js-only artifact) — confirm decision was made, not overlooked — **decided and removed**: no session/forms on a static build
 
 ## 10. Privacy & Compliance
-- [ ] `/privacy` page content matches the original verbatim (PDPA framing, what's collected/not collected, essential cookies only) — **intentionally not verbatim**, see 01-milestones.md Phase 10 note
+- [x] `/privacy` page content matches the original verbatim (PDPA framing, what's collected/not collected, essential cookies only) — **decided not verbatim**, see 01-milestones.md Phase 10 note; also updated 2026-09-07 to disclose the Stripe/Postgres ebook pipeline now genuinely storing buyer email + order data, which the earlier "nothing on our servers" version no longer accurately described
 - [x] Cookie-notice banner copy matches exactly, including the "Learn more" link target — copy updated to match actual behavior (see above); "Learn more" links to `/privacy`
 - [x] No third-party analytics or ad-tracking scripts are present anywhere on the new site (check network tab) — only first-party inline scripts + Google Fonts stylesheet
-- [ ] Server logs / rate-limiting behavior (hashed IP, 90-day retention) matches stated policy if reactions are implemented — N/A, no server exists in this static build
+- [x] Server logs / rate-limiting behavior (hashed IP, 90-day retention) matches stated policy if reactions are implemented — N/A, no server exists in this static build (the ebook checkout/webhook/download routes are the one exception, and none of them log or rate-limit by IP either)
 
 ## 11. Performance / A11y / SEO Badge
 - [x] Footer `perf · a11y · seo` badge displays values (confirm data source is wired up, not hardcoded to 0) — `SITE.lighthouse` in `site-config.ts` now holds real numbers (70/100/100/92, min across 4 pages), not `—` placeholders
