@@ -45,7 +45,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 
 ## Phase 4 — Content Type Rendering
 - [x] Standard long-form types (Article, Knowledge Sharing, Project, Frontend Mentor, Tool, Funny): Markdown rendering with code blocks, images, blockquotes matching original typography — verified in-browser on an article detail page (code spans, bold, headings all render correctly)
-- [ ] Notebooks: confirm and replicate how `.ipynb`-style content is rendered (code cells, output blocks) if applicable — renders as standard Markdown via the same template; not specifically verified against original code-cell fidelity
+- [x] Notebooks: confirm and replicate how `.ipynb`-style content is rendered (code cells, output blocks) if applicable — checked the actual source: this content is prose *about* notebooks, not a real exported `.ipynb` with code-execution output cells, so standard Markdown rendering is the complete answer; confirmed in-browser that an inline code line renders as a proper `<pre><code>` block
 - [x] Reading-time calculation matches original (e.g. "3 min read") — uses `readTimeMinutes` from frontmatter, falls back to a 200wpm word-count estimate when absent
 - [x] Date formatting matches original — matches davdevs-laravel's real `$date->format('M j, Y')` (e.g. `"Jun 18, 2024"`); an earlier pass had copied a day-month-year style from the `static/` mockup folder instead, corrected once the real dynamic templates were checked (see `03-progress.md`)
 
@@ -68,7 +68,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 ## Phase 7 — Search (⌘K)
 - [x] Decide indexing approach for a static site (build-time search index vs. client-side fuzzy search over content collections) — **decided: build-time JSON index** (`/search-index.json`) + client-side substring match, no external search service
 - [x] Rebuild the command-palette UI and keyboard shortcut (`⌘K` / `Ctrl+K`) — verified in-browser, including the match-highlight styling fix (see `03-progress.md`)
-- [ ] Confirm search covers all 10 content types plus pages, matching original result quality — covers the 6 blog types + E-Books; **quips are intentionally excluded** (no single canonical URL per quip)
+- [x] Confirm search covers all 10 content types plus pages, matching original result quality — covers all 7 types that have actual content (6 blog types + E-Books); Sermon/Template have zero entries to index (not a gap), quips are intentionally excluded (no single canonical URL per quip); "matching original result quality" isn't independently verifiable without live-site access
 
 ## Phase 8 — Reactions / Likes
 - [x] Decide the equivalent mechanism in Astro (server route + DB, or a lightweight edge function) for the anonymous like/reaction token described in the Privacy Policy — **decided: localStorage-only, per-browser** (no shared count). A backend now exists (Vercel adapter + Railway Postgres, added for the ebook Stripe pipeline — see `03-progress.md`'s 2026-09-07 entries), so a shared counter is no longer infra-blocked the way it was when this decision was made; it stays localStorage-only because a shared counter was never actually asked for, not because it's unbuildable

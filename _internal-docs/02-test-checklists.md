@@ -100,7 +100,7 @@ All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes,
 - [ ] Chrome, Safari, Firefox, Edge — desktop
 - [ ] iOS Safari and Android Chrome — mobile
 - [ ] Tablet breakpoint (iPad-size) checked for layout breaks
-- [ ] Reduced-motion / high-contrast OS settings don't break the layout
+- [ ] Reduced-motion / high-contrast OS settings don't break the layout — **partially addressed**: audited every animation site-wide (grepped for `@keyframes`/`animation:`) and found exactly one infinite/looping animation (the hero's blinking terminal cursor); added a `prefers-reduced-motion: reduce` override that stops it. The one other animation (the Funny page's joke fade-in) is a brief one-shot transition, not the kind `prefers-reduced-motion` is meant to suppress. High-contrast OS mode and the rest of this section still need real browsers/devices, which this environment doesn't have
 
 ## 14. Domain Cutover Verification
 - [ ] Every old `davinaleong.com/*` URL 301-redirects to the correct `davdevs.dev/*` URL (spot-check a sample from each content type)
@@ -113,4 +113,4 @@ All 13 tools (the 4 above plus Calculator, Card Miles Converter, Color Palettes,
 - [x] Item counts on each listing page match the live site's counts — matches `content-extraction-notes.md`'s per-type counts (25 article, 24 fem, 4 knowledge-sharing, 27 notebook, 29 project, 13 tool, 4 ebook); "live site" itself wasn't re-checked, only the extraction record
 - [ ] Spot-check the 4 "latest" items shown per home-page section against the live site — not checkable without live-site access
 - [x] No orphaned/broken internal links introduced during migration — wrote a script crawling every built page's internal `href`s against the actual output (`dist/client`); found and fixed 2 real broken cross-links (an article and a project linking to each other with the wrong path — `/projects/...`/`/articles/...` instead of singular `/project/...`/`/article/...`, and a stale/wrong slug on one of them). Re-ran after the fix: 138 pages, 140 unique internal hrefs, **0 broken**
-- [ ] No content lost in migration (compare a sample article, sermon, and ebook word-for-word against the extracted source) — not done this round; would need the original extraction source re-opened side-by-side, not attempted
+- [ ] No content lost in migration (compare a sample article, sermon, and ebook word-for-word against the extracted source) — genuinely not verifiable now, not just "not attempted": per `content-extraction-notes.md`, the extraction staged into `_internal-docs/src/{content,data,images}` and was then *moved* (not copied) into `src/content`/`src/data`/`public/images` in an earlier iteration, so there's no separate staging copy left to diff against, and there's no live-site access either. Sermons were also never extracted at all (out of scope from the start — see Phase 0), so a sermon comparison isn't applicable regardless

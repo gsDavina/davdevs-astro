@@ -79,6 +79,11 @@ const ebooks = await getCollection('ebook');
   .hero-wordmark .cursor {
     animation: cursor-blink 1.1s step-end infinite;
   }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-wordmark .cursor {
+      animation: none;
+    }
+  }
   .hero-sub {
     font-family: var(--font-sans);
     font-size: 14px;

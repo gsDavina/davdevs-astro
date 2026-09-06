@@ -1,5 +1,13 @@
 # Progress
 
+## 2026-09-07 — Reduced-motion support, and syncing two docs that had drifted
+
+Small cleanup round, three things:
+
+1. **Two stale lines in `01-milestones.md`** — the Notebooks and search-coverage findings from earlier today were written into `02-test-checklists.md` but I forgot to sync the same resolution back to `01-milestones.md`'s mirrored lines, leaving them contradicting each other (one doc said resolved, the other still said open). Fixed both to match.
+2. **"No content lost in migration" checklist item corrected, not just left alone**: checked whether the original extraction is still available to diff against — per `content-extraction-notes.md`, it was staged into `_internal-docs/src/` and then *moved* (not copied) into `src/content` in an earlier iteration, so there's no separate copy left. This item was worded as "not attempted"; it's actually not *attemptable* at all right now (no staging copy, no live-site access), which is a meaningfully different and more honest status.
+3. **`prefers-reduced-motion` support, added not just noted**: grepped the whole site for `@keyframes`/`animation:` and found exactly one infinite/looping animation — the hero's blinking terminal cursor (`~/dav/devs _`). Added a `@media (prefers-reduced-motion: reduce)` override that stops it. The Funny page's other animation is a one-shot fade-in on reveal, not the repeating kind `prefers-reduced-motion` is meant to address, so it was left alone. This doesn't close out the full cross-browser/device checklist section (still needs real browsers/devices/high-contrast-mode this environment doesn't have), but it's a real, verified fix rather than a documentation-only note.
+
 ## 2026-09-07 — Privacy policy no longer contradicts the Stripe pipeline (+ 5 smaller checklist closures)
 
 **The important one first**: `/privacy` still said *"Nothing on our servers. This is a static site with no database... there is nothing to collect, because there is nowhere to store it."* That was true when it was written, but is now genuinely false — the Stripe/Postgres ebook pipeline shipped earlier today and really does store a buyer's email address, which ebook/tier they bought, the amount charged, and Stripe's transaction reference, server-side. Left as-is, this would have been a compliance document making a factually false claim about what the site does with personal data, not just a stale doc. Added a "Buying an e-book" disclosure: Stripe handles payment directly (we never see card details), we store email + order data only to fulfil the purchase and handle refunds, Resend sends the receipt email, none of it is used for marketing or shared beyond those two processors. Rebuilt and confirmed the page renders correctly.
