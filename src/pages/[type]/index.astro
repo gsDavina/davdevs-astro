@@ -1,191 +1,71 @@
 ---
 import Site from '../../layouts/Site.astro';
-import PostRow from '../../components/PostRow.astro';
+import EntryCard from '../../components/EntryCard.astro';
 import {
   BLOG_TYPES,
-  BLOG_TYPE_LABELS,
-  BLOG_TYPE_LABELS_PLURAL,
+  EMPTY_TYPES,
+  LISTING_TYPES,
+  TYPE_LABELS,
   getBlogEntries,
+  type BlogType,
 } from '../../lib/content';
 
 export async function getStaticPaths() {
-  return BLOG_TYPES.map((type) => ({ params: { type } }));
+  return LISTING_TYPES.map((type) => ({ params: { type } }));
 }
 
-const { type } = Astro.params as { type: (typeof BLOG_TYPES)[number] };
-const entries = await getBlogEntries(type);
-const label = BLOG_TYPE_LABELS_PLURAL[type];
-
-// Group entries by year, preserving the newest-first order already applied.
-const byYear = new Map<string, typeof entries>();
-for (const entry of entries) {
-  const year = entry.data.datePublished ? String(entry.data.datePublished.getFullYear()) : 'Undated';
-  if (!byYear.has(year)) byYear.set(year, []);
-  byYear.get(year)!.push(entry);
-}
-
-const allTags = [...new Set(entries.flatMap((e) => e.data.tags))].sort();
+const { type } = Astro.params as { type: (typeof LISTING_TYPES)[number] };
+const isEmptyType = (EMPTY_TYPES as readonly string[]).includes(type);
+const entries = isEmptyType ? [] : await getBlogEntries(type as BlogType);
+const label = TYPE_LABELS[type];
 ---
 
-<Site title={label} description={`${label} by Davina Leong — ${entries.length} posts.`}>
-  <div class="page-header">
-    <p class="breadcrumb">dav<span>/</span>devs <span class="sep">›</span> {label.toLowerCase()}</p>
-    <h1 class="page-title">{label}</h1>
-    <p class="page-count">{entries.length} posts</p>
-  </div>
+<Site title={label} description={`${label} by Davina Leong.`}>
+  <section class="listing">
+    <h1 class="listing-title">{label}</h1>
 
-  <div class="listing-layout">
-    <aside class="sidebar">
-      {allTags.length > 0 && (
-        <div class="sidebar-section">
-          <p class="sidebar-heading"><span class="slash">/</span> tags</p>
-          <div class="tag-cloud">
-            {allTags.map((tag) => <span class="tag">{tag}</span>)}
-          </div>
-        </div>
+    <div class="entry-grid">
+      {entries.length === 0 ? (
+        <p class="empty">No entries found.</p>
+      ) : (
+        entries.map((entry) => <EntryCard type={type as BlogType} entry={entry} />)
       )}
-    </aside>
-
-    <main>
-      <div class="post-list">
-        {[...byYear.entries()].map(([year, yearEntries]) => (
-          <>
-            <div class="year-divider">
-              <div class="year-divider-line"></div>
-              <span class="year-divider-label">{year}</span>
-              <div class="year-divider-line"></div>
-            </div>
-            {yearEntries.map((entry) => <PostRow type={type} entry={entry} />)}
-          </>
-        ))}
-        {entries.length === 0 && <p class="empty">No posts yet.</p>}
-      </div>
-    </main>
-  </div>
+    </div>
+  </section>
 </Site>
 
 <style>
-  .page-header {
+  .listing {
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 40px var(--page-padding-x) 28px;
-    width: 100%;
+    padding: 48px var(--page-padding-x);
   }
-  .breadcrumb {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-faint);
-    letter-spacing: var(--tracking-mono-sm);
-    margin-bottom: 12px;
-  }
-  .breadcrumb span {
-    color: var(--accent);
-  }
-  .breadcrumb .sep {
-    color: var(--text-faint);
-  }
-  .page-title {
+  .listing-title {
     font-family: var(--font-display);
     font-size: clamp(24px, 4vw, 32px);
     font-weight: 800;
     color: var(--text-primary);
-    line-height: var(--leading-display);
-    letter-spacing: var(--tracking-display);
-    margin: 0;
+    margin: 0 0 24px;
   }
-  .page-count {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    margin-top: 6px;
-    letter-spacing: var(--tracking-mono-xs);
-  }
-
-  .listing-layout {
-    max-width: var(--page-max);
-    margin: 0 auto;
-    padding: 0 var(--page-padding-x) 64px;
-    width: 100%;
+  .entry-grid {
     display: grid;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  .sidebar {
-    position: sticky;
-    top: calc(var(--nav-height) + 20px);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .sidebar-heading {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    letter-spacing: var(--tracking-mono-xs);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .sidebar-heading::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
     background: var(--border-default);
   }
-  .sidebar-heading .slash {
-    color: var(--accent);
-    margin-right: 2px;
-  }
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .year-divider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0 10px;
-  }
-  .year-divider:first-child {
-    margin-top: 0;
-  }
-  .year-divider-line {
-    flex: 1;
-    height: 0.5px;
-    background: var(--divider-line);
-  }
-  .year-divider-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--divider-label);
-    letter-spacing: 0.08em;
-  }
   .empty {
+    grid-column: 1 / -1;
+    color: var(--text-muted);
     font-family: var(--font-sans);
     font-size: 13px;
-    color: var(--text-muted);
+    padding: 40px;
+    text-align: center;
+    background: var(--bg-page);
   }
 
-  @media (max-width: 1023px) {
-    .listing-layout {
-      grid-template-columns: 1fr;
-      padding: 0 var(--page-padding-x-md) 48px;
-    }
-    .sidebar {
-      display: none;
-    }
-  }
   @media (max-width: 767px) {
-    .page-header {
-      padding: 28px var(--page-padding-x-sm) 20px;
-    }
-    .listing-layout {
-      padding: 0 var(--page-padding-x-sm) 40px;
+    .listing {
+      padding: 28px var(--page-padding-x-sm);
     }
   }
 </style>

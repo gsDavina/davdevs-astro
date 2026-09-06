@@ -1,71 +1,56 @@
 ---
 /**
- * Anonymous like button. The Laravel CMS backs this with a signed HttpOnly
+ * Anonymous like button. davdevs-laravel backs this with a signed HttpOnly
  * cookie + hashed-IP rate limiting + a DB-stored count shared across every
- * visitor (see 01-milestones.md Phase 8 / 04-design-system.md). This static
- * Astro build has no server, so the toggle + count here are per-browser
- * only (localStorage) — not shared across visitors or devices. Wiring a
- * real shared counter needs a backend (Cloudflare KV/D1, Supabase, etc.),
- * which is a hosting decision not yet made for this rebuild; see
- * 03-progress.md.
+ * visitor (see 01-milestones.md Phase 8 / entry-detail.blade.php's plain
+ * "♥ {count}" button). This static Astro build has no server, so the
+ * toggle + count here are per-browser only (localStorage) — not shared
+ * across visitors or devices. Wiring a real shared counter needs a backend
+ * (Cloudflare KV/D1, Supabase, etc.), which is a hosting decision not yet
+ * made for this rebuild; see 03-progress.md.
  */
 interface Props {
   contentKey: string;
-  size?: 'inline' | 'lg';
 }
-const { contentKey, size = 'inline' } = Astro.props;
+const { contentKey } = Astro.props;
 ---
 
-<button class={`like-btn like-btn-${size}`} data-like-btn data-like-key={contentKey} aria-label="Like this post">
-  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-    <path d="M8 13.5S1.5 9.5 1.5 5.5a3 3 0 0 1 6-0.8 3 3 0 0 1 6 .8c0 4-6.5 8-6.5 8z"></path>
-  </svg>
-  <span data-like-count>0</span>
-</button>
+<div class="like-row" data-like-btn data-like-key={contentKey}>
+  <button class="like-heart" type="button" aria-label="Like this post">♥</button>
+  <span class="like-count" data-like-count>0</span>
+</div>
 
 <style>
-  .like-btn {
+  .like-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .like-heart {
     background: none;
     border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-family: var(--font-mono);
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
     color: var(--like-icon);
     transition: color var(--duration-fast);
   }
-  .like-btn:hover,
-  .like-btn.liked {
+  .like-row.liked .like-heart {
     color: var(--like-icon-liked);
   }
-  .like-btn-inline {
-    font-size: 8px;
-  }
-  .like-btn-inline svg {
-    width: 10px;
-    height: 10px;
-  }
-  .like-btn-lg {
-    font-size: 10px;
-    border: 0.5px solid var(--border-default);
-    border-radius: var(--radius-btn);
-    padding: 6px 14px;
-  }
-  .like-btn-lg:hover {
-    border-color: var(--tertiary-border);
-  }
-  .like-btn-lg svg {
-    width: 12px;
-    height: 12px;
+  .like-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--like-count);
   }
 </style>
 
 <script is:inline>
   (function () {
-    document.querySelectorAll('[data-like-btn]').forEach(function (btn) {
-      var key = 'like:' + btn.getAttribute('data-like-key');
-      var countEl = btn.querySelector('[data-like-count]');
+    document.querySelectorAll('[data-like-btn]').forEach(function (row) {
+      var key = 'like:' + row.getAttribute('data-like-key');
+      var countEl = row.querySelector('[data-like-count]');
       function read() {
         try {
           return JSON.parse(localStorage.getItem(key) || '{"liked":false,"count":0}');
@@ -75,10 +60,10 @@ const { contentKey, size = 'inline' } = Astro.props;
       }
       function render(state) {
         countEl.textContent = String(state.count);
-        btn.classList.toggle('liked', state.liked);
+        row.classList.toggle('liked', state.liked);
       }
       render(read());
-      btn.addEventListener('click', function () {
+      row.querySelector('.like-heart').addEventListener('click', function () {
         var state = read();
         state.liked = !state.liked;
         state.count = Math.max(0, state.count + (state.liked ? 1 : -1));

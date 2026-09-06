@@ -2,127 +2,121 @@
 import Site from '../../layouts/Site.astro';
 import { getCollection } from 'astro:content';
 
-const ebooks = await getCollection('ebook');
+const allEbooks = await getCollection('ebook');
+const bundles = allEbooks.filter((e) => e.data.isBundle);
+const individual = allEbooks.filter((e) => !e.data.isBundle);
 ---
 
 <Site title="E-Books" description="E-books by Davina Leong.">
-  <div class="page-header">
-    <p class="breadcrumb">dav<span>/</span>devs <span class="sep">›</span> e-books</p>
-    <h1 class="page-title">E-Books</h1>
-    <p class="page-count">{ebooks.length} titles</p>
-  </div>
+  <section class="ebooks">
+    <h1 class="ebooks-title">E-Books</h1>
 
-  <div class="ebook-grid">
-    {ebooks.map((entry) => (
-      <a class="ebook-row" href={`/ebooks/${entry.data.slug}`}>
-        {entry.data.coverImage && (
-          <img class="ebook-thumb" src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />
-        )}
-        <div class="ebook-info">
-          {entry.data.isBundle && <span class="tag tag-coral">Bundle</span>}
-          <h2 class="ebook-row-title">{entry.data.title}</h2>
-          {entry.data.tagline && <p class="ebook-row-tagline">{entry.data.tagline}</p>}
-          {entry.data.pricingTiers[0] && (
-            <p class="ebook-row-price">from {entry.data.pricingTiers[0].price}</p>
-          )}
+    {bundles.length > 0 && (
+      <>
+        <h2 class="ebooks-subhead">Bundles</h2>
+        <div class="entry-grid bundles-grid">
+          {bundles.map((entry) => (
+            <a class="entry-card" href={`/ebooks/${entry.data.slug}`}>
+              {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
+              <div class="entry-card-title">{entry.data.title}</div>
+              <div class="entry-card-tagline">{entry.data.tagline}</div>
+              {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
+            </a>
+          ))}
         </div>
-      </a>
-    ))}
-  </div>
+      </>
+    )}
+
+    <h2 class="ebooks-subhead">E-Books</h2>
+    <div class="entry-grid">
+      {individual.length === 0 ? (
+        <p class="empty">No e-books yet.</p>
+      ) : (
+        individual.map((entry) => (
+          <a class="entry-card" href={`/ebooks/${entry.data.slug}`}>
+            {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
+            <div class="entry-card-title">{entry.data.title}</div>
+            <div class="entry-card-tagline">{entry.data.tagline}</div>
+            {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
+          </a>
+        ))
+      )}
+    </div>
+  </section>
 </Site>
 
 <style>
-  .page-header {
+  .ebooks {
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 40px var(--page-padding-x) 28px;
-    width: 100%;
+    padding: 48px var(--page-padding-x);
   }
-  .breadcrumb {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-faint);
-    letter-spacing: var(--tracking-mono-sm);
-    margin-bottom: 12px;
-  }
-  .breadcrumb span {
-    color: var(--accent);
-  }
-  .breadcrumb .sep {
-    color: var(--text-faint);
-  }
-  .page-title {
+  .ebooks-title {
     font-family: var(--font-display);
     font-size: clamp(24px, 4vw, 32px);
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0;
+    margin: 0 0 24px;
   }
-  .page-count {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    margin-top: 6px;
+  .ebooks-subhead {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 12px;
   }
-
-  .ebook-grid {
-    max-width: var(--page-max);
-    margin: 0 auto;
-    padding: 0 var(--page-padding-x) 64px;
-    display: flex;
-    flex-direction: column;
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1px;
     background: var(--border-default);
-    border: 0.5px solid var(--border-default);
-    border-radius: var(--radius-card);
-    overflow: hidden;
   }
-  .ebook-row {
+  .bundles-grid {
+    margin-bottom: 36px;
+  }
+  .entry-card {
     background: var(--bg-page);
     padding: 18px;
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 16px;
-    align-items: center;
-    transition: background var(--duration-base) var(--easing-default);
+    display: block;
   }
-  .ebook-row:hover {
-    background: var(--bg-surface-1);
-  }
-  .ebook-thumb {
-    width: 72px;
-    aspect-ratio: 3/4;
+  .entry-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-    border-radius: 4px;
-    border: 0.5px solid var(--border-default);
   }
-  .ebook-row-title {
+  .entry-card-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-primary);
-    margin: 4px 0;
+    margin-bottom: 4px;
   }
-  .ebook-row-tagline {
-    font-family: var(--font-prose);
-    font-style: italic;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin: 0 0 6px;
+  .entry-card-tagline {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--text-secondary);
   }
-  .ebook-row-price {
+  .entry-card-price {
     font-family: var(--font-mono);
     font-size: 10px;
-    color: var(--tertiary);
-    margin: 0;
+    color: var(--accent);
+    margin-top: 6px;
+  }
+  .empty {
+    grid-column: 1 / -1;
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    padding: 40px;
+    text-align: center;
+    background: var(--bg-page);
   }
 
   @media (max-width: 767px) {
-    .page-header {
-      padding: 28px var(--page-padding-x-sm) 20px;
-    }
-    .ebook-grid {
-      padding: 0 var(--page-padding-x-sm) 40px;
+    .ebooks {
+      padding: 28px var(--page-padding-x-sm);
     }
   }
 </style>

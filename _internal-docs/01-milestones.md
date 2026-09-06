@@ -34,11 +34,11 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 ## Phase 2 — Design System Port
 - [x] Extract design tokens from the live site (colors, spacing scale, font families/sizes, radii, shadows) into `tokens.css` / theme config — `src/styles/tokens.css`, sourced from davdevs-laravel's `04-design-system.md`/`06-frontend-design-language.md` and `resources/css/app.css`
 - [x] Port global styles: base typography, terminal-style wordmark treatment, link/button states
-- [x] Rebuild the top nav (10 links + `⌘K` trigger) and footer (wordmark, `perf/a11y/seo` badge, copyright, Privacy link, cookie banner) as shared layout components — nav has 8 links (6 blog types + E-Books + Funny; no Sermon/Template, see Phase 0)
+- [x] Rebuild the top nav (10 links + `⌘K` trigger) and footer (wordmark, `perf/a11y/seo` badge, copyright, Privacy link, cookie banner) as shared layout components — **10 links**, matching the real nav exactly: Article, eBooks, Frontend Mentor, Knowledge Sharing, Notebooks, Project, Sermon, Template, Tool, Funny (Sermon/Template link to real, empty listing pages — see design-reference correction note in `03-progress.md`)
 - [x] Verify responsive breakpoints match the original (mobile nav behavior, stacking order) — screenshot-verified at 375×812: nav collapses to logo + theme toggle, mobile tab bar appears, cards/hero stack to one column
 
 ## Phase 3 — Core Layouts & Listing Pages
-- [x] Home page: hero + "latest 4 + view all" sections, matching card styling per content type — 6 blog-type sections + E-Books section (no Sermon/Template sections, see Phase 0)
+- [x] Home page: hero + "latest 4 + view all" sections, matching card styling per content type — E-Books pinned first, then one section per blog type in `HOME_SECTION_ORDER`; Sermon/Template sections never render (zero entries), matching the source's own `@if($entries->isNotEmpty())` behaviour rather than being specially excluded
 - [x] Per-content-type listing page (`/article`, `/ebooks`, `/fem`, `/knowledge-sharing`, `/notebook`, `/project`, `/tool`) — one dynamic `[type]` route pair serves all 6 blog types; **no pagination**, every collection is small enough (4–29 entries) to render in full
 - [x] Shared detail-page shell: kicker (type/date/read-time), title, tags, body, `♥`, share row
 - [x] 404 page — custom page built; "matches the original's behavior/copy" not verifiable (no live-site access), built to a reasonable default instead
@@ -47,7 +47,7 @@ Rebuild of **davinaleong.com** ("~/dav/devs", currently Next.js + MDX) as a new 
 - [x] Standard long-form types (Article, Knowledge Sharing, Project, Frontend Mentor, Tool, Funny): Markdown rendering with code blocks, images, blockquotes matching original typography — verified in-browser on an article detail page (code spans, bold, headings all render correctly)
 - [ ] Notebooks: confirm and replicate how `.ipynb`-style content is rendered (code cells, output blocks) if applicable — renders as standard Markdown via the same template; not specifically verified against original code-cell fidelity
 - [x] Reading-time calculation matches original (e.g. "3 min read") — uses `readTimeMinutes` from frontmatter, falls back to a 200wpm word-count estimate when absent
-- [x] Date formatting matches original — using davdevs-laravel's actual format (`"28 Jun 2026"`, day-month-year, no comma) per its static mockups, which take precedence over this doc's hypothetical `"Jul 8, 2026"` example per the later instruction to follow davdevs-laravel
+- [x] Date formatting matches original — matches davdevs-laravel's real `$date->format('M j, Y')` (e.g. `"Jun 18, 2024"`); an earlier pass had copied a day-month-year style from the `static/` mockup folder instead, corrected once the real dynamic templates were checked (see `03-progress.md`)
 
 ## Phase 5 — eBook Product Pages (bespoke)
 - [x] Rebuild each ebook as its own landing-page layout: cover art, blurb, pricing tiers — built; **no separate "feature/theme grid" component** — the "What's Inside" content renders as the markdown body's own headings rather than a dedicated grid layout, since the real content wasn't structured as discrete grid items

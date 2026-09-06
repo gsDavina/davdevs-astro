@@ -4,20 +4,17 @@ import { SITE } from '../lib/site-config';
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">dav<span>/</span>devs</div>
+    <div class="footer-logo">~/dav/<span>devs</span></div>
     <ul class="footer-links">
       {SITE.footerLinks.map((link) => (
         <li><a href={link.url} target={link.target} rel="noopener noreferrer">{link.label}</a></li>
       ))}
     </ul>
-    {SITE.lighthouse.show && (
-      <div class="lh-badges">
-        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.performance}</span><span class="lh-label">Perf</span></div>
-        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.accessibility}</span><span class="lh-label">A11y</span></div>
-        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.seo}</span><span class="lh-label">SEO</span></div>
-        <div class="lh-badge"><span class="lh-num">{SITE.lighthouse.bestPractices}</span><span class="lh-label">BP</span></div>
-      </div>
-    )}
+    <div class="footer-lh">
+      {SITE.lighthouse.show && (
+        <span>perf {SITE.lighthouse.performance} · a11y {SITE.lighthouse.accessibility} · seo {SITE.lighthouse.seo}</span>
+      )}
+    </div>
   </div>
   <div class="footer-bottom">
     {SITE.copyrightText} · <a href="/privacy">Privacy</a>
@@ -65,34 +62,11 @@ import { SITE } from '../lib/site-config';
   .footer-links a:hover {
     color: var(--text-secondary);
   }
-  .lh-badges {
-    display: flex;
-    gap: 6px;
-    justify-content: flex-end;
-  }
-  .lh-badge {
-    background: var(--lh-bg);
-    border: 0.5px solid var(--border-default);
-    border-radius: var(--radius-btn);
-    padding: 6px 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    min-width: 44px;
-  }
-  .lh-num {
+  .footer-lh {
+    text-align: right;
     font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--lh-num);
-  }
-  .lh-label {
-    font-family: var(--font-mono);
-    font-size: 7px;
-    color: var(--lh-label);
-    letter-spacing: var(--tracking-mono-xs);
-    text-transform: uppercase;
+    font-size: 9px;
+    color: var(--footer-text);
   }
   .footer-bottom {
     text-align: center;
@@ -118,8 +92,8 @@ import { SITE } from '../lib/site-config';
     .footer-links {
       flex-wrap: wrap;
     }
-    .lh-badges {
-      justify-content: center;
+    .footer-lh {
+      text-align: center;
     }
   }
 </style>

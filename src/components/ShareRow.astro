@@ -11,41 +11,30 @@ const threads = `https://www.threads.net/intent/post?text=${encodeURIComponent(`
 ---
 
 <div class="share-row">
-  <span class="share-label">share</span>
-  <a class="share-btn" href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  <a class="share-btn" href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-  <a class="share-btn" href={threads} target="_blank" rel="noopener noreferrer">Threads</a>
-  <button class="share-btn" data-copy-link={canonicalURL} type="button">copy link</button>
-  <slot />
+  <a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+  <a href={threads} target="_blank" rel="noopener noreferrer">Threads</a>
+  <button data-copy-link={canonicalURL} type="button">Copy link</button>
 </div>
 
 <style>
   .share-row {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 10px;
   }
-  .share-label {
+  .share-row a,
+  .share-row button {
     font-family: var(--font-mono);
     font-size: 9px;
     color: var(--text-muted);
-    letter-spacing: var(--tracking-mono-xs);
-  }
-  .share-btn {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-secondary);
     background: none;
-    border: 0.5px solid var(--border-default);
-    border-radius: var(--radius-btn);
-    padding: 4px 10px;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    letter-spacing: var(--tracking-mono-sm);
-    transition: border-color var(--duration-fast), color var(--duration-fast);
+    transition: color var(--duration-fast);
   }
-  .share-btn:hover {
-    border-color: var(--border-strong);
+  .share-row a:hover,
+  .share-row button:hover {
     color: var(--text-primary);
   }
 </style>
@@ -56,7 +45,7 @@ const threads = `https://www.threads.net/intent/post?text=${encodeURIComponent(`
       var url = btn.getAttribute('data-copy-link');
       navigator.clipboard?.writeText(url).then(function () {
         var original = btn.textContent;
-        btn.textContent = 'copied!';
+        btn.textContent = 'Copied!';
         setTimeout(function () {
           btn.textContent = original;
         }, 1500);

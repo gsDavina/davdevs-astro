@@ -1,9 +1,77 @@
 # Progress
 
-> Reference for design/colour: **davdevs-laravel** (`_internal-docs/04-design-system.md`,
-> `06-frontend-design-language.md`, and the pixel-accurate `resources/views/static/*`
-> mockup templates) — not a pixel-diff against the live `davinaleong.com`. Where the
-> two would conflict, davdevs-laravel wins per instruction.
+> Reference for design/colour: **davdevs-laravel** — but specifically its
+> **real dynamic templates** (`resources/views/layouts/site.blade.php`,
+> `site/home.blade.php`, `site/listing.blade.php`, `site/entry-detail.blade.php`,
+> `site/ebooks.blade.php`, `site/publication-detail.blade.php`, `site/partials/
+> ebook-card.blade.php`), not the `resources/views/static/*` files. See the
+> 2026-09-06 "design-reference correction" entry below for why that distinction
+> matters — the two are not interchangeable, and iteration 1 got this wrong.
+
+## 2026-09-06 — Design-reference correction (post-iteration-5)
+
+The user shared a screenshot of the actual intended home page. It didn't
+match what iterations 1–5 had built at all: a plain centered hero, E-Books
+pinned first then one section per content type, and simple hairline-grid
+cards with no tags/like-counts/date-boxes/featured-spanning-tiles/year-
+dividers/sidebar filters.
+
+**Root cause**: iteration 1 read `davdevs-laravel/resources/views/static/
+home.blade.php` (and its listing/post-detail/ebook-detail siblings) and
+treated it as the design spec. That folder is early design-exploration
+mockups with dummy placeholder data — visually elaborate (stats bar,
+category strip, featured 2-col cards, sidebar tag clouds, sticky TOC
+rails) — but it is **not what the Laravel app actually serves**. The real
+production templates live in `resources/views/site/*.blade.php` (home,
+listing, entry-detail, ebooks, publication-detail) and
+`resources/views/layouts/site.blade.php` (the real nav/footer), and they're
+much simpler. Nobody had actually looked at those files before this
+correction — `layouts/site.blade.php` was read in iteration 1 for the nav
+JS behaviour, but its plain CSS-in-`style=""` markup for the actual card
+grids was never compared against what got built.
+
+**What this also surfaced and fixed:**
+- **Nav has 10 items, not 8** — Sermon and Template *are* real
+  `content_types` rows (with `listed=true`) even though neither has
+  migrated content; the live nav lists them with empty listing pages
+  ("No entries found."), it doesn't hide them. `EMPTY_TYPES` in
+  `src/lib/content.ts` now models this, and `/sermon` + `/template` render
+  the same empty state as the source.
+- **Date format was wrong**: iteration 1 used a day-month-year style
+  (`28 Jun 2026`) copied from the static mockup. The real format (`$date->
+  format('M j, Y')`) is `Jun 18, 2024` — fixed in `formatDate()`.
+- **Wordmark is `~/dav/devs`**, not `dav/devs` — fixed in `Nav.astro`/
+  `Footer.astro`.
+- **Cards never show tags or like counts** on home/listing — only the
+  detail page does. Removed both from the card component.
+- **Footer Lighthouse badges are a plain text line** (`perf X · a11y Y ·
+  seo Z`), not boxed badges — fixed in `Footer.astro`.
+- **Like button is a plain `♥` glyph + count**, not an SVG-icon pill.
+  **Share row is plain text links**, not bordered buttons. Both simplified
+  to match `entry-detail.blade.php` exactly.
+
+**Rebuilt**: `Nav.astro`, `Footer.astro`, `LikeButton.astro` (simplified),
+`ShareRow.astro` (simplified), new `EntryCard.astro` (replaces `PostCard.astro`
++ `PostRow.astro` + `DateBox.astro`, all deleted — home and listing now share
+one card component, matching the source's actual behaviour of reusing the
+same markup in both places), `index.astro`, `[type]/index.astro`,
+`[type]/[slug].astro`, `ebooks/index.astro`, `ebooks/[slug].astro`.
+`src/lib/content.ts` reworked (`TYPE_LABELS`/`LISTING_TYPES`/`EMPTY_TYPES`
+replace the old `BLOG_TYPE_LABELS*`).
+
+Verified in-browser against the corrected reference: home (E-Books section
+with real cover art, Article/etc. sections in matching grid style), an
+article listing page, an article detail page, `/sermon` (empty state),
+an ebook detail page (cover image, buy button), `/tool` listing (13 tools
+in the same grid, including the trailing-empty-cell effect the reference
+screenshot showed). Build stays clean (139 pages — the two new empty
+listing routes).
+
+**Lesson for future work on this repo**: when davdevs-laravel is the
+design reference, always check `resources/views/site/*` and
+`layouts/site.blade.php` first — those are what's actually live.
+`resources/views/static/*` is historical design exploration and should
+not be trusted without cross-checking against the real dynamic view.
 
 ## 2026-09-06 — Iteration 5: README + LICENSE
 

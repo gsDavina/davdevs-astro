@@ -7,13 +7,13 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [x] Home page hero and section styling pixel-match the original at desktop, tablet, and mobile widths — desktop and mobile (375×812) both screenshot-verified; tablet breakpoint not individually screenshotted
 - [x] Typography (font family, sizes, weights, line-height) matches across headings, body text, and the terminal-style wordmark — Syne/JetBrains Mono/Inter/Lora all rendering correctly, verified in-browser
 - [x] Color palette, spacing, and card styling match for every content-type section on the home page
-- [x] Top nav (all 10 links + `⌘K`) matches spacing, order, and mobile collapse behavior — **8 links, not 10** (no Sermon/Template, see 01-milestones.md Phase 0); `⌘K` and mobile collapse (nav → logo + tab bar) both verified in-browser
+- [x] Top nav (all 10 links + `⌘K`) matches spacing, order, and mobile collapse behavior — all 10 links present (Sermon/Template included, linking to real empty-state listing pages); `⌘K` and mobile collapse (nav → logo + tab bar) both verified in-browser
 - [x] Footer (`~/dav/devs`, `perf · a11y · seo` badge, copyright, Privacy link) matches placement and styling — badge values are placeholders, see Phase 11 note
 - [x] Cookie-notice banner matches copy, placement, and "Got it" dismiss styling — copy intentionally differs (localStorage, not cookies — see Phase 10 note); placement/dismiss behavior verified in-browser
 - [x] Detail-page furniture (kicker line, title, tags, share row, `♥`) matches spacing and iconography — verified on an article detail page
 
 ## 2. Navigation & Routing
-- [x] All top-nav links resolve to the correct listing pages — 8 links (see §1), all verified to route correctly
+- [x] All top-nav links resolve to the correct listing pages — all 10 links (see §1), all verified to route correctly, including Sermon/Template's empty-state pages
 - [x] "view all →" links on every home-page section go to the correct listing page
 - [x] Every listing page paginates the same way as the original (or shows all items, if that's what the original does) — **decided: show all items**, every collection is small enough (4–29 entries); see 01-milestones.md Phase 3
 - [x] Every detail-page URL slug from the live site has a working equivalent on the new site — all 126 blog entries + 4 ebooks build to a real route (137 pages total)

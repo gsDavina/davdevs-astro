@@ -1,216 +1,162 @@
 ---
 import Site from '../layouts/Site.astro';
-import PostCard from '../components/PostCard.astro';
-import { BLOG_TYPES, BLOG_TYPE_LABELS_PLURAL, getBlogEntries } from '../lib/content';
+import EntryCard from '../components/EntryCard.astro';
+import { HOME_SECTION_ORDER, TYPE_LABELS, getBlogEntries } from '../lib/content';
 import { getCollection } from 'astro:content';
 
 const sections = await Promise.all(
-  BLOG_TYPES.map(async (type) => ({
+  HOME_SECTION_ORDER.map(async (type) => ({
     type,
-    label: BLOG_TYPE_LABELS_PLURAL[type],
-    entries: (await getBlogEntries(type)).slice(0, 4),
+    label: TYPE_LABELS[type],
+    entries: await getBlogEntries(type),
   }))
 );
 
-const ebooks = (await getCollection('ebook')).slice(0, 4);
+const ebooks = await getCollection('ebook');
 ---
 
 <Site
   title="Home"
-  description="A personal dev journal by Davina Leong — articles, projects, tools, notebooks, and e-books. Writing about what I build and what I learn."
+  description="Davina Develops — projects, articles, tools, and everything in between."
 >
-  <div class="hero">
-    <p class="hero-label"><span class="accent-slash">/</span> hello, world</p>
-    <h1 class="hero-wordmark">Dav<span class="slash">/</span>Devs<span class="cursor"></span></h1>
-    <p class="hero-sub">
-      A personal dev journal by Davina Leong — articles, projects, tools, notebooks, and e-books.
-      Writing about what I build and what I learn.
-    </p>
-  </div>
-
-  {sections.map((section) => section.entries.length > 0 && (
-    <div class="section">
-      <p class="section-label">
-        <span class="accent-slash">/</span> {section.label}
-      </p>
-      <div class="post-grid">
-        {section.entries.map((entry, i) => (
-          <PostCard type={section.type} entry={entry} featured={i === 0} />
-        ))}
-      </div>
-      <a class="view-all" href={`/${section.type}`}>view all {section.label.toLowerCase()} →</a>
-    </div>
-  ))}
+  <section class="hero">
+    <h1 class="hero-wordmark">
+      ~/dav/<span class="accent">devs</span> <span class="cursor">_</span>
+    </h1>
+    <p class="hero-sub">Davina Develops — projects, articles, tools, and everything in between.</p>
+  </section>
 
   {ebooks.length > 0 && (
-    <div class="section">
-      <p class="section-label"><span class="accent-slash">/</span> e-books</p>
-      <div class="post-grid">
-        {ebooks.map((entry, i) => (
-          <a class={`post-card ${i === 0 ? 'featured' : ''}`} href={`/ebooks/${entry.data.slug}`}>
-            <span class="tag tag-coral">E-Book</span>
-            <h3 class={`card-title ${i === 0 ? 'card-title-featured' : 'card-title-std'}`}>{entry.data.title}</h3>
-            {i === 0 && entry.data.tagline && <p class="card-excerpt">{entry.data.tagline}</p>}
+    <section class="home-section">
+      <div class="home-section-head">
+        <h2>E-Books</h2>
+        <a class="view-all" href="/ebooks">view all →</a>
+      </div>
+      <div class="entry-grid">
+        {ebooks.map((entry) => (
+          <a class="entry-card" href={`/ebooks/${entry.data.slug}`}>
+            {entry.data.coverImage && <img class="entry-card-cover" src={entry.data.coverImage} alt={entry.data.title} loading="lazy" />}
+            <div class="entry-card-title">{entry.data.title}</div>
+            {entry.data.tagline && <div class="entry-card-tagline">{entry.data.tagline}</div>}
+            {entry.data.pricingTiers[0] && <div class="entry-card-price">{entry.data.pricingTiers[0].price}</div>}
           </a>
         ))}
       </div>
-      <a class="view-all" href="/ebooks">view all e-books →</a>
-    </div>
+    </section>
   )}
+
+  {sections.map((section) => section.entries.length > 0 && (
+    <section class="home-section">
+      <div class="home-section-head">
+        <h2>{section.label}</h2>
+        <a class="view-all" href={`/${section.type}`}>view all →</a>
+      </div>
+      <div class="entry-grid">
+        {section.entries.map((entry) => <EntryCard type={section.type} entry={entry} />)}
+      </div>
+    </section>
+  ))}
 </Site>
 
 <style>
   .hero {
-    padding: 72px var(--page-padding-x) 56px;
     max-width: var(--page-max);
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-  .hero-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    letter-spacing: var(--tracking-mono-xs);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .accent-slash {
-    color: var(--accent);
+    margin: 0 auto;
+    padding: 80px var(--page-padding-x) 60px;
+    text-align: center;
   }
   .hero-wordmark {
     font-family: var(--font-display);
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 800;
-    color: var(--text-primary);
-    line-height: var(--leading-display);
     letter-spacing: var(--tracking-display);
-    margin: 0 0 4px;
+    color: var(--text-primary);
+    margin: 0;
   }
-  .hero-wordmark .slash {
+  .hero-wordmark .accent {
     color: var(--accent);
   }
   .hero-wordmark .cursor {
-    display: inline-block;
-    width: 3px;
-    height: 0.9em;
-    background: var(--accent);
-    margin-left: 2px;
-    vertical-align: middle;
     animation: cursor-blink 1.1s step-end infinite;
   }
   .hero-sub {
     font-family: var(--font-sans);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary);
-    line-height: var(--leading-body);
-    max-width: 480px;
     margin-top: 16px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-section {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: 32px var(--page-padding-x);
+  }
+  .home-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .home-section-head h2 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .view-all {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+  }
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border-default);
+  }
+
+  /* eBook card (bespoke — cover image + tagline + price, not EntryCard's shape) */
+  .entry-card {
+    background: var(--bg-page);
+    padding: 18px;
+    display: block;
+  }
+  .entry-card-cover {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+  .entry-card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .entry-card-tagline {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+  .entry-card-price {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent);
+    margin-top: 6px;
   }
 
   @media (max-width: 767px) {
     .hero {
       padding: 48px var(--page-padding-x-sm) 36px;
     }
-  }
-
-  .section {
-    max-width: var(--page-max);
-    margin: 0 auto;
-    padding: 0 var(--page-padding-x) 56px;
-    width: 100%;
-  }
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 9px;
-    color: var(--text-muted);
-    letter-spacing: var(--tracking-mono-xs);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 0.5px;
-    background: var(--border-default);
-  }
-  .post-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border-default);
-    border: 0.5px solid var(--border-default);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-  }
-  .view-all {
-    display: inline-block;
-    margin-top: 16px;
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: var(--tracking-mono-sm);
-  }
-
-  /* eBook mini-cards (bespoke type, not PostCard) */
-  .post-card {
-    background: var(--bg-page);
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: background var(--duration-base) var(--easing-default);
-  }
-  .post-card:hover {
-    background: var(--bg-surface-1);
-  }
-  .post-card.featured {
-    grid-column: span 2;
-    background: var(--bg-surface-1);
-  }
-  .card-title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: var(--leading-heading);
-    letter-spacing: var(--tracking-display);
-    margin: 0;
-  }
-  .card-title-featured {
-    font-size: 16px;
-  }
-  .card-title-std {
-    font-size: 14px;
-  }
-  .card-excerpt {
-    font-family: var(--font-prose);
-    font-style: italic;
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin: 0;
-  }
-
-  @media (max-width: 767px) {
-    .section {
-      padding: 0 var(--page-padding-x-sm) 40px;
-    }
-    .post-grid {
-      grid-template-columns: 1fr;
-    }
-    .post-card.featured,
-    .post-grid :global(.post-card.featured) {
-      grid-column: span 1;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .section {
-      padding: 0 var(--page-padding-x-md) 48px;
-    }
-    .post-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .home-section {
+      padding: 24px var(--page-padding-x-sm);
     }
   }
 </style>

@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { BLOG_TYPES, BLOG_TYPE_LABELS } from '../lib/content';
+import { BLOG_TYPES, TYPE_LABELS } from '../lib/content';
 
 export const GET: APIRoute = async () => {
   const blogResults = await Promise.all(
@@ -9,7 +9,7 @@ export const GET: APIRoute = async () => {
       return entries.map((entry) => ({
         title: entry.data.title,
         url: `/${type}/${entry.data.slug}`,
-        type: BLOG_TYPE_LABELS[type],
+        type: TYPE_LABELS[type],
       }));
     })
   );
