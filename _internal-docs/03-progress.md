@@ -5,6 +5,34 @@
 > mockup templates) — not a pixel-diff against the live `davinaleong.com`. Where the
 > two would conflict, davdevs-laravel wins per instruction.
 
+## 2026-09-06 — Iteration 5: README + LICENSE
+
+Replaced the default Astro-starter `README.md` with a real project README
+(stack, structure, design-system pointer, known deviations summary, links
+into `_internal-docs/`). Added `LICENSE` (MIT, © Davina Leong).
+
+### Where this leaves the rebuild
+
+Everything achievable **without live infrastructure/account access** from
+`01-milestones.md` Phases 0–11 is done: project setup, full design-system
+port, home/listing/detail pages for all 6 blog types, e-book pages, all 13
+interactive tool islands, `⌘K` search, the Funny page's reveal behaviour,
+SEO metadata + sitemap + JSON-LD, privacy/cookie-banner (adapted honestly
+for a static build), and the Lighthouse-badge UI (placeholder values).
+Verified via a clean production build (137 pages) plus repeated in-browser
+testing (desktop, mobile, light/dark theme, all 13 tools, search, the joke
+reveal timer).
+
+**Phases 12–13 (domain cutover, cross-browser/device matrix, live
+Lighthouse audit) remain genuinely blocked** on things this environment
+doesn't have: a `davdevs.dev` DNS/hosting account, real devices/browsers
+beyond this session's in-app browser, and a deployed URL to audit. These
+are documented as manual follow-ups throughout `01-milestones.md` and
+`02-test-checklists.md`, not silently skipped — same treatment
+davdevs-laravel's own progress doc gave its equivalent infra-gated items.
+
+Everything is pushed to `main` in 5 commits (29a6f2e..HEAD).
+
 ## 2026-09-06 — Iteration 4: verified all 13 tool islands
 
 Opened every remaining tool (Timers, Memory Cards, Calculator, Card Miles
