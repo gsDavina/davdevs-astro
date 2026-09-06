@@ -87,7 +87,9 @@
   --tab-bg: #0a0a0c;
   --tab-icon: #3a3a42;
   --tab-icon-active: #d4a757;
-  --tab-label: #3a3a42;
+  /* #3a3a42 (~1.7:1 on --tab-bg) failed Lighthouse's WCAG AA color-contrast
+     audit on the "home/browse/search/theme" labels; #7a7a86 clears 4.5:1. */
+  --tab-label: #7a7a86;
   --tab-label-active: #d4a757;
 
   --progress-bg: #1a1a1e;
@@ -166,7 +168,9 @@
   --tab-bg: #ede9e2;
   --tab-icon: #b0aca6;
   --tab-icon-active: #8b6f47;
-  --tab-label: #b0aca6;
+  /* #b0aca6 (~1.9:1 on --tab-bg) failed the same audit in light theme;
+     #6b6560 clears 4.5:1. */
+  --tab-label: #6b6560;
   --tab-label-active: #8b6f47;
 
   --progress-bg: #e4e0d9;

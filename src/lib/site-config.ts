@@ -11,17 +11,24 @@ export const SITE = {
     { label: 'LinkedIn', url: 'https://linkedin.com/in/davinaleong', target: '_blank' },
   ],
   /**
-   * Placeholder Lighthouse scores. The Laravel CMS wires these to a stored
-   * report (see 01-milestones.md Phase 11); no live Lighthouse run exists
-   * for this Astro build yet, so these are marked pending rather than
-   * invented as real scores. Update once a real audit runs against the
-   * deployed davdevs.dev build.
+   * Real Lighthouse scores from a local production-build audit (2026-09-07),
+   * not the live deployed davdevs.dev domain — DNS/hosting cutover (Phase 12)
+   * hasn't happened yet, so a true "vs. the deployed site" run isn't possible
+   * in this environment. Audited home, one article detail, one ebook detail,
+   * and one tool page (`astro build` + a static file server on the built
+   * `dist/client` output, since the Vercel-adapter output isn't `astro
+   * preview`-able directly); full per-page JSON/HTML reports live in
+   * `_internal-docs/lighthouse/`. Each figure here is the **minimum** across
+   * those four pages, not the best one, so the badge doesn't overstate the
+   * site's weakest page (the tool page, with its heavier React-island JS,
+   * scores lowest on performance). Re-run and update after any further
+   * accessibility/perf fixes or once a real davdevs.dev deploy exists.
    */
   lighthouse: {
     show: true,
-    performance: '—',
-    accessibility: '—',
-    seo: '—',
-    bestPractices: '—',
+    performance: '68',
+    accessibility: '95',
+    seo: '92',
+    bestPractices: '100',
   },
 } as const;

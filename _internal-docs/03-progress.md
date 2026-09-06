@@ -1,5 +1,20 @@
 # Progress
 
+## 2026-09-07 — Real Lighthouse audit + 3 accessibility fixes found by it
+
+Phase 11 ("Run Lighthouse... confirm scores meet or beat the original") was blocked on a deployed `davdevs.dev` URL, but a **local** audit against the production build is fully achievable in this environment and is genuinely more useful than leaving the footer badge at `—` placeholders forever. Built the site (`npm run build`), served `dist/client` with a plain static file server (the Vercel-adapter output isn't `astro preview`-able directly — that needs `vercel dev`), and ran `npx lighthouse` (headless Chrome, both are already installed locally) against home, one article detail, one ebook detail, and one tool page.
+
+Initial scores surfaced 3 real, fixable accessibility bugs, all now fixed and re-verified:
+1. **`EmojiFoodCatcher`'s difficulty `<select>`** had a visible "Difficulty:" `<label>` right above it with no `htmlFor`/`id` link — screen readers never associated the two. Added matching `id="emoji-food-catcher-difficulty"`.
+2. **Cookie-banner's "Learn more" link** relied on color alone to read as a link inside the surrounding sentence (WCAG 1.4.1). Added `text-decoration: underline` in `CookieBanner.astro`.
+3. **Mobile tab-bar's inactive label color** (`--tab-label`, the "home/browse/search/theme" captions) failed WCAG AA contrast in both themes — computed contrast was ~1.7:1 dark / ~1.9:1 light against `--tab-bg`, both need ≥4.5:1 for 8px text. Recolored to `#7a7a86` (dark) / `#6b6560` (light), verified ≥4.6:1 by hand before touching `tokens.css`, then confirmed the Lighthouse audit stopped flagging it after rebuilding.
+
+Tool-page accessibility went 84 → 95 across these three fixes (re-verified with a second Lighthouse run, not just assumed). Final scores wired into `SITE.lighthouse` in `src/lib/site-config.ts` (replacing the `—` placeholders): **performance 68, accessibility 95, best-practices 100, seo 92** — each is the *minimum* across the four audited pages, not the best, so the footer badge doesn't overstate the site's weakest page. Full JSON/HTML reports kept in `_internal-docs/lighthouse/` for reference.
+
+**Two things explicitly not claimed as done:**
+- "Confirm scores meet or beat the original" — davinaleong.com isn't reachable from this environment, so there's no live baseline to diff against; this audits the new build in isolation only.
+- **A broader color-contrast gap remains real and open**: the tool page's `color-contrast` audit still fails on shared detail-page furniture — the kicker line, `tag-coral` pills, share-row links, and footer links/logo/copyright/privacy-link, all using `--text-faint`/`--footer-text`/the hashed tag-color palette. These appear on every content page (not just tools), so it's a proper design-token audit across both themes, not a quick fix — tracked in `02-test-checklists.md` §12 rather than glossed over.
+
 ## 2026-09-07 — Closing out milestone/checklist gaps: tool controls, mobile, embedded scripts
 
 Working through the remaining open items in `01-milestones.md` / `02-test-checklists.md`, starting with everything actually testable in this environment (real device/DNS/hosting-gated items are out of reach here and stay documented as blocked, not faked).

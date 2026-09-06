@@ -283,8 +283,8 @@ export default function EmojiFoodCatcher() {
         </p>
 
         <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Difficulty:</label>
-          <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="bg-white/20 text-white rounded px-3 py-1 backdrop-blur">
+          <label htmlFor="emoji-food-catcher-difficulty" className="block text-sm font-medium mb-2">Difficulty:</label>
+          <select id="emoji-food-catcher-difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="bg-white/20 text-white rounded px-3 py-1 backdrop-blur">
             {Object.entries(DIFFICULTIES).map(([key, config]) => (
               <option key={key} value={key} className="text-black">
                 {config.name}
