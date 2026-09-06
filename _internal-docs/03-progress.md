@@ -1,5 +1,35 @@
 # Progress
 
+## 2026-09-07 — README refresh; checklists at their practical ceiling
+
+Every remaining unchecked item across `01-milestones.md` and
+`02-test-checklists.md` now falls into one clearly-labeled blocked
+category: live DNS/hosting for the domain cutover (Phase 12/§13-14), real
+browsers/devices beyond this session's in-app browser, real
+assistive-tech software for a screen-reader pass, an actual deployed
+public URL (needed for OG-preview debugger tools and any live-site
+comparison), or credentials/files only Davina can supply for the Stripe
+pipeline. Nothing is silently skipped — each item says specifically what
+it's waiting on. This is the practical ceiling for this environment.
+
+**README.md rewritten** to match reality — it previously said "static
+site," "no chosen backend/hosting yet," and "no backend in this
+deployment" throughout, and claimed the Lighthouse badges were still
+placeholders, all of which stopped being true once today's Stripe/
+Postgres pipeline and real Lighthouse audit shipped. Now documents: the
+hybrid-rendering model (static by default, `prerender = false` on 4
+routes), the full stack addition (Stripe, Drizzle+Postgres, Vercel Blob,
+Resend, `@astrojs/vercel`), `.env`/migration setup steps, the `src/db/`
+and `src/pages/api/` structure, a dedicated "E-book checkout" section
+explaining the pipeline and its one known gap (no manuscript files
+uploaded yet), and corrected the "Known deviations" section (reactions
+are still localStorage-only by *choice* now that a DB exists, not because
+one doesn't; Lighthouse badges are real numbers; `/privacy` is kept
+current as the site's actual data footprint changes).
+
+**LICENSE checked, not touched** — already exactly what was asked for
+(MIT, © Davina Leong), added in an earlier iteration.
+
 ## 2026-09-07 — Reduced-motion support, and syncing two docs that had drifted
 
 Small cleanup round, three things:
