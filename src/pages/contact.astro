@@ -1,0 +1,168 @@
+---
+import Site from '../layouts/Site.astro';
+import { CONTACT_SUBJECTS } from '../lib/contact-mailer';
+---
+
+<Site title="Contact" description="Get in touch with Davina Leong.">
+  <section class="contact">
+    <h1 class="contact-title">Contact</h1>
+    <p class="contact-intro">Questions, feedback, or just want to say hi? Send a message below.</p>
+
+    <p id="contact-sent" class="banner banner-success" hidden>
+      Thanks — your message is on its way. I'll get back to you soon.
+    </p>
+    <p id="contact-error" class="banner banner-error" hidden></p>
+
+    <form method="POST" action="/api/contact" class="contact-form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="subject">Subject</label>
+        <select id="subject" name="subject" required>
+          {CONTACT_SUBJECTS.map((subject) => <option value={subject}>{subject}</option>)}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+
+      <!-- Honeypot: hidden from sighted users, but present in the DOM for bots
+           that fill every field without rendering CSS. A real visitor never
+           sees or interacts with this. -->
+      <div class="field field-hidden" aria-hidden="true">
+        <label for="company">Company</label>
+        <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="submit" class="btn-submit">Send message</button>
+    </form>
+  </section>
+</Site>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === 'true') {
+    document.getElementById('contact-sent')?.removeAttribute('hidden');
+  }
+  const error = params.get('error');
+  if (error) {
+    const el = document.getElementById('contact-error');
+    if (el) {
+      el.textContent =
+        error === 'send-failed'
+          ? "Sorry, that didn't go through — please try again in a moment."
+          : 'Please fill in every field with a valid email address.';
+      el.removeAttribute('hidden');
+    }
+  }
+</script>
+
+<style>
+  .contact {
+    max-width: var(--prose-max);
+    margin: 0 auto;
+    padding: 48px var(--page-padding-x);
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+  .contact-intro {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+  }
+  .banner {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: var(--radius-card);
+    margin-bottom: 20px;
+  }
+  .banner-success {
+    background: var(--secondary-tint);
+    color: var(--secondary);
+    border: 1px solid var(--secondary-border);
+  }
+  .banner-error {
+    background: var(--tertiary-tint);
+    color: var(--tertiary);
+    border: 1px solid var(--tertiary-border);
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .field label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-primary);
+    background: var(--bg-surface-1);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-input);
+    padding: 10px 12px;
+  }
+  .field textarea {
+    resize: vertical;
+    font-family: var(--font-prose);
+  }
+  .field input:focus-visible,
+  .field select:focus-visible,
+  .field textarea:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .field-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .btn-submit {
+    align-self: flex-start;
+    background: var(--accent);
+    color: var(--bg-page);
+    border: none;
+    border-radius: var(--radius-btn);
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media (max-width: 767px) {
+    .contact {
+      padding: 28px var(--page-padding-x-sm);
+    }
+  }
+</style>
