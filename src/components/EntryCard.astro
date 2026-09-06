@@ -10,8 +10,8 @@ import type { CollectionEntry } from 'astro:content';
  * line. No tags, no like count — the source cards don't show either.
  */
 interface Props {
-  type: Exclude<ListingType, 'sermon' | 'template'>;
-  entry: CollectionEntry<Exclude<ListingType, 'sermon' | 'template'>>;
+  type: Exclude<ListingType, 'template'>;
+  entry: CollectionEntry<Exclude<ListingType, 'template'>>;
 }
 const { type, entry } = Astro.props;
 const href = `/${type}/${entry.data.slug}`;

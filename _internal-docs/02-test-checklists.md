@@ -7,13 +7,13 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [x] Home page hero and section styling pixel-match the original at desktop, tablet, and mobile widths — desktop and mobile (375×812) both screenshot-verified; tablet breakpoint not individually screenshotted
 - [x] Typography (font family, sizes, weights, line-height) matches across headings, body text, and the terminal-style wordmark — Syne/JetBrains Mono/Inter/Lora all rendering correctly, verified in-browser
 - [x] Color palette, spacing, and card styling match for every content-type section on the home page
-- [x] Top nav (all 10 links + `⌘K`) matches spacing, order, and mobile collapse behavior — all 10 links present (Sermon/Template included, linking to real empty-state listing pages); `⌘K` and mobile collapse (nav → logo + tab bar) both verified in-browser
+- [x] Top nav (all links + `⌘K`) matches spacing, order, and mobile collapse behavior — originally 10 links including Sermon/Template; **updated 2026-09-07**: Sermon removed entirely per instruction (`/sermon` now 404s), verified in-browser the nav renders exactly 9 links (Article, eBooks, Frontend Mentor, Knowledge Sharing, Notebooks, Project, Template, Tool, Funny); `⌘K` and mobile collapse (nav → logo + tab bar) both verified in-browser
 - [x] Footer (`~/dav/devs`, `perf · a11y · seo` badge, copyright, Privacy link) matches placement and styling — badge values are placeholders, see Phase 11 note
 - [x] Cookie-notice banner matches copy, placement, and "Got it" dismiss styling — copy intentionally differs (localStorage, not cookies — see Phase 10 note); placement/dismiss behavior verified in-browser
 - [x] Detail-page furniture (kicker line, title, tags, share row, `♥`) matches spacing and iconography — verified on an article detail page
 
 ## 2. Navigation & Routing
-- [x] All top-nav links resolve to the correct listing pages — all 10 links (see §1), all verified to route correctly, including Sermon/Template's empty-state pages
+- [x] All top-nav links resolve to the correct listing pages — all 9 links (see §1), all verified to route correctly, including Template's empty-state page; Sermon no longer has a link or route (removed 2026-09-07)
 - [x] "view all →" links on every home-page section go to the correct listing page
 - [x] Every listing page paginates the same way as the original (or shows all items, if that's what the original does) — **decided: show all items**, every collection is small enough (4–29 entries); see 01-milestones.md Phase 3
 - [x] Every detail-page URL slug from the live site has a working equivalent on the new site — all 126 blog entries + 4 ebooks build to a real route (137 pages total)
@@ -27,7 +27,7 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 - [x] Knowledge Sharing — render correctly, including embedded links/media — same shared template, listing verified
 - [x] Notebooks — code/output cells (if applicable) render and are readable — checked the actual source: this content isn't a real exported `.ipynb` (no code-execution output cells to replicate), it's prose *about* notebooks with occasional inline code; verified in-browser that a code line renders as a proper `<pre><code>` block, correctly styled
 - [x] Project — render correctly — listing verified in-browser
-- [x] Sermon — **N/A**, content type excluded from this rebuild's scope (see 01-milestones.md Phase 0)
+- [x] Sermon — **N/A**, content type excluded from this rebuild's scope (see 01-milestones.md Phase 0); as of 2026-09-07 there's also no nav link or route at all (`/sermon` 404s), not just no content
 - [x] Template — **N/A**, zero live entries existed to migrate (see 01-milestones.md Phase 0)
 - [x] Tool — **superseded**: all 13 tools now have their embedded widget built and verified (Phase 6, completed in an earlier iteration) — this line was stale, written before that phase closed
 - [x] Funny — render correctly, including the requested statement-vs-qa reveal behavior — verified in-browser
@@ -36,7 +36,7 @@ Goal: the rebuild should be **indistinguishable in design** from the live site a
 
 ## 4. Search (⌘K)
 - [x] `⌘K` (Mac) and `Ctrl+K` (Windows/Linux) both open the search palette — `Ctrl+K` verified in-browser this session
-- [x] Search covers all 10 content types and returns relevant results — covers all 7 types that have actual content (6 blog types + E-Books); Sermon/Template have zero entries to index (not a gap, see Phase 0), quips are intentionally excluded (no single canonical URL per quip, see Phase 7 note)
+- [x] Search covers all 10 content types and returns relevant results — covers all 7 types that have actual content (6 blog types + E-Books); Template has zero entries to index (not a gap), Sermon has no route to index at all (removed 2026-09-07), quips are intentionally excluded (no single canonical URL per quip, see Phase 7 note)
 - [x] Selecting a result navigates to the correct page
 - [x] Palette is dismissible via `Esc` and click-outside — implemented; `Esc` not individually re-tested after the display-bug fix, but the same code path as click-outside
 - [x] Mobile fallback (tap target for search) works if no keyboard is present — verified at 375×812: the mobile tab bar's search button dispatches the same open event and the search input becomes visible/focusable

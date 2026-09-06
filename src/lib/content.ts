@@ -16,14 +16,16 @@ export const BLOG_TYPES = [
 export type BlogType = (typeof BLOG_TYPES)[number];
 
 /**
- * Sermon and Template are real content types on the live site (they appear
- * in its nav and have listing pages) but have no migrated content: Sermons
- * were excluded from extraction scope entirely, and Template had zero live
- * entries to extract (see _internal-docs/content-extraction-notes.md).
- * Their listing pages render the same "No entries found" empty state the
- * live site shows.
+ * Template is a real content type on the live site (it appears in its nav
+ * and has a listing page) but has zero live entries to extract (see
+ * _internal-docs/content-extraction-notes.md). Its listing page renders
+ * the same "No entries found" empty state the live site shows.
+ *
+ * Sermon used to be handled the same way, but there's no Sermon content
+ * or nav link at all in this rebuild now — removed entirely rather than
+ * kept as an empty placeholder.
  */
-export const EMPTY_TYPES = ['sermon', 'template'] as const;
+export const EMPTY_TYPES = ['template'] as const;
 export type EmptyType = (typeof EMPTY_TYPES)[number];
 
 export const LISTING_TYPES = [...BLOG_TYPES, ...EMPTY_TYPES] as const;
@@ -36,7 +38,6 @@ export const TYPE_LABELS: Record<ListingType, string> = {
   notebook: 'Notebooks',
   project: 'Project',
   tool: 'Tool',
-  sermon: 'Sermon',
   template: 'Template',
 };
 
@@ -60,10 +61,10 @@ export async function getBlogEntries(type: BlogType) {
 /**
  * Home page section order: davdevs-laravel's home.blade.php pins E-Books
  * first (handled separately in index.astro), then loops content_types
- * ordered alphabetically by name — Article, Frontend Mentor, Knowledge
- * Sharing, Notebooks, Project, Sermon, Template, Tool — skipping any
- * section with zero entries. Sermon/Template always have zero, so they
- * never render a home section, matching the source behaviour.
+ * ordered alphabetically by name, skipping any section with zero entries.
+ * Template always has zero, so it never renders a home section, matching
+ * the source behaviour. Sermon has no nav link or route at all here (see
+ * the EMPTY_TYPES comment above), so it's not part of this list either.
  */
 export const HOME_SECTION_ORDER: BlogType[] = [
   'article',
@@ -77,7 +78,8 @@ export const HOME_SECTION_ORDER: BlogType[] = [
 /**
  * Nav order matches the live site: content types alphabetically by name
  * (Article, eBooks, Frontend Mentor, Knowledge Sharing, Notebooks,
- * Project, Sermon, Template, Tool), then Funny appended last.
+ * Project, Template, Tool), then Funny appended last. Sermon removed
+ * entirely — no link, no route.
  */
 export const NAV_ITEMS = [
   { label: 'Article', href: '/article' },
@@ -86,7 +88,6 @@ export const NAV_ITEMS = [
   { label: 'Knowledge Sharing', href: '/knowledge-sharing' },
   { label: 'Notebooks', href: '/notebook' },
   { label: 'Project', href: '/project' },
-  { label: 'Sermon', href: '/sermon' },
   { label: 'Template', href: '/template' },
   { label: 'Tool', href: '/tool' },
   { label: 'Funny', href: '/funny' },

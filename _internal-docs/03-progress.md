@@ -1,5 +1,29 @@
 # Progress
 
+## 2026-09-07 — Removed the Sermon nav link/route entirely (per instruction)
+
+Sermon previously worked like Template: a nav link + empty listing page,
+since it's a real content type on the live site but had zero migrated
+entries. Instructed to remove the Sermon link completely rather than keep
+that placeholder — so unlike Template, Sermon no longer exists as a
+routable concept at all:
+
+- `EMPTY_TYPES`/`LISTING_TYPES`/`TYPE_LABELS`/`NAV_ITEMS`/`HOME_SECTION_ORDER`
+  in `src/lib/content.ts` no longer mention `sermon` — `EMPTY_TYPES` is now
+  just `['template']`.
+- `EntryCard.astro`'s prop types dropped the now-redundant `'sermon'`
+  exclusion (`Exclude<ListingType, 'template'>`).
+- Verified in-browser: nav renders exactly 9 links (was 10), and
+  `/sermon` now 404s (was a "No entries found" empty-state page).
+- Left the actual authored content alone — a project post's own prose
+  mentions Sermons/her Christian blog as part of the site's real mission;
+  that's Davina's own words about the site's purpose, not a stale
+  reference to the nav link, so it wasn't touched.
+
+Updated the milestones/checklist docs' several "10 nav links including
+Sermon" assertions to match (now 9, Template only) rather than leaving
+them contradicting what the code actually does.
+
 ## 2026-09-07 — README refresh; checklists at their practical ceiling
 
 Every remaining unchecked item across `01-milestones.md` and
