@@ -36,11 +36,19 @@ import Site from '../layouts/Site.astro';
           logs (request path, response status, timestamp) for operational purposes, subject to
           their own retention policy.
         </li>
+        <li>
+          <strong>Site analytics.</strong> We use Matomo, a self-hosted analytics tool
+          (analytics.gracesoft.dev), to see which pages get visited and how people find the
+          site. Matomo runs on our own server — not a third party's — so this data is never
+          shared with, sold to, or used by an outside company. It records things like page
+          views, referring sites, and approximate device/location info; it does not identify
+          you personally.
+        </li>
       </ul>
 
       <h2>What we don't do</h2>
       <ul>
-        <li>No third-party analytics or tracking scripts (no Google Analytics, no Facebook Pixel).</li>
+        <li>No third-party analytics (no Google Analytics, no Facebook Pixel) — our analytics are self-hosted, and that data never leaves our own server.</li>
         <li>No advertising cookies.</li>
         <li>No selling of any data to third parties, and no sharing beyond what's needed to process a purchase (Stripe for payment, Resend for the receipt email).</li>
         <li>No account system, so there is no personal profile to breach.</li>
@@ -49,9 +57,10 @@ import Site from '../layouts/Site.astro';
 
       <h2>Essential cookies</h2>
       <p>
-        We don't set any cookies. The theme toggle and like button described above use your
-        browser's local storage instead, which is not sent with requests and is not a cookie
-        in the tracking sense.
+        The theme toggle and like button described above use your browser's local storage,
+        which is not sent with requests and is not a cookie in the tracking sense. Our
+        self-hosted Matomo analytics may set a first-party cookie to distinguish visits; it is
+        not used for advertising and is never shared with third parties.
       </p>
 
       <h2>Contact</h2>
