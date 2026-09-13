@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export const CONTACT_SUBJECTS = [
   'General Inquiry',
@@ -10,11 +10,8 @@ export const CONTACT_SUBJECTS = [
 ] as const;
 export type ContactSubject = (typeof CONTACT_SUBJECTS)[number];
 
-const host = import.meta.env.GMAIL_SMTP_HOST || 'smtp.gmail.com';
-const port = Number(import.meta.env.GMAIL_SMTP_PORT || 465);
-const user = import.meta.env.GMAIL_SMTP_USER;
-const pass = import.meta.env.GMAIL_SMTP_APP_PASSWORD;
-const fromEmail = import.meta.env.GMAIL_FROM_EMAIL;
+const apiKey = import.meta.env.RESEND_API_KEY;
+const fromEmail = import.meta.env.RESEND_FROM_EMAIL;
 const toEmail = import.meta.env.CONTACT_TO_EMAIL;
 
 export interface ContactSubmission {
@@ -34,20 +31,13 @@ function escapeHtml(value: string) {
 }
 
 export async function sendContactEmail(submission: ContactSubmission) {
-  if (!user || !pass || !fromEmail || !toEmail) {
-    throw new Error(
-      'GMAIL_SMTP_USER / GMAIL_SMTP_APP_PASSWORD / GMAIL_FROM_EMAIL / CONTACT_TO_EMAIL is not set'
-    );
+  if (!apiKey || !fromEmail || !toEmail) {
+    throw new Error('RESEND_API_KEY / RESEND_FROM_EMAIL / CONTACT_TO_EMAIL is not set');
   }
 
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  });
+  const resend = new Resend(apiKey);
 
-  await transporter.sendMail({
+  await resend.emails.send({
     from: fromEmail,
     to: toEmail,
     replyTo: submission.email,
