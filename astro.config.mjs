@@ -19,6 +19,9 @@ export default defineConfig({
     })],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['.ngrok-free.app', '.ngrok-free.dev', '.ngrok.app', '.ngrok.io'],
+    },
   },
   redirects: {
     '/ebook': '/ebooks',
