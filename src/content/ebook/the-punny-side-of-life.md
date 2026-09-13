@@ -4,7 +4,7 @@ slug: "the-punny-side-of-life"
 sourceUrl: "https://davinaleong.com/ebooks/the-punny-side-of-life"
 isBundle: false
 tagline: "Corn-sider yourself warned."
-coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png"
+coverImage: "https://davdevs.dev/images/ebooks/the-punny-side-of-life.png"
 pricingTiers:
   - name: "Ebook"
     priceCents: 300

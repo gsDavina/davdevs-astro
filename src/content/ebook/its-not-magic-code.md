@@ -4,18 +4,13 @@ slug: "its-not-magic-code"
 sourceUrl: "https://davinaleong.com/ebooks/its-not-magic-code"
 isBundle: false
 tagline: "Code, Bugs, and Tiny Victories"
-coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783415865/davdevs/publications/ebook/its-not-magic-code/cover.png"
+coverImage: "https://davdevs.dev/images/ebooks/its-not-magic-code.png"
 pricingTiers:
-  - name: "Ebook Only"
+  - name: "Ebook"
     priceCents: 900
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLB5gJLl5lV"
     manuscriptFileKey: "Its Not Magic (Code).pdf"
-  - name: "Ebook + Exercise Pack"
-    priceCents: 1300
-    currency: "SGD"
-    stripePriceId: "price_1UCioFKH93TdgTLBU79NmZxK"
-    manuscriptFileKey: "Its Not Magic (Code).zip"
 ---
 
 A beginner-friendly guide to code, bugs, and tiny victories — in plain English, with zero assumed knowledge.

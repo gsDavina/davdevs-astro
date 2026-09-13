@@ -4,18 +4,13 @@ slug: "its-not-scary-debug"
 sourceUrl: "https://davinaleong.com/ebooks/its-not-scary-debug"
 isBundle: false
 tagline: "A friendly little guide to fixing bugs without losing your mind"
-coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783430727/davdevs/mrh4laqb6hg5hhc1r432.png"
+coverImage: "https://davdevs.dev/images/ebooks/its-not-scary-debug.png"
 pricingTiers:
   - name: "Ebook"
     priceCents: 900
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLBZiZ2G0XT"
     manuscriptFileKey: "Its Not Scary (Debug).pdf"
-  - name: "Ebook + Exercise Pack"
-    priceCents: 1300
-    currency: "SGD"
-    stripePriceId: "price_1UCinPKH93TdgTLB14pwjH3y"
-    manuscriptFileKey: "Its Not Scary (Debug).zip"
 ---
 
 A friendly little guide to fixing bugs without losing your mind — for anyone who's ever stared at a red error message and panicked.
