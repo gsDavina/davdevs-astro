@@ -1,7 +1,7 @@
 ---
-title: "The Punny Side of Things"
-slug: "the-punny-side-of-things"
-sourceUrl: "https://davinaleong.com/ebooks/the-punny-side-of-things"
+title: "The Punny Side of Life"
+slug: "the-punny-side-of-life"
+sourceUrl: "https://davinaleong.com/ebooks/the-punny-side-of-life"
 isBundle: false
 tagline: "Corn-sider yourself warned."
 coverImage: "https://res.cloudinary.com/ryrno9i5/image/upload/w_640,q_auto,f_auto/v1783416411/davdevs/publications/ebook/the-punny-side-of-life/cover.png"
@@ -10,6 +10,7 @@ pricingTiers:
     priceCents: 300
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLBgCD6MxJf"
+    manuscriptFileKey: "The Punny Side of Life.pdf"
 ---
 
 A collection of original jokes and playful wordplay inspired by everyday moments — hawker food, MRT rides, and the occasional groan-worthy wordplay.

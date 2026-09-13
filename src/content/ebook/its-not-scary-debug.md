@@ -10,10 +10,12 @@ pricingTiers:
     priceCents: 900
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLBZiZ2G0XT"
+    manuscriptFileKey: "Its Not Scary (Debug).pdf"
   - name: "Ebook + Exercise Pack"
     priceCents: 1300
     currency: "SGD"
     stripePriceId: "price_1UCinPKH93TdgTLB14pwjH3y"
+    manuscriptFileKey: "Its Not Scary (Debug).zip"
 ---
 
 A friendly little guide to fixing bugs without losing your mind — for anyone who's ever stared at a red error message and panicked.

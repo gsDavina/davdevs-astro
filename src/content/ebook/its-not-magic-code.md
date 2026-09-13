@@ -10,10 +10,12 @@ pricingTiers:
     priceCents: 900
     currency: "SGD"
     stripePriceId: "price_1UCiTiKH93TdgTLB5gJLl5lV"
+    manuscriptFileKey: "Its Not Magic (Code).pdf"
   - name: "Ebook + Exercise Pack"
     priceCents: 1300
     currency: "SGD"
     stripePriceId: "price_1UCioFKH93TdgTLBU79NmZxK"
+    manuscriptFileKey: "Its Not Magic (Code).zip"
 ---
 
 A beginner-friendly guide to code, bugs, and tiny victories — in plain English, with zero assumed knowledge.
