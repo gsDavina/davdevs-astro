@@ -9,6 +9,7 @@ pricingTiers:
   - name: "Ebook"
     priceCents: 900
     currency: "SGD"
+    stripePriceId: "price_1UFHMNKH93TdgTLBP6z1vbYU"
     manuscriptFileKey: "Its Not Random (AI).pdf"
 ---
 
