@@ -1,9 +1,10 @@
+import { GetObjectCommand } from '@aws-sdk/client-s3';
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { head } from '@vercel/blob';
 import { eq } from 'drizzle-orm';
 import { db } from '../../../db/client';
 import { orders } from '../../../db/schema';
+import { OBJECT_STORAGE_BUCKET, r2 } from '../../../lib/r2';
 
 export const prerender = false;
 
@@ -25,18 +26,15 @@ export const GET: APIRoute = async ({ params }) => {
     return new Response('Not found', { status: 404 });
   }
 
-  const blob = await head(manuscriptFileKey).catch(() => null);
-  if (!blob) return new Response('Not found', { status: 404 });
+  const object = await r2
+    .send(new GetObjectCommand({ Bucket: OBJECT_STORAGE_BUCKET, Key: manuscriptFileKey }))
+    .catch(() => null);
+  if (!object?.Body) return new Response('Not found', { status: 404 });
 
-  const fileResponse = await fetch(blob.url);
-  if (!fileResponse.ok || !fileResponse.body) {
-    return new Response('Not found', { status: 404 });
-  }
-
-  return new Response(fileResponse.body, {
+  return new Response(await object.Body.transformToWebStream(), {
     status: 200,
     headers: {
-      'Content-Type': blob.contentType ?? 'application/octet-stream',
+      'Content-Type': object.ContentType ?? 'application/octet-stream',
       'Content-Disposition': `attachment; filename="${manuscriptFileKey.split('/').pop()}"`,
     },
   });

@@ -57,7 +57,7 @@ const ebook = defineCollection({
     coverImage: z.string().url().nullable().optional(),
     // Each tier is its own purchasable Stripe line: `stripePriceId` is used
     // when set, otherwise checkout builds an ad-hoc `price_data` from
-    // `priceCents`/`currency`. `manuscriptFileKey` is the Vercel Blob key
+    // `priceCents`/`currency`. `manuscriptFileKey` is the R2 object key
     // the download route serves post-purchase; blank until a real file is
     // uploaded (see /api/download/[token]).
     pricingTiers: z
